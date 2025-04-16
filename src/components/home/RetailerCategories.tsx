@@ -1,46 +1,47 @@
 
 import { Baby, Utensils, Puzzle, Home, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ProductCategory } from "@/data/products";
 
 const categories = [
   {
     id: 1,
-    name: "Baby Clothing & Accessories",
+    name: ProductCategory.CLOTHING,
     description: "Quality clothes, shoes, and accessories for babies and toddlers",
     icon: Baby,
-    link: "/products/clothing",
+    link: `/products?category=${encodeURIComponent(ProductCategory.CLOTHING)}`,
     color: "baby-pink",
   },
   {
     id: 2,
-    name: "Feeding Supplies",
+    name: ProductCategory.FEEDING,
     description: "Bottles, bibs, high chairs and everything for meal time",
     icon: Utensils,
-    link: "/products/feeding",
+    link: `/products?category=${encodeURIComponent(ProductCategory.FEEDING)}`,
     color: "baby-blue",
   },
   {
     id: 3,
-    name: "Toys & Educational Items",
+    name: ProductCategory.TOYS,
     description: "Fun and educational toys to stimulate growing minds",
     icon: Puzzle,
-    link: "/products/toys",
+    link: `/products?category=${encodeURIComponent(ProductCategory.TOYS)}`,
     color: "baby-yellow",
   },
   {
     id: 4,
-    name: "Nursery Essentials",
+    name: ProductCategory.NURSERY,
     description: "Cribs, changing stations, and decor for the perfect nursery",
     icon: Home,
-    link: "/products/nursery",
+    link: `/products?category=${encodeURIComponent(ProductCategory.NURSERY)}`,
     color: "baby-pink",
   },
   {
     id: 5,
-    name: "Health & Safety",
+    name: ProductCategory.SAFETY,
     description: "Products to keep your little one safe and healthy",
     icon: Heart,
-    link: "/products/safety",
+    link: `/products?category=${encodeURIComponent(ProductCategory.SAFETY)}`,
     color: "baby-blue",
   },
 ];

@@ -2,9 +2,11 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Search, Filter, ChevronDown, Star } from "lucide-react";
+import { Search, ChevronDown, Star, Tag } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ProductCard } from "@/components/products/ProductCard";
 import { 
   DropdownMenu,
   DropdownMenuContent,
@@ -13,92 +15,22 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { products, ProductCategory } from "@/data/products";
+import { retailers } from "@/data/retailers";
 
-const retailers = [
-  {
-    id: 1,
-    name: "Jollyroom SE",
-    description: "Online baby and children's store with a wide range of products",
-    logo: "https://placehold.co/100/baby-blue/white?text=Jolly",
-    commission: "5% per order",
-    website: "https://example.com/jollyroom",
-    category: "General",
-  },
-  {
-    id: 2,
-    name: "BabyWorld SE",
-    description: "Unique and wide range of baby products for all ages",
-    logo: "https://placehold.co/100/baby-pink/white?text=BW",
-    commission: "8% per sale",
-    website: "https://example.com/babyworld",
-    category: "General",
-  },
-  {
-    id: 3,
-    name: "Polarn O. Pyret",
-    description: "High-quality and sustainable clothes for children",
-    logo: "https://placehold.co/100/baby-yellow/white?text=POP",
-    commission: "8% per order",
-    website: "https://example.com/polarn",
-    category: "Clothing",
-  },
-  {
-    id: 4,
-    name: "Bugaboo SE",
-    description: "Premium strollers and travel systems for modern parents",
-    logo: "https://placehold.co/100/soft-blue/white?text=BB",
-    commission: "6% per order",
-    website: "https://example.com/bugaboo",
-    category: "Travel",
-  },
-  {
-    id: 5,
-    name: "Baby V",
-    description: "Real baby store with carefully selected products",
-    logo: "https://placehold.co/100/soft-pink/white?text=BV",
-    commission: "7% per order",
-    website: "https://example.com/babyv",
-    category: "General",
-  },
-  {
-    id: 6,
-    name: "Babyland",
-    description: "Affordable baby products for everyday use",
-    logo: "https://placehold.co/100/soft-yellow/white?text=BL",
-    commission: "4% per order",
-    website: "https://example.com/babyland",
-    category: "General",
-  },
-  {
-    id: 7,
-    name: "Axkid SE",
-    description: "Specialized in rear-facing car seats for maximum safety",
-    logo: "https://placehold.co/100/baby-blue/white?text=AX",
-    commission: "5% per sale",
-    website: "https://example.com/axkid",
-    category: "Safety",
-  },
-  {
-    id: 8,
-    name: "Kid's Concept",
-    description: "Wooden toys and nursery furniture with Scandinavian design",
-    logo: "https://placehold.co/100/baby-pink/white?text=KC",
-    commission: "10% per sale",
-    website: "https://example.com/kidsconcept",
-    category: "Toys",
-  },
-];
-
-const categories = ["All", "General", "Clothing", "Safety", "Toys", "Travel"];
+const categories = Object.values(ProductCategory);
 
 const Products = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState<string>("All");
   
-  const filteredRetailers = retailers.filter(retailer => {
-    const matchesCategory = activeCategory === "All" || retailer.category === activeCategory;
-    const matchesSearch = retailer.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                         retailer.description.toLowerCase().includes(searchTerm.toLowerCase());
+  const filteredProducts = products.filter(product => {
+    const matchesCategory = activeCategory === "All" || product.category === activeCategory;
+    const matchesSearch = 
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.retailer.toLowerCase().includes(searchTerm.toLowerCase());
+    
     return matchesCategory && matchesSearch;
   });
 
@@ -109,15 +41,17 @@ const Products = () => {
         <section className="bg-gradient-soft py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Shop Our Trusted Retailers</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">
+                Discover the Best Baby Products from Trusted Brands
+              </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Find affordable, high-quality baby products from our affiliate partners
+                Explore handpicked products across categories like clothing, toys, safety gear, and more.
               </p>
               
               <div className="relative max-w-xl mx-auto">
                 <Input 
                   type="text" 
-                  placeholder="Search retailers..." 
+                  placeholder="Search products or retailers..." 
                   className="pl-10 rounded-full"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -130,86 +64,122 @@ const Products = () => {
         
         <section className="py-12">
           <div className="container mx-auto px-4">
-            <div className="flex justify-between items-center mb-8">
-              <div className="flex overflow-x-auto pb-2 hide-scrollbar">
-                <div className="flex space-x-2">
-                  {categories.map((category) => (
-                    <Button
-                      key={category}
-                      variant="outline"
-                      className={`rounded-full whitespace-nowrap ${
-                        activeCategory === category 
-                          ? "bg-baby-pink text-white border-baby-pink" 
-                          : "border-gray-200"
-                      }`}
-                      onClick={() => setActiveCategory(category)}
-                    >
-                      {category}
-                    </Button>
-                  ))}
-                </div>
+            <div className="flex justify-between items-center mb-8 overflow-x-auto pb-4">
+              <div className="flex space-x-2">
+                <Button
+                  variant="outline"
+                  className={`rounded-full whitespace-nowrap ${
+                    activeCategory === "All" 
+                      ? "bg-baby-pink text-white border-baby-pink" 
+                      : "border-gray-200"
+                  }`}
+                  onClick={() => setActiveCategory("All")}
+                >
+                  All Products
+                </Button>
+                {categories.map((category) => (
+                  <Button
+                    key={category}
+                    variant="outline"
+                    className={`rounded-full whitespace-nowrap ${
+                      activeCategory === category 
+                        ? "bg-baby-pink text-white border-baby-pink" 
+                        : "border-gray-200"
+                    }`}
+                    onClick={() => setActiveCategory(category)}
+                  >
+                    {category}
+                  </Button>
+                ))}
               </div>
               
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="flex items-center gap-2">
-                    <Filter className="w-4 h-4" /> Sort <ChevronDown className="w-4 h-4" />
+                    <Tag className="w-4 h-4" /> Sort <ChevronDown className="w-4 h-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Sort by</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>Alphabetical (A-Z)</DropdownMenuItem>
-                  <DropdownMenuItem>Highest Commission</DropdownMenuItem>
-                  <DropdownMenuItem>Category</DropdownMenuItem>
+                  <DropdownMenuItem>Price: Low to High</DropdownMenuItem>
+                  <DropdownMenuItem>Price: High to Low</DropdownMenuItem>
+                  <DropdownMenuItem>Best Sellers</DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredRetailers.map((retailer) => (
-                <a 
-                  key={retailer.id} 
-                  href={retailer.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-white rounded-xl overflow-hidden shadow-md card-hover border border-gray-100"
-                >
-                  <div className="flex p-6 items-center gap-4">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                      <img 
-                        src={retailer.logo} 
-                        alt={`${retailer.name} logo`} 
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <span className="bg-soft-blue text-baby-blue px-2 py-1 rounded-full text-xs font-medium">
-                        {retailer.category}
-                      </span>
-                      <h3 className="font-heading font-bold text-xl mt-1">{retailer.name}</h3>
-                    </div>
-                  </div>
-                  <div className="px-6 pb-6">
-                    <p className="text-gray-600 mb-4">{retailer.description}</p>
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center">
-                        <Star className="w-4 h-4 fill-baby-yellow text-baby-yellow mr-1" />
-                        <span className="text-sm font-medium text-baby-pink">{retailer.commission} commission</span>
-                      </div>
-                      <span className="text-sm text-baby-blue font-medium">Visit Store →</span>
-                    </div>
-                  </div>
-                </a>
+            {activeCategory !== "All" && (
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold mb-4">{activeCategory}</h2>
+                <p className="text-gray-600">
+                  {activeCategory === ProductCategory.CLOTHING 
+                    ? "Quality clothes, shoes, and accessories for babies and toddlers"
+                    : activeCategory === ProductCategory.FEEDING
+                    ? "Bottles, bibs, high chairs and everything for meal time"
+                    : activeCategory === ProductCategory.TOYS
+                    ? "Fun and educational toys to stimulate growing minds"
+                    : activeCategory === ProductCategory.NURSERY
+                    ? "Cribs, changing stations, and decor for the perfect nursery"
+                    : "Products to keep your little one safe and healthy"}
+                </p>
+              </div>
+            )}
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
               ))}
             </div>
             
-            {filteredRetailers.length === 0 && (
+            {filteredProducts.length === 0 && (
               <div className="text-center py-12">
-                <h3 className="text-xl font-bold mb-2">No retailers found</h3>
+                <h3 className="text-xl font-bold mb-2">No products found</h3>
                 <p className="text-gray-600">Try adjusting your search or category filter</p>
               </div>
             )}
+
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold mb-6">Our Retail Partners</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {retailers.map((retailer) => (
+                  <a 
+                    key={retailer.id} 
+                    href={retailer.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-white rounded-xl overflow-hidden shadow-md card-hover border border-gray-100"
+                  >
+                    <div className="flex p-6 items-center gap-4">
+                      <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                        <img 
+                          src={retailer.logo} 
+                          alt={`${retailer.name} logo`} 
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <span className="bg-soft-blue text-baby-blue px-2 py-1 rounded-full text-xs font-medium">
+                          {retailer.category}
+                        </span>
+                        <h3 className="font-heading font-bold text-xl mt-1">{retailer.name}</h3>
+                      </div>
+                    </div>
+                    <div className="px-6 pb-6">
+                      <p className="text-gray-600 mb-4">{retailer.description}</p>
+                      <div className="flex justify-between items-center">
+                        <div className="flex items-center">
+                          <Star className="w-4 h-4 fill-baby-yellow text-baby-yellow mr-1" />
+                          <span className="text-sm font-medium text-baby-pink">{retailer.commission} commission</span>
+                        </div>
+                        <span className="text-sm text-baby-blue font-medium">Visit Store →</span>
+                      </div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       </main>
