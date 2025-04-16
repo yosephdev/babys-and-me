@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,15 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Brand colors
+				"baby-blue": "#87CEEB",
+				"baby-pink": "#FF69B4",
+				"baby-yellow": "#FFFF00",
+				"soft-blue": "#D3E4FD",
+				"soft-pink": "#FFDEE2",
+				"soft-yellow": "#FEF7CD",
+				"soft-peach": "#FDE1D3",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +93,34 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+				'slide-up': {
+					'0%': { transform: 'translateY(10px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' },
+				},
+				'bounce-subtle': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-5px)' },
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 1s ease-out',
+				'slide-up': 'slide-up 0.5s ease-out',
+				'bounce-subtle': 'bounce-subtle 2s infinite'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				heading: ['Nunito', 'sans-serif'],
+			},
+			backgroundImage: {
+				'gradient-soft': 'linear-gradient(109.6deg, rgba(223,234,247,1) 11.2%, rgba(244,248,252,1) 91.1%)',
+				'gradient-pink': 'linear-gradient(to right, #ee9ca7, #ffdde1)',
 			}
 		}
 	},
