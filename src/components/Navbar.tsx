@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Heart, Menu, X, ShoppingBag, Baby } from "lucide-react";
+import { Heart, Menu, X, ShoppingBag, Baby, Settings } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +37,9 @@ const Navbar = () => {
           <Link to="/products" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
             <ShoppingBag className="w-5 h-5 text-baby-blue" />
           </Link>
+          <Link to="/admin" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
+            <Settings className="w-5 h-5 text-baby-blue" />
+          </Link>
           <Button className="btn-primary">Subscribe</Button>
         </div>
 
@@ -55,6 +58,7 @@ const Navbar = () => {
             <Link to="/blog" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Blog</Link>
             <Link to="/products" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Products</Link>
             <Link to="/donate" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Donate</Link>
+            <Link to="/admin" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Admin</Link>
             <Button className="btn-primary w-full">Subscribe</Button>
           </div>
         </div>

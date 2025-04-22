@@ -6,32 +6,92 @@ import { Star, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AdtractionProduct } from "@/services/adtractionApi";
 import { Product } from "@/data/products";
+import { Database } from "@/integrations/supabase/types";
+
+type DatabaseProduct = Database['public']['Tables']['products']['Row'];
 
 interface ProductCardProps {
-  product: Product | AdtractionProduct;
+  product: AdtractionProduct | Product | DatabaseProduct;
 }
 
 export function ProductCard({ product }: ProductCardProps) {
   // Helper function to determine if the product is from Adtraction API
-  const isAdtractionProduct = (product: any): product is AdtractionProduct => {
-    return 'advertiserId' in product;
+  const isAdtractionProduct = (p: any): p is AdtractionProduct => {
+    return 'url' in p && 'advertiserId' in p;
+  };
+
+  // Helper function to determine if the product is from database
+  const isDatabaseProduct = (p: any): p is DatabaseProduct => {
+    return 'affiliate_link' in p && 'image_url' in p;
   };
 
   // Get properties based on product type
-  const getProductImage = () => isAdtractionProduct(product) ? product.imageUrl : product.image;
+  const getProductImage = () => {
+    if (isAdtractionProduct(product)) return product.imageUrl;
+    if (isDatabaseProduct(product)) return product.image_url || 'https://placehold.co/400x400/soft-blue/white?text=Product';
+    return (product as Product).image;
+  };
+  
   const getProductName = () => product.name;
-  const getProductDescription = () => product.description;
-  const getProductPrice = () => isAdtractionProduct(product) 
-    ? `Starting at ${product.price} ${product.currency}`
-    : product.priceRange;
-  const getRetailer = () => isAdtractionProduct(product) ? product.advertiserName : product.retailer;
-  const getRetailerLogo = () => isAdtractionProduct(product) ? product.advertiserLogoUrl : product.retailerLogo;
-  const getProductLink = () => isAdtractionProduct(product) ? product.url : product.link;
-  const getCommission = () => isAdtractionProduct(product) ? product.commission : product.commission;
-  const isBestSeller = () => isAdtractionProduct(product) ? product.isBestSeller : product.isBestSeller;
-  const isEditorsPick = () => isAdtractionProduct(product) ? product.isEditorsPick : product.isEditorsPick;
-  const getRating = () => isAdtractionProduct(product) ? product.rating : product.rating;
-  const getReviews = () => isAdtractionProduct(product) ? product.reviews : product.reviews;
+  
+  const getProductDescription = () => {
+    if (isDatabaseProduct(product)) return product.description || '';
+    return product.description;
+  };
+  
+  const getProductPrice = () => {
+    if (isAdtractionProduct(product)) return `Starting at ${product.price} ${product.currency}`;
+    if (isDatabaseProduct(product)) return `Starting at ${product.price} ${product.currency || 'SEK'}`;
+    return (product as Product).priceRange;
+  };
+  
+  const getRetailer = () => {
+    if (isAdtractionProduct(product)) return product.advertiserName;
+    if (isDatabaseProduct(product)) return product.advertiser_name || 'Unknown Retailer';
+    return (product as Product).retailer;
+  };
+  
+  const getRetailerLogo = () => {
+    if (isAdtractionProduct(product)) return product.advertiserLogoUrl;
+    if (isDatabaseProduct(product)) return product.advertiser_logo_url || 'https://placehold.co/100/baby-pink/white?text=LOGO';
+    return (product as Product).retailerLogo;
+  };
+  
+  const getProductLink = () => {
+    if (isAdtractionProduct(product)) return product.url;
+    if (isDatabaseProduct(product)) return product.affiliate_link || '#';
+    return (product as Product).link;
+  };
+  
+  const getCommission = () => {
+    if (isAdtractionProduct(product)) return product.commission || '5%';
+    if (isDatabaseProduct(product)) return product.commission || '5%';
+    return (product as Product).commission;
+  };
+  
+  const isBestSeller = () => {
+    if (isAdtractionProduct(product)) return product.isBestSeller;
+    if (isDatabaseProduct(product)) return product.is_best_seller;
+    return (product as Product).isBestSeller;
+  };
+  
+  const isEditorsPick = () => {
+    if (isAdtractionProduct(product)) return product.isEditorsPick;
+    if (isDatabaseProduct(product)) return product.is_editors_pick;
+    return (product as Product).isEditorsPick;
+  };
+  
+  const getRating = () => {
+    if (isAdtractionProduct(product)) return product.rating;
+    if (isDatabaseProduct(product)) return product.rating;
+    return (product as Product).rating;
+  };
+  
+  const getReviews = () => {
+    if (isAdtractionProduct(product)) return product.reviews;
+    if (isDatabaseProduct(product)) return product.reviews;
+    return (product as Product).reviews;
+  };
 
   return (
     <Card className="overflow-hidden card-hover border border-gray-100 h-full flex flex-col">

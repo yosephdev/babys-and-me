@@ -1,1 +1,8 @@
+
 project_id = "xdttfosbledjbiqrutsd"
+
+[functions.adtraction-api]
+verify_jwt = false
+
+[functions.seed-products]
+verify_jwt = false

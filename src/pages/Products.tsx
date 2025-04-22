@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -59,11 +60,7 @@ const Products = () => {
     const matchesSearch = 
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (('advertiserName' in product) 
-        ? product.advertiserName.toLowerCase().includes(searchTerm.toLowerCase())
-        : (('retailer' in product) 
-            ? product.retailer.toLowerCase().includes(searchTerm.toLowerCase())
-            : false));
+      (product.advertiserName?.toLowerCase().includes(searchTerm.toLowerCase()) || false);
     
     return matchesSearch;
   });
