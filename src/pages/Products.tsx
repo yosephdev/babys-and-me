@@ -27,6 +27,7 @@ import {
 import { ProductCategory } from "@/data/products";
 import { retailers } from "@/data/retailers";
 import { useProducts } from "@/hooks/useProducts";
+import { AdtractionProduct } from "@/services/adtractionApi";
 
 const categories = Object.values(ProductCategory);
 
@@ -59,9 +60,12 @@ const Products = () => {
     const matchesSearch = 
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (('advertiserName' in product) 
+      // Properly handle the type checking for retailer/advertiserName
+      ('advertiserName' in product 
         ? product.advertiserName.toLowerCase().includes(searchTerm.toLowerCase())
-        : product.retailer.toLowerCase().includes(searchTerm.toLowerCase()));
+        : ('retailer' in product && typeof product.retailer === 'string'
+            ? product.retailer.toLowerCase().includes(searchTerm.toLowerCase())
+            : false));
     
     return matchesSearch;
   });
