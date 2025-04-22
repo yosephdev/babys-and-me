@@ -1,31 +1,41 @@
 
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ProductCard } from "@/components/products/ProductCard";
-import { products, ProductCategory } from "@/data/products";
-
-// Get one featured product from each main category to showcase variety
-const getFeaturedProducts = () => {
-  const categories = Object.values(ProductCategory);
-  const featuredProducts = [];
-  
-  for (const category of categories) {
-    const productInCategory = products.find(
-      (p) => p.category === category && (p.isBestSeller || p.isEditorsPick)
-    );
-    if (productInCategory) {
-      featuredProducts.push(productInCategory);
-    }
-    if (featuredProducts.length >= 4) break; // Limit to 4 products
-  }
-
-  return featuredProducts;
-};
-
-const featuredProducts = getFeaturedProducts();
+import { ProductCategory } from "@/data/products";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProducts } from "@/services/adtractionApi";
+import { useState, useEffect } from "react";
 
 const FeaturedProducts = () => {
+  const categories = Object.values(ProductCategory);
+  const [isClient, setIsClient] = useState(false);
+  
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+  
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["featuredProducts"],
+    queryFn: async () => {
+      const allProductsPromises = categories.map(category => 
+        fetchProducts(category, 0, 1)
+      );
+      
+      const results = await Promise.all(allProductsPromises);
+      
+      // Collect one featured product from each category
+      const featuredProducts = results.map(result => 
+        result.products.find(p => p.isBestSeller || p.isEditorsPick)
+      ).filter(Boolean);
+      
+      // Limit to 4 products
+      return featuredProducts.slice(0, 4);
+    },
+    enabled: isClient // Only run query on client-side to avoid SSR issues
+  });
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -35,11 +45,22 @@ const FeaturedProducts = () => {
           From clothing to safety gear, we've got everything your little one needs.
         </p>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex justify-center items-center py-10">
+            <Loader2 className="animate-spin w-8 h-8 text-baby-blue" />
+            <span className="ml-2 text-lg">Loading featured products...</span>
+          </div>
+        ) : error ? (
+          <div className="text-center py-10">
+            <p className="text-gray-600">Unable to load featured products. Please try again later.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {data?.map((product) => product && (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-12">
           <Button className="btn-secondary" asChild>

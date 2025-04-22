@@ -1,13 +1,22 @@
 
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Search, ChevronDown, Star, Tag } from "lucide-react";
+import { Search, ChevronDown, Star, Tag, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ProductCard } from "@/components/products/ProductCard";
 import { 
+  Pagination, 
+  PaginationContent, 
+  PaginationItem, 
+  PaginationLink, 
+  PaginationNext, 
+  PaginationPrevious 
+} from "@/components/ui/pagination";
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -15,23 +24,46 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { products, ProductCategory } from "@/data/products";
+import { ProductCategory } from "@/data/products";
 import { retailers } from "@/data/retailers";
+import { useProducts } from "@/hooks/useProducts";
 
 const categories = Object.values(ProductCategory);
 
 const Products = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get("category") || "All";
   
+  const [searchTerm, setSearchTerm] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string>(categoryParam);
+  
+  const { products, isLoading, error, pagination, count } = useProducts({
+    category: activeCategory === "All" ? undefined : activeCategory,
+    pageSize: 6
+  });
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category);
+    
+    // Update URL search params
+    if (category === "All") {
+      searchParams.delete("category");
+    } else {
+      searchParams.set("category", category);
+    }
+    setSearchParams(searchParams);
+  };
+  
+  // Filter products by search term
   const filteredProducts = products.filter(product => {
-    const matchesCategory = activeCategory === "All" || product.category === activeCategory;
     const matchesSearch = 
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.retailer.toLowerCase().includes(searchTerm.toLowerCase());
+      (('advertiserName' in product) 
+        ? product.advertiserName.toLowerCase().includes(searchTerm.toLowerCase())
+        : product.retailer.toLowerCase().includes(searchTerm.toLowerCase()));
     
-    return matchesCategory && matchesSearch;
+    return matchesSearch;
   });
 
   return (
@@ -73,7 +105,7 @@ const Products = () => {
                       ? "bg-baby-pink text-white border-baby-pink" 
                       : "border-gray-200"
                   }`}
-                  onClick={() => setActiveCategory("All")}
+                  onClick={() => handleCategoryChange("All")}
                 >
                   All Products
                 </Button>
@@ -86,7 +118,7 @@ const Products = () => {
                         ? "bg-baby-pink text-white border-baby-pink" 
                         : "border-gray-200"
                     }`}
-                    onClick={() => setActiveCategory(category)}
+                    onClick={() => handleCategoryChange(category)}
                   >
                     {category}
                   </Button>
@@ -127,17 +159,64 @@ const Products = () => {
               </div>
             )}
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-            
-            {filteredProducts.length === 0 && (
-              <div className="text-center py-12">
-                <h3 className="text-xl font-bold mb-2">No products found</h3>
-                <p className="text-gray-600">Try adjusting your search or category filter</p>
+            {isLoading ? (
+              <div className="flex justify-center items-center py-20">
+                <Loader2 className="animate-spin w-8 h-8 text-baby-blue" />
+                <span className="ml-2 text-lg">Loading products...</span>
               </div>
+            ) : error ? (
+              <div className="text-center py-12">
+                <h3 className="text-xl font-bold mb-2">Error loading products</h3>
+                <p className="text-gray-600">Please try again later</p>
+              </div>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filteredProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+                
+                {filteredProducts.length === 0 && (
+                  <div className="text-center py-12">
+                    <h3 className="text-xl font-bold mb-2">No products found</h3>
+                    <p className="text-gray-600">Try adjusting your search or category filter</p>
+                  </div>
+                )}
+                
+                {pagination.totalPages > 1 && (
+                  <div className="mt-8">
+                    <Pagination>
+                      <PaginationContent>
+                        <PaginationItem>
+                          <PaginationPrevious 
+                            onClick={() => pagination.prevPage()}
+                            className={!pagination.hasPrevPage ? "opacity-50 pointer-events-none" : ""}
+                          />
+                        </PaginationItem>
+                        
+                        {Array.from({ length: pagination.totalPages }).map((_, i) => (
+                          <PaginationItem key={i}>
+                            <PaginationLink 
+                              onClick={() => pagination.goToPage(i)}
+                              isActive={pagination.currentPage === i}
+                            >
+                              {i + 1}
+                            </PaginationLink>
+                          </PaginationItem>
+                        ))}
+                        
+                        <PaginationItem>
+                          <PaginationNext 
+                            onClick={() => pagination.nextPage()}
+                            className={!pagination.hasNextPage ? "opacity-50 pointer-events-none" : ""}
+                          />
+                        </PaginationItem>
+                      </PaginationContent>
+                    </Pagination>
+                  </div>
+                )}
+              </>
             )}
 
             <div className="mt-16">
