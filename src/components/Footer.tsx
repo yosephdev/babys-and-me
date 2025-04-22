@@ -1,8 +1,8 @@
-
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ProductCategory } from "@/data/products";
 
 const Footer = () => {
   return (
@@ -44,11 +44,16 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Categories</h3>
             <ul className="space-y-2">
-              <li><Link to="/products/clothing" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Baby Clothing</Link></li>
-              <li><Link to="/products/feeding" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Feeding Supplies</Link></li>
-              <li><Link to="/products/toys" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Toys & Educational</Link></li>
-              <li><Link to="/products/nursery" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Nursery Essentials</Link></li>
-              <li><Link to="/products/safety" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Health & Safety</Link></li>
+              {Object.values(ProductCategory).map((category) => (
+                <li key={category}>
+                  <Link 
+                    to={`/products?category=${encodeURIComponent(category)}`}
+                    className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                  >
+                    {category}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
