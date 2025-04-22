@@ -9,6 +9,24 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      categories: {
+        Row: {
+          created_at: string | null
+          id: string
+          name: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          name: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          name?: string
+        }
+        Relationships: []
+      }
       collections: {
         Row: {
           created_at: string
@@ -105,6 +123,69 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      products: {
+        Row: {
+          advertiser_id: string | null
+          advertiser_logo_url: string | null
+          advertiser_name: string | null
+          affiliate_link: string | null
+          category: string | null
+          commission: string | null
+          created_at: string | null
+          currency: string | null
+          description: string | null
+          id: string
+          image_url: string | null
+          in_stock: boolean | null
+          is_best_seller: boolean | null
+          is_editors_pick: boolean | null
+          name: string
+          price: number | null
+          rating: number | null
+          reviews: number | null
+        }
+        Insert: {
+          advertiser_id?: string | null
+          advertiser_logo_url?: string | null
+          advertiser_name?: string | null
+          affiliate_link?: string | null
+          category?: string | null
+          commission?: string | null
+          created_at?: string | null
+          currency?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          in_stock?: boolean | null
+          is_best_seller?: boolean | null
+          is_editors_pick?: boolean | null
+          name: string
+          price?: number | null
+          rating?: number | null
+          reviews?: number | null
+        }
+        Update: {
+          advertiser_id?: string | null
+          advertiser_logo_url?: string | null
+          advertiser_name?: string | null
+          affiliate_link?: string | null
+          category?: string | null
+          commission?: string | null
+          created_at?: string | null
+          currency?: string | null
+          description?: string | null
+          id?: string
+          image_url?: string | null
+          in_stock?: boolean | null
+          is_best_seller?: boolean | null
+          is_editors_pick?: boolean | null
+          name?: string
+          price?: number | null
+          rating?: number | null
+          reviews?: number | null
+        }
+        Relationships: []
       }
       profiles: {
         Row: {

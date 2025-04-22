@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -60,10 +59,9 @@ const Products = () => {
     const matchesSearch = 
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
       product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      // Properly handle the type checking for retailer/advertiserName
-      ('advertiserName' in product 
+      (('advertiserName' in product) 
         ? product.advertiserName.toLowerCase().includes(searchTerm.toLowerCase())
-        : ('retailer' in product && typeof product.retailer === 'string'
+        : (('retailer' in product) 
             ? product.retailer.toLowerCase().includes(searchTerm.toLowerCase())
             : false));
     
