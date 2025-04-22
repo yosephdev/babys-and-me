@@ -1,5 +1,5 @@
-
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -7,14 +7,17 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Loader2, RefreshCw } from "lucide-react";
+import { Loader2, RefreshCw, LogOut } from "lucide-react";
 import { syncProductsFromAdtraction } from "@/services/adtractionApi";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
+import { useAuth } from "@/contexts/AuthContext";
 import SeedDatabase from "@/components/admin/SeedDatabase";
 
 const Admin = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   const [productFormData, setProductFormData] = useState({
     name: "",
     description: "",
@@ -29,7 +32,7 @@ const Admin = () => {
   });
 
   // Fetch categories
-  const { data: categories } = useQuery({
+  const { data: categories, isLoading: isLoadingCategories } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       const { data, error } = await supabase.from('categories').select('*');
@@ -39,7 +42,7 @@ const Admin = () => {
   });
 
   // Fetch products count
-  const { data: productCount, refetch: refetchProductCount } = useQuery({
+  const { data: productCount, refetch: refetchProductCount, isLoading: isLoadingCount } = useQuery({
     queryKey: ["productCount"],
     queryFn: async () => {
       const { count, error } = await supabase.from('products').select('*', { count: 'exact', head: true });
@@ -47,19 +50,6 @@ const Admin = () => {
       return count || 0;
     }
   });
-
-  useEffect(() => {
-    // Check if user is authenticated
-    const checkAuth = async () => {
-      const { data } = await supabase.auth.getSession();
-      if (!data.session) {
-        toast.error("You must be logged in to access the admin panel");
-        // In a real app, redirect to login page
-      }
-    };
-    
-    checkAuth();
-  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -147,13 +137,41 @@ const Admin = () => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      navigate('/');
+    } catch (error) {
+      console.error("Error signing out:", error);
+      toast.error("Failed to sign out");
+    }
+  };
+
+  if (isLoadingCategories || isLoadingCount) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-baby-pink" />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       
       <main className="flex-grow py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+          <div className="flex justify-between items-center mb-8">
+            <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+            <Button variant="outline" onClick={handleSignOut} className="flex items-center gap-2">
+              <LogOut className="w-4 h-4" />
+              Sign Out
+            </Button>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card>

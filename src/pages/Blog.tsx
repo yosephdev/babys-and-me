@@ -1,11 +1,11 @@
-
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, ChevronRight } from "lucide-react";
+import { Search, Clock, User, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { blogPosts } from "@/data/blogPosts";
 
 const categories = [
   "All Posts",
@@ -15,63 +15,6 @@ const categories = [
   "Baby Health",
   "Shopping Guide",
   "Development",
-];
-
-const blogPosts = [
-  {
-    id: 1,
-    title: "10 Must-Have Baby Products for New Parents",
-    excerpt: "Starting your parenting journey? These essential items will make your life easier and your baby happier.",
-    image: "https://placehold.co/600x400/soft-blue/white?text=Must+Have+Products",
-    date: "Mar 15, 2025",
-    category: "Shopping Guide",
-    slug: "must-have-baby-products",
-  },
-  {
-    id: 2,
-    title: "How to Choose Safe and Comfortable Baby Clothes",
-    excerpt: "Learn about the best fabrics, sizes, and safety considerations when shopping for your baby's wardrobe.",
-    image: "https://placehold.co/600x400/soft-pink/white?text=Baby+Clothes",
-    date: "Apr 2, 2025",
-    category: "Parenting Tips",
-    slug: "safe-baby-clothes",
-  },
-  {
-    id: 3,
-    title: "Simple Ways to Save Money on Baby Supplies",
-    excerpt: "Smart shopping strategies to help you provide the best for your baby without breaking the bank.",
-    image: "https://placehold.co/600x400/soft-yellow/white?text=Save+Money",
-    date: "Apr 9, 2025",
-    category: "Budget Tips",
-    slug: "save-money-baby-supplies",
-  },
-  {
-    id: 4,
-    title: "The Ultimate Guide to Baby Sleep Training",
-    excerpt: "Evidence-based strategies to help your baby develop healthy sleep habits and get more rest yourself.",
-    image: "https://placehold.co/600x400/soft-blue/white?text=Sleep+Training",
-    date: "Apr 12, 2025",
-    category: "Parenting Tips",
-    slug: "baby-sleep-training",
-  },
-  {
-    id: 5,
-    title: "Organic vs. Regular Baby Foods: What's the Difference?",
-    excerpt: "A detailed comparison of organic and conventional baby foods to help you make informed choices.",
-    image: "https://placehold.co/600x400/soft-pink/white?text=Baby+Food",
-    date: "Apr 18, 2025",
-    category: "Baby Health",
-    slug: "organic-vs-regular-baby-food",
-  },
-  {
-    id: 6,
-    title: "Best Strollers of 2025: Comprehensive Review",
-    excerpt: "Our team tested dozens of strollers to find the best options for different needs and budgets.",
-    image: "https://placehold.co/600x400/soft-yellow/white?text=Strollers",
-    date: "Apr 22, 2025",
-    category: "Product Reviews",
-    slug: "best-strollers-2025",
-  },
 ];
 
 const Blog = () => {
@@ -94,7 +37,7 @@ const Blog = () => {
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Parenting Tips & Advice</h1>
               <p className="text-xl text-gray-600 mb-8">
-                Helpful articles on parenting, baby care, and product recommendations
+                Expert insights, product reviews, and practical advice for your parenting journey
               </p>
               
               <div className="relative max-w-xl mx-auto">
@@ -136,7 +79,7 @@ const Blog = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPosts.map((post) => (
                   <Link key={post.id} to={`/blog/${post.slug}`} className="group">
-                    <div className="bg-white rounded-xl overflow-hidden shadow-md card-hover h-full flex flex-col">
+                    <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 h-full flex flex-col">
                       <div className="aspect-[4/3] overflow-hidden">
                         <img 
                           src={post.image} 
@@ -151,9 +94,22 @@ const Blog = () => {
                         </div>
                         <h3 className="font-heading font-bold text-xl mb-2 text-foreground group-hover:text-baby-pink transition-colors">{post.title}</h3>
                         <p className="text-gray-600 line-clamp-3 mb-4 flex-grow">{post.excerpt}</p>
-                        <span className="text-baby-pink font-medium flex items-center group-hover:underline mt-auto">
-                          Read More <ChevronRight className="w-4 h-4 ml-1" />
-                        </span>
+                        <div className="flex items-center justify-between mt-auto">
+                          <div className="flex items-center space-x-4 text-sm text-gray-500">
+                            <span className="flex items-center">
+                              <User className="w-4 h-4 mr-1" />
+                              {post.author}
+                            </span>
+                            <span className="flex items-center">
+                              <Clock className="w-4 h-4 mr-1" />
+                              {post.readTime}
+                            </span>
+                          </div>
+                          <span className="flex items-center text-baby-pink">
+                            <Heart className="w-4 h-4 mr-1" />
+                            {post.likes}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </Link>

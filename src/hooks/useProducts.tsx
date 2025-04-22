@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts, AdtractionProduct } from "@/services/adtractionApi";
 
@@ -15,6 +14,11 @@ export const useProducts = ({
   pageSize = 10
 }: UseProductsProps = {}) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
+  
+  // Reset to first page when category changes
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [category]);
   
   const {
     data,

@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -31,13 +30,21 @@ import { AdtractionProduct } from "@/services/adtractionApi";
 
 const categories = Object.values(ProductCategory);
 
+type SortOption = 'alphabetical' | 'price-low-high' | 'price-high-low';
+
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const categoryParam = searchParams.get("category") || "All";
+  const categoryParam = searchParams.get("category");
   
   const [searchTerm, setSearchTerm] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string>(categoryParam);
+  const [activeCategory, setActiveCategory] = useState<string>(categoryParam || "All");
+  const [sortOption, setSortOption] = useState<SortOption>('price-low-high');
   
+  // Update activeCategory when URL changes
+  useEffect(() => {
+    setActiveCategory(categoryParam || "All");
+  }, [categoryParam]);
+
   const { products, isLoading, error, pagination, count } = useProducts({
     category: activeCategory === "All" ? undefined : activeCategory,
     pageSize: 6
@@ -54,6 +61,10 @@ const Products = () => {
     }
     setSearchParams(searchParams);
   };
+
+  const handleSort = (option: SortOption) => {
+    setSortOption(option);
+  };
   
   // Filter products by search term
   const filteredProducts = products.filter(product => {
@@ -63,6 +74,20 @@ const Products = () => {
       (product.advertiserName?.toLowerCase().includes(searchTerm.toLowerCase()) || false);
     
     return matchesSearch;
+  });
+
+  // Sort products based on selected option
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    switch (sortOption) {
+      case 'alphabetical':
+        return a.name.localeCompare(b.name);
+      case 'price-low-high':
+        return a.price - b.price;
+      case 'price-high-low':
+        return b.price - a.price;
+      default:
+        return 0;
+    }
   });
 
   return (
@@ -108,7 +133,7 @@ const Products = () => {
                 >
                   All Products
                 </Button>
-                {categories.map((category) => (
+                {Object.values(ProductCategory).map((category) => (
                   <Button
                     key={category}
                     variant="outline"
@@ -133,10 +158,15 @@ const Products = () => {
                 <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Sort by</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Alphabetical (A-Z)</DropdownMenuItem>
-                  <DropdownMenuItem>Price: Low to High</DropdownMenuItem>
-                  <DropdownMenuItem>Price: High to Low</DropdownMenuItem>
-                  <DropdownMenuItem>Best Sellers</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleSort('alphabetical')}>
+                    Alphabetical (A-Z)
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleSort('price-low-high')}>
+                    Price: Low to High
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => handleSort('price-high-low')}>
+                    Price: High to Low
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -171,12 +201,12 @@ const Products = () => {
             ) : (
               <>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filteredProducts.map((product) => (
+                  {sortedProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                   ))}
                 </div>
                 
-                {filteredProducts.length === 0 && (
+                {sortedProducts.length === 0 && (
                   <div className="text-center py-12">
                     <h3 className="text-xl font-bold mb-2">No products found</h3>
                     <p className="text-gray-600">Try adjusting your search or category filter</p>

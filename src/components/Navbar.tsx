@@ -1,11 +1,12 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Heart, Menu, X, ShoppingBag, Baby, Settings } from "lucide-react";
+import { Heart, Menu, X, ShoppingBag, Baby, Settings, Mail } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -30,17 +31,24 @@ const Navbar = () => {
           <Link to="/donate" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donate</Link>
         </nav>
 
-        <div className="hidden md:flex items-center space-x-3">
+        <div className="hidden md:flex items-center space-x-4">
           <Link to="/favorites" className="p-2 rounded-full hover:bg-soft-pink transition-colors">
             <Heart className="w-5 h-5 text-baby-pink" />
           </Link>
           <Link to="/products" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
             <ShoppingBag className="w-5 h-5 text-baby-blue" />
           </Link>
-          <Link to="/admin" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
-            <Settings className="w-5 h-5 text-baby-blue" />
+          {isAuthenticated && (
+            <Link to="/admin" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
+              <Settings className="w-5 h-5 text-baby-blue" />
+            </Link>
+          )}
+          <Link to="/subscribe">
+            <Button className="btn-primary flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              Subscribe
+            </Button>
           </Link>
-          <Button className="btn-primary">Subscribe</Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -58,8 +66,12 @@ const Navbar = () => {
             <Link to="/blog" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Blog</Link>
             <Link to="/products" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Products</Link>
             <Link to="/donate" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Donate</Link>
-            <Link to="/admin" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Admin</Link>
-            <Button className="btn-primary w-full">Subscribe</Button>
+            {isAuthenticated && (
+              <Link to="/admin" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Admin</Link>
+            )}
+            <Link to="/subscribe" className="btn-primary w-full text-center" onClick={toggleMenu}>
+              Subscribe
+            </Link>
           </div>
         </div>
       )}

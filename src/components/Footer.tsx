@@ -44,16 +44,54 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Categories</h3>
             <ul className="space-y-2">
-              {Object.values(ProductCategory).map((category) => (
-                <li key={category}>
-                  <Link 
-                    to={`/products?category=${encodeURIComponent(category)}`}
-                    className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
-                  >
-                    {category}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link 
+                  to="/products"
+                  className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                >
+                  All Products
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to={`/products?category=${encodeURIComponent(ProductCategory.CLOTHING)}`}
+                  className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                >
+                  {ProductCategory.CLOTHING}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to={`/products?category=${encodeURIComponent(ProductCategory.FEEDING)}`}
+                  className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                >
+                  {ProductCategory.FEEDING}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to={`/products?category=${encodeURIComponent(ProductCategory.TOYS)}`}
+                  className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                >
+                  {ProductCategory.TOYS}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to={`/products?category=${encodeURIComponent(ProductCategory.NURSERY)}`}
+                  className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                >
+                  {ProductCategory.NURSERY}
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to={`/products?category=${encodeURIComponent(ProductCategory.SAFETY)}`}
+                  className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
+                >
+                  {ProductCategory.SAFETY}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -74,9 +112,19 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-200 mt-8 pt-6">
-          <p className="text-center text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} Baby's & Me. All rights reserved.
-          </p>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-center text-xs text-gray-500 mb-4 md:mb-0">
+              &copy; {new Date().getFullYear()} Baby's & Me. All rights reserved.
+            </p>
+            <div className="flex space-x-4">
+              <Link to="/privacy-policy" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
+                Terms of Service
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

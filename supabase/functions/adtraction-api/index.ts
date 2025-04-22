@@ -1,13 +1,14 @@
-
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.39.7';
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.39.7";
 
 // Define constants
-const SUPABASE_URL = "https://xdttfosbledjbiqrutsd.supabase.co";
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhkdHRmb3NibGVkamJpcXJ1dHNkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzczNjkwNTQsImV4cCI6MjA1Mjk0NTA1NH0.fSSi3WQkL2GtzteSKiBjKlkKGpO7IKHavZ6YVnb7TP4";
+const SUPABASE_URL = Deno.env.get('SUPABASE_URL') || '';
+const SUPABASE_ANON_KEY = Deno.env.get('SUPABASE_ANON_KEY') || '';
+const ADTRACTION_API_URL = 'https://api.adtraction.net/v3';
+const ADTRACTION_API_TOKEN = Deno.env.get('ADTRACTION_API_TOKEN');
 
 // Define CORS headers
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*', // Change in production
+  'Access-Control-Allow-Origin': '*', // Restrict in production
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
 };
 
@@ -45,8 +46,16 @@ Deno.serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Get API token from headers
-  const API_TOKEN = Deno.env.get('ADTRACTION_API_TOKEN') || 'demo_token';
+  // Validate API token
+  if (!ADTRACTION_API_TOKEN) {
+    return new Response(
+      JSON.stringify({ error: 'API token not configured' }),
+      {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      }
+    );
+  }
 
   try {
     const url = new URL(req.url);
@@ -55,81 +64,141 @@ Deno.serve(async (req) => {
     // Different handlers based on path
     if (path === 'fetch-products') {
       // Get query parameters
-      const advertiser_id = url.searchParams.get('advertiser_id') || '';
       const page = url.searchParams.get('page') || '0';
       const pageSize = url.searchParams.get('pageSize') || '10';
       const category = url.searchParams.get('category') || '';
 
       try {
-        // In a real implementation, make an API call to Adtraction
-        // For demo, fetch products from our DB or use mock data
-        let { data: products, error } = await supabase
-          .from('products')
-          .select('*');
+        // First check cache
+        const { data: cachedData, error: cacheError } = await supabase
+          .from('product_cache')
+          .select('*')
+          .eq('category', category || 'all')
+          .eq('page', parseInt(page))
+          .maybeSingle(); // Use maybeSingle to avoid errors if no record exists
 
-        if (error) throw error;
-
-        // Filter by category if specified
-        if (category && products) {
-          products = products.filter(p => p.category === category);
+        if (cachedData && !cacheError) {
+          const cacheAge = Date.now() - new Date(cachedData.updated_at).getTime();
+          if (cacheAge < 3600000) { // 1 hour cache
+            return new Response(cachedData.data, {
+              status: 200,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            });
+          }
         }
 
-        // Simulate pagination
-        const start = parseInt(page) * parseInt(pageSize);
-        const end = start + parseInt(pageSize);
-        const paginatedProducts = products ? products.slice(start, end) : [];
-
-        return new Response(
-          JSON.stringify({
-            products: paginatedProducts,
-            count: products ? products.length : 0,
-            page: parseInt(page),
-            pageSize: parseInt(pageSize)
-          }),
+        // If no cache or expired, fetch from Adtraction API
+        const response = await fetch(
+          `${ADTRACTION_API_URL}/product_feed?advertiser_id=${url.searchParams.get('advertiser_id')}&page=${page}&pageSize=${pageSize}${category ? `&category=${category}` : ''}`,
           {
-            status: 200,
-            headers: { 
-              ...corsHeaders,
-              'Content-Type': 'application/json' 
-            }
+            headers: {
+              'X-Token': ADTRACTION_API_TOKEN, // Correct header for Adtraction API
+              'Content-Type': 'application/json',
+            },
           }
         );
+
+        if (!response.ok) {
+          throw new Error(`Adtraction API error: ${response.status}`);
+        }
+
+        const data: AdtractionResponse = await response.json();
+
+        // Cache the response
+        await supabase
+          .from('product_cache')
+          .upsert({
+            category: category || 'all',
+            page: parseInt(page),
+            data: JSON.stringify(data),
+            updated_at: new Date().toISOString(),
+          });
+
+        return new Response(JSON.stringify(data), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
       } catch (error) {
         console.error('Error fetching products:', error);
         return new Response(
           JSON.stringify({ error: 'Failed to fetch products' }),
           {
             status: 500,
-            headers: { 
-              ...corsHeaders,
-              'Content-Type': 'application/json' 
-            }
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
           }
         );
       }
     } else if (path === 'sync-products') {
-      // This would be an admin-only endpoint to sync products from Adtraction
-      // For now, return mock results
-      return new Response(
-        JSON.stringify({ message: 'Product sync initiated' }),
-        {
-          status: 200,
-          headers: { 
-            ...corsHeaders,
-            'Content-Type': 'application/json' 
+      try {
+        // Fetch all products from Adtraction
+        const response = await fetch(
+          `${ADTRACTION_API_URL}/product_feed?page=0&pageSize=1000`,
+          {
+            headers: {
+              'X-Token': ADTRACTION_API_TOKEN,
+              'Content-Type': 'application/json',
+            },
           }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Adtraction API error: ${response.status}`);
         }
-      );
+
+        const data: AdtractionResponse = await response.json();
+
+        // Clear existing products
+        await supabase.from('products').delete();
+
+        // Insert new products
+        const { error: insertError } = await supabase
+          .from('products')
+          .insert(
+            data.products.map((product: AdtractionProduct) => ({
+              id: product.id,
+              name: product.name,
+              description: product.description,
+              price: product.price,
+              currency: product.currency,
+              category: product.categories[0] || '',
+              advertiser_name: product.advertiserName,
+              advertiser_id: product.advertiserId,
+              image_url: product.imageUrl,
+              affiliate_link: product.productUrl,
+              commission: '5%', // Default commission
+              in_stock: true,
+              is_best_seller: false,
+              is_editors_pick: false,
+              rating: 0,
+              reviews: 0,
+            }))
+          );
+
+        if (insertError) throw insertError;
+
+        return new Response(
+          JSON.stringify({ message: 'Products synced successfully' }),
+          {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          }
+        );
+      } catch (error) {
+        console.error('Error syncing products:', error);
+        return new Response(
+          JSON.stringify({ error: 'Failed to sync products' }),
+          {
+            status: 500,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          }
+        );
+      }
     } else {
-      // Default response for unknown paths
       return new Response(
         JSON.stringify({ error: 'Not found' }),
         {
           status: 404,
-          headers: { 
-            ...corsHeaders,
-            'Content-Type': 'application/json' 
-          }
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
         }
       );
     }
@@ -139,10 +208,7 @@ Deno.serve(async (req) => {
       JSON.stringify({ error: 'Server error' }),
       {
         status: 500,
-        headers: { 
-          ...corsHeaders,
-          'Content-Type': 'application/json' 
-        }
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       }
     );
   }

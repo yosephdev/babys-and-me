@@ -126,64 +126,64 @@ export type Database = {
       }
       products: {
         Row: {
-          advertiser_id: string | null
-          advertiser_logo_url: string | null
-          advertiser_name: string | null
-          affiliate_link: string | null
-          category: string | null
-          commission: string | null
-          created_at: string | null
-          currency: string | null
-          description: string | null
           id: string
-          image_url: string | null
-          in_stock: boolean | null
-          is_best_seller: boolean | null
-          is_editors_pick: boolean | null
           name: string
-          price: number | null
-          rating: number | null
-          reviews: number | null
+          description: string
+          price: number
+          currency: string
+          category: string
+          advertiser_name: string
+          advertiser_id: string
+          image_url: string
+          affiliate_link: string
+          commission: string
+          in_stock: boolean
+          is_best_seller: boolean
+          is_editors_pick: boolean
+          rating: number
+          reviews: number
+          created_at: string
+          updated_at: string
         }
         Insert: {
-          advertiser_id?: string | null
-          advertiser_logo_url?: string | null
-          advertiser_name?: string | null
-          affiliate_link?: string | null
-          category?: string | null
-          commission?: string | null
-          created_at?: string | null
-          currency?: string | null
-          description?: string | null
           id?: string
-          image_url?: string | null
-          in_stock?: boolean | null
-          is_best_seller?: boolean | null
-          is_editors_pick?: boolean | null
           name: string
-          price?: number | null
-          rating?: number | null
-          reviews?: number | null
+          description?: string
+          price: number
+          currency?: string
+          category?: string
+          advertiser_name?: string
+          advertiser_id?: string
+          image_url?: string
+          affiliate_link?: string
+          commission?: string
+          in_stock?: boolean
+          is_best_seller?: boolean
+          is_editors_pick?: boolean
+          rating?: number
+          reviews?: number
+          created_at?: string
+          updated_at?: string
         }
         Update: {
-          advertiser_id?: string | null
-          advertiser_logo_url?: string | null
-          advertiser_name?: string | null
-          affiliate_link?: string | null
-          category?: string | null
-          commission?: string | null
-          created_at?: string | null
-          currency?: string | null
-          description?: string | null
           id?: string
-          image_url?: string | null
-          in_stock?: boolean | null
-          is_best_seller?: boolean | null
-          is_editors_pick?: boolean | null
           name?: string
-          price?: number | null
-          rating?: number | null
-          reviews?: number | null
+          description?: string
+          price?: number
+          currency?: string
+          category?: string
+          advertiser_name?: string
+          advertiser_id?: string
+          image_url?: string
+          affiliate_link?: string
+          commission?: string
+          in_stock?: boolean
+          is_best_seller?: boolean
+          is_editors_pick?: boolean
+          rating?: number
+          reviews?: number
+          created_at?: string
+          updated_at?: string
         }
         Relationships: []
       }
@@ -205,6 +205,60 @@ export type Database = {
           created_at?: string
           id?: string
           username?: string | null
+        }
+        Relationships: []
+      }
+      product_cache: {
+        Row: {
+          id: string
+          category: string
+          page: number
+          data: Json
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          category: string
+          page: number
+          data: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          category?: string
+          page?: number
+          data?: Json
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      subscribers: {
+        Row: {
+          id: string
+          email: string
+          name: string
+          subscribed_at: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          name: string
+          subscribed_at: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string
+          name?: string
+          subscribed_at?: string
+          created_at?: string
+          updated_at?: string
         }
         Relationships: []
       }

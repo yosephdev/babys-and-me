@@ -1,4 +1,3 @@
-
 export enum ProductCategory {
   CLOTHING = "Clothing & Accessories",
   FEEDING = "Feeding Supplies",
