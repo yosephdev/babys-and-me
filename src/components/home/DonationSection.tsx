@@ -1,13 +1,21 @@
 
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Heart } from "lucide-react";
+import { toast } from "sonner";
 
 const DonationSection = () => {
   const [progress, setProgress] = useState(75);
   const goal = 5000;
   const raised = Math.floor((progress / 100) * goal);
+  const navigate = useNavigate();
+
+  // Preset donation amounts
+  const handleQuickDonate = (amount: number) => {
+    navigate(`/donate?preset=${amount}`);
+  };
 
   return (
     <section className="py-16 bg-gradient-pink text-white">
@@ -31,25 +39,30 @@ const DonationSection = () => {
               <Button 
                 className="bg-white text-baby-pink hover:bg-opacity-90" 
                 variant="outline" 
+                onClick={() => handleQuickDonate(10)}
               >
                 Donate $10
               </Button>
               <Button 
                 className="bg-white text-baby-pink hover:bg-opacity-90" 
                 variant="outline" 
+                onClick={() => handleQuickDonate(25)}
               >
                 Donate $25
               </Button>
               <Button 
                 className="bg-white text-baby-pink hover:bg-opacity-90" 
                 variant="outline" 
+                onClick={() => handleQuickDonate(50)}
               >
                 Donate $50
               </Button>
             </div>
-            <Button className="w-full md:w-auto bg-baby-yellow text-foreground hover:bg-opacity-90">
-              Custom Amount
-            </Button>
+            <Link to="/donate">
+              <Button className="w-full md:w-auto bg-baby-yellow text-foreground hover:bg-opacity-90">
+                Custom Amount
+              </Button>
+            </Link>
           </div>
           
           <p className="mt-6 text-sm opacity-75">

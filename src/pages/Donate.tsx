@@ -1,11 +1,12 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
-import { Heart, CheckCircle2 } from "lucide-react";
+import { Heart, CheckCircle2, Facebook, Twitter, Instagram } from "lucide-react";
 import { toast } from "sonner";
 
 const Donate = () => {
@@ -14,7 +15,7 @@ const Donate = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const presetAmounts = [10, 25, 50, 100];
 
@@ -50,11 +51,44 @@ const Donate = () => {
     }
   };
 
+  // Share functions for social media
+  const shareOnSocial = (platform: string) => {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent("Support Baby's & Me - helping families find affordable baby products!");
+    
+    let shareUrl = "";
+    switch (platform) {
+      case "facebook":
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        break;
+      case "twitter":
+        shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+        break;
+      case "instagram":
+        // Instagram doesn't support direct sharing via URL, show a toast instead
+        toast.info("Copy the page link to share on Instagram");
+        navigator.clipboard.writeText(window.location.href);
+        return;
+    }
+    
+    window.open(shareUrl, '_blank', 'width=600,height=400');
+  };
+
   // Detect success/canceled in query params for post-payment feedback
-  // eslint-disable-next-line
   const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
   const success = urlParams?.get("success") === "1";
   const canceled = urlParams?.get("canceled") === "1";
+
+  // Clear URL parameters after displaying success/cancel message
+  useEffect(() => {
+    if (success || canceled) {
+      const timer = setTimeout(() => {
+        navigate('/donate', { replace: true });
+      }, 10000); // Clear params after 10 seconds
+      
+      return () => clearTimeout(timer);
+    }
+  }, [success, canceled, navigate]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -214,9 +248,33 @@ const Donate = () => {
                       Help spread the word by sharing our website with friends and family who might benefit from our resources.
                     </p>
                     <div className="flex space-x-3">
-                      <Button variant="outline" size="sm">Facebook</Button>
-                      <Button variant="outline" size="sm">Twitter</Button>
-                      <Button variant="outline" size="sm">Instagram</Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => shareOnSocial("facebook")}
+                        className="flex items-center gap-2"
+                      >
+                        <Facebook size={16} className="text-blue-600" />
+                        Facebook
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => shareOnSocial("twitter")}
+                        className="flex items-center gap-2"
+                      >
+                        <Twitter size={16} className="text-blue-400" />
+                        Twitter
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm"
+                        onClick={() => shareOnSocial("instagram")}
+                        className="flex items-center gap-2"
+                      >
+                        <Instagram size={16} className="text-pink-500" />
+                        Instagram
+                      </Button>
                     </div>
                   </div>
                   <div>
@@ -224,7 +282,9 @@ const Donate = () => {
                     <p className="text-gray-600 mb-4">
                       When you shop using our affiliate links, we earn a small commission that helps support our work.
                     </p>
-                    <Button className="bg-baby-blue text-white hover:bg-opacity-90">Browse Products</Button>
+                    <Link to="/products">
+                      <Button className="bg-baby-blue text-white hover:bg-opacity-90">Browse Products</Button>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -238,5 +298,3 @@ const Donate = () => {
 };
 
 export default Donate;
-
-// NOTE: This page is growing large (217+ lines). Consider breaking it into subcomponents if more changes are needed.
