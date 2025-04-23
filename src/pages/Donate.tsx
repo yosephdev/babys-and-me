@@ -6,22 +6,55 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Heart, CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 
 const Donate = () => {
   const [donationAmount, setDonationAmount] = useState<number | "">("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  
+
   const presetAmounts = [10, 25, 50, 100];
-  
-  const handleDonationSubmit = (e: React.FormEvent) => {
+
+  const handleDonationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real implementation, this would connect to a payment processor
-    console.log("Donation submitted:", { donationAmount, name, email, message });
-    setSubmitted(true);
+    setSubmitting(true);
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-payment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // Optional: send JWT for authenticated user if we implement auth
+          // Authorization: `Bearer ${localStorage.getItem("supabase.auth.token")}`,
+        },
+        body: JSON.stringify({
+          amount: donationAmount,
+          name,
+          email,
+          message,
+        }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        toast.error("Could not create Stripe Checkout session.");
+      }
+    } catch (err) {
+      toast.error("An error occurred launching the payment.");
+    } finally {
+      setSubmitting(false);
+    }
   };
+
+  // Detect success/canceled in query params for post-payment feedback
+  // eslint-disable-next-line
+  const urlParams = typeof window !== "undefined" ? new URLSearchParams(window.location.search) : null;
+  const success = urlParams?.get("success") === "1";
+  const canceled = urlParams?.get("canceled") === "1";
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -38,7 +71,7 @@ const Donate = () => {
             </div>
           </div>
         </section>
-        
+
         <section className="py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -47,10 +80,9 @@ const Donate = () => {
                   <div className="bg-gradient-pink text-white p-8 md:p-12">
                     <h2 className="text-2xl md:text-3xl font-bold mb-4">Why Donate?</h2>
                     <p className="mb-6 text-white/90">
-                      Your donations directly support our mission to help parents worldwide find affordable, 
+                      Your donations directly support our mission to help parents worldwide find affordable,
                       high-quality products for their babies.
                     </p>
-                    
                     <h3 className="font-bold text-xl mb-3">Your contribution helps us:</h3>
                     <ul className="space-y-3 mb-8">
                       <li className="flex items-start">
@@ -70,7 +102,6 @@ const Donate = () => {
                         <span>Maintain and improve our website</span>
                       </li>
                     </ul>
-                    
                     <div className="mb-6">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-bold">Progress to Goal</span>
@@ -79,12 +110,30 @@ const Donate = () => {
                       <Progress value={75} className="h-3 bg-white/30" />
                     </div>
                   </div>
-                  
+
                   <div className="p-8 md:p-12">
-                    {!submitted ? (
+                    {(success || canceled) ? (
+                      <div className="text-center py-8">
+                        <div className={`rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 ${success ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
+                          <CheckCircle2 className="w-8 h-8" />
+                        </div>
+                        <h2 className="text-2xl font-bold mb-2">{success ? "Thank You!" : "Donation Canceled"}</h2>
+                        <p className="text-gray-600 mb-6">
+                          {success
+                            ? "Your donation was successful and is greatly appreciated. You make a real difference for families in need."
+                            : "Your donation did not go through. Feel free to try again or contact support if you need help."
+                          }
+                        </p>
+                        <Button 
+                          className="btn-secondary"
+                          onClick={() => (window.location.href = "/donate")}
+                        >
+                          {success ? "Make Another Donation" : "Try Again"}
+                        </Button>
+                      </div>
+                    ) : (
                       <form onSubmit={handleDonationSubmit}>
                         <h2 className="text-2xl md:text-3xl font-bold mb-6">Make a Donation</h2>
-                        
                         <div className="mb-6">
                           <label className="block text-gray-700 mb-2 font-medium">Choose an amount</label>
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
@@ -94,8 +143,8 @@ const Donate = () => {
                                 type="button"
                                 variant="outline"
                                 className={`${
-                                  donationAmount === amount 
-                                    ? "border-baby-pink bg-soft-pink text-baby-pink" 
+                                  donationAmount === amount
+                                    ? "border-baby-pink bg-soft-pink text-baby-pink"
                                     : "border-gray-200"
                                 }`}
                                 onClick={() => setDonationAmount(amount)}
@@ -116,7 +165,6 @@ const Donate = () => {
                             />
                           </div>
                         </div>
-                        
                         <div className="mb-4">
                           <label className="block text-gray-700 mb-2 font-medium">Name</label>
                           <Input
@@ -124,9 +172,9 @@ const Donate = () => {
                             placeholder="Your name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
+                            autoComplete="name"
                           />
                         </div>
-                        
                         <div className="mb-4">
                           <label className="block text-gray-700 mb-2 font-medium">Email</label>
                           <Input
@@ -134,9 +182,9 @@ const Donate = () => {
                             placeholder="Your email address"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            autoComplete="email"
                           />
                         </div>
-                        
                         <div className="mb-6">
                           <label className="block text-gray-700 mb-2 font-medium">Message (optional)</label>
                           <Input
@@ -145,42 +193,18 @@ const Donate = () => {
                             onChange={(e) => setMessage(e.target.value)}
                           />
                         </div>
-                        
-                        <Button 
+                        <Button
                           type="submit"
                           className="btn-primary w-full"
-                          disabled={!donationAmount || donationAmount <= 0}
+                          disabled={!donationAmount || Number(donationAmount) <= 0 || submitting}
                         >
-                          Donate ${donationAmount ? donationAmount : "0"}
+                          {submitting ? "Processing..." : `Donate $${donationAmount ? donationAmount : "0"}`}
                         </Button>
                       </form>
-                    ) : (
-                      <div className="text-center py-8">
-                        <div className="bg-green-100 text-green-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                          <CheckCircle2 className="w-8 h-8" />
-                        </div>
-                        <h2 className="text-2xl font-bold mb-2">Thank You!</h2>
-                        <p className="text-gray-600 mb-6">
-                          Your donation of ${donationAmount} is greatly appreciated and will help us continue our mission.
-                        </p>
-                        <Button 
-                          className="btn-secondary"
-                          onClick={() => {
-                            setSubmitted(false);
-                            setDonationAmount("");
-                            setName("");
-                            setEmail("");
-                            setMessage("");
-                          }}
-                        >
-                          Make Another Donation
-                        </Button>
-                      </div>
                     )}
                   </div>
                 </div>
               </div>
-              
               <div className="mt-12 bg-white p-8 rounded-xl shadow-md">
                 <h2 className="text-2xl font-bold mb-4">Other Ways to Support</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -214,3 +238,5 @@ const Donate = () => {
 };
 
 export default Donate;
+
+// NOTE: This page is growing large (217+ lines). Consider breaking it into subcomponents if more changes are needed.

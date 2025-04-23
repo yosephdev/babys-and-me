@@ -3,12 +3,12 @@ import { ChevronRight, Heart, User, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-// Engaging, feature-rich blog post data for homepage highlights
+// Updated, engaging blog post data for homepage highlights
 const blogPosts = [
   {
     id: 1,
     title: "10 Essential Baby Products Every Parent Swears By in 2024",
-    excerpt: "From smart monitors to eco-friendly diapers, discover must-haves that make parenthood a breeze. Learn how choosing the right gear can transform your daily routine.",
+    excerpt: "Step confidently into parenthood with these must-have items. Discover smart monitors for peace of mind, eco-friendly diapers for sustainability, and clever gear that saves you time and money. Make every day with your baby a little easier and a lot more joyful.",
     image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     date: "Mar 15, 2024",
     category: "Shopping Guide",
@@ -20,7 +20,7 @@ const blogPosts = [
   {
     id: 2,
     title: "The Science of Baby Sleep: Proven Tips for Restful Nights",
-    excerpt: "Tired of sleepless nights? Discover gentle, science-backed strategies for improving your baby's sleep—and yours. Expert advice made simple for busy parents.",
+    excerpt: "Say goodbye to sleepless nights! Explore gentle, research-backed sleep strategies that calm your baby and help you rest, too. Learn practical hacks for bedtime routines, naps, and creating a peaceful sleep environment—so your whole family wakes up refreshed.",
     image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     date: "Mar 12, 2024",
     category: "Parenting Tips",
@@ -32,7 +32,7 @@ const blogPosts = [
   {
     id: 3,
     title: "Budget-Friendly Baby Gear: Our Top Affordable Finds Under $100",
-    excerpt: "High-quality baby essentials don’t have to cost a fortune. Shop smart with our picks for the best budget gear, and learn where to save or splurge.",
+    excerpt: "Parenting on a budget? You don't have to sacrifice quality! We’ve curated the best strollers, carriers, and nursery gear that are safe, stylish, and under $100. Start building your baby registry with confidence—and a little extra cash left over.",
     image: "https://images.unsplash.com/photo-1566206091558-7f218b696731?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     date: "Mar 10, 2024",
     category: "Budget Tips",
@@ -48,15 +48,15 @@ const BlogHighlights = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <h2 className="section-title">Parenting Tips & Advice</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           {blogPosts.map((post) => (
             <Link key={post.id} to={`/blog/${post.slug}`} className="group">
               <div className="bg-white rounded-xl overflow-hidden shadow-md card-hover flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
                 <div className="aspect-[4/3] overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title} 
+                  <img
+                    src={post.image}
+                    alt={post.title}
                     className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />
                 </div>
@@ -91,7 +91,7 @@ const BlogHighlights = () => {
             </Link>
           ))}
         </div>
-        
+
         <div className="text-center mt-12">
           <Button className="btn-secondary" asChild>
             <Link to="/blog">
