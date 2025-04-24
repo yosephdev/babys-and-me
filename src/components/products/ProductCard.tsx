@@ -1,12 +1,12 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Star, ExternalLink } from "lucide-react";
+import { Star, ExternalLink, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AdtractionProduct } from "@/services/adtractionApi";
 import { Product } from "@/data/products";
 import { Database } from "@/integrations/supabase/types";
+import { useFavorites } from "@/hooks/useFavorites";
 
 type DatabaseProduct = Database['public']['Tables']['products']['Row'];
 
@@ -15,17 +15,17 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  // Helper function to determine if the product is from Adtraction API
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const isProductFavorite = isFavorite(product.id);
+
   const isAdtractionProduct = (p: any): p is AdtractionProduct => {
     return 'url' in p && 'advertiserId' in p;
   };
 
-  // Helper function to determine if the product is from database
   const isDatabaseProduct = (p: any): p is DatabaseProduct => {
     return 'affiliate_link' in p && 'image_url' in p;
   };
 
-  // Get properties based on product type
   const getProductImage = () => {
     if (isAdtractionProduct(product)) return product.imageUrl;
     if (isDatabaseProduct(product)) return product.image_url || 'https://placehold.co/400x400/soft-blue/white?text=Product';
@@ -101,6 +101,19 @@ export function ProductCard({ product }: ProductCardProps) {
           alt={getProductName()} 
           className="object-cover w-full h-full transition-transform hover:scale-105"
         />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="absolute top-2 right-2 bg-white/80 hover:bg-white"
+          onClick={(e) => {
+            e.preventDefault();
+            toggleFavorite(product);
+          }}
+        >
+          <Heart 
+            className={`w-5 h-5 ${isProductFavorite ? 'fill-baby-pink text-baby-pink' : 'text-gray-600'}`}
+          />
+        </Button>
         {isBestSeller() && (
           <Badge className="absolute top-2 left-2 bg-baby-pink text-white">
             Best Seller

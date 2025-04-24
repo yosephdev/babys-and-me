@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import BlogPost from "@/pages/BlogPost";
+import Favorites from "./pages/Favorites";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => (
               } 
             />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
