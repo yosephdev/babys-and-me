@@ -16,8 +16,8 @@ const BlogPost = () => {
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4">404 - Post Not Found</h1>
             <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist.</p>
-            <Link 
-              to="/blog" 
+            <Link
+              to="/blog"
               className="inline-flex items-center text-baby-pink hover:underline"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
@@ -142,68 +142,96 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Navbar */}
       <Navbar />
+
+      {/* Main Content */}
       <main className="flex-grow">
-        <article className="py-12">
+        <article className="py-16">
           <div className="container mx-auto px-4">
-            <Link 
-              to="/blog" 
+            {/* Back to Blog Link */}
+            <Link
+              to="/blog"
               className="inline-flex items-center text-baby-pink hover:underline mb-8"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Back to Blog
             </Link>
 
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-8">
-                <span className="bg-soft-pink text-baby-pink px-3 py-1 rounded-full text-sm">
-                  {post.category}
-                </span>
-                <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-6">{post.title}</h1>
-                <div className="flex items-center space-x-6 text-gray-600">
-                  <span className="flex items-center">
-                    <User className="w-4 h-4 mr-2" />
-                    {post.author}
-                  </span>
-                  <span className="flex items-center">
-                    <Clock className="w-4 h-4 mr-2" />
-                    {post.readTime}
-                  </span>
-                  <span className="flex items-center">
-                    <Heart className="w-4 h-4 mr-2" />
-                    {post.likes} likes
-                  </span>
-                </div>
-              </div>
+            {/* Post Header */}
+            <div className="max-w-4xl mx-auto space-y-6">
+              {/* Category Badge */}
+              <span className="bg-soft-pink text-baby-pink px-3 py-1 rounded-full text-sm font-medium">
+                {post.category}
+              </span>
 
-              <div className="aspect-[16/9] rounded-xl overflow-hidden mb-8">
-                <img 
-                  src={post.image} 
-                  alt={post.title} 
+              {/* Title */}
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                {post.title}
+              </h1>
+
+              {/* Metadata */}
+              <div className="flex items-center space-x-6 text-gray-600 text-sm">
+                <span className="flex items-center">
+                  <User className="w-4 h-4 mr-2" />
+                  {post.author}
+                </span>
+                <span className="flex items-center">
+                  <Clock className="w-4 h-4 mr-2" />
+                  {post.readTime}
+                </span>
+                <span className="flex items-center">
+                  <Heart className="w-4 h-4 mr-2" />
+                  {post.likes} likes
+                </span>
+              </div>
+            </div>
+
+            {/* Featured Image */}
+            <div className="max-w-4xl mx-auto mt-8">
+              <div className="aspect-[16/9] rounded-xl overflow-hidden shadow-lg">
+                <img
+                  src={post.image}
+                  alt={post.title}
                   className="w-full h-full object-cover"
                 />
               </div>
+            </div>
 
-              <div className="prose max-w-none">
-                <p className="text-xl text-gray-600 mb-8">{content.introduction}</p>
-                
-                <h2>Key Points</h2>
-                <ul>
-                  {content.keyPoints.map((point, index) => (
-                    <li key={index}>{point}</li>
-                  ))}
-                </ul>
+            {/* Post Content */}
+            <div className="max-w-4xl mx-auto mt-12 prose prose-lg max-w-none">
+              {/* Introduction */}
+              <p className="text-xl text-gray-700 leading-relaxed mb-8">
+                {content.introduction}
+              </p>
 
-                <h2>Expert Advice</h2>
-                <p>{content.expertAdvice}</p>
+              {/* Key Points */}
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Points</h2>
+              <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                {content.keyPoints.map((point, index) => (
+                  <li key={index} className="text-lg">
+                    {point}
+                  </li>
+                ))}
+              </ul>
 
-                <h2>Conclusion</h2>
-                <p>{content.conclusion}</p>
-              </div>
+              {/* Expert Advice */}
+              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Expert Advice</h2>
+              <blockquote className="border-l-4 border-baby-pink pl-6 text-gray-700 italic text-lg">
+                {content.expertAdvice}
+              </blockquote>
+
+              {/* Conclusion */}
+              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Conclusion</h2>
+              <p className="text-gray-700 leading-relaxed text-lg">
+                {content.conclusion}
+              </p>
             </div>
           </div>
         </article>
       </main>
+
+      {/* Footer */}
       <Footer />
     </div>
   );

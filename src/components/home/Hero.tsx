@@ -1,13 +1,12 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Heart, ShoppingBag } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const heroImages = [
-  "/images/hero1.jpg",
-  "/images/hero2.jpg",
-  "/images/hero3.jpg",
+  "/images/hero1.webp",
+  "/images/hero2.webp",
+  "/images/hero3.webp",
 ];
 
 const Hero = () => {
@@ -16,25 +15,28 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
+    }, 5000); // Change image every 5 seconds
     return () => clearInterval(interval);
   }, []);
 
   return (
     <section className="relative bg-gradient-to-b from-soft-blue to-white overflow-hidden">
-      {/* For now using colored div instead of images */}
+      {/* Image Carousel */}
       <div className="absolute inset-0 z-0">
         {heroImages.map((img, index) => (
-          <div
+          <img
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-gradient-pink ${
+            src={img}
+            alt={`Hero Slide ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               index === currentImage ? "opacity-100" : "opacity-0"
             }`}
-            aria-hidden="true"
+            aria-hidden={index !== currentImage}
           />
         ))}
       </div>
 
+      {/* Content */}
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-md animate-fade-in">
@@ -53,7 +55,7 @@ const Hero = () => {
               </Link>
             </Button>
             <Button 
-              className="btn-primary flex items-center gap-2 text-lg" 
+              className="btn-accent flex items-center gap-2 text-lg" 
               variant="outline" 
               asChild
             >
@@ -64,6 +66,7 @@ const Hero = () => {
           </div>
         </div>
 
+        {/* Pagination Dots */}
         <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
           <div className="flex space-x-2">
             {heroImages.map((_, idx) => (
