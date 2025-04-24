@@ -3,10 +3,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { Progress } from "@/components/ui/progress";
 import { Heart } from "lucide-react";
-import { CheckCircle2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 type DonationFormProps = {
   presetAmounts?: number[];
@@ -23,33 +21,29 @@ const DonationForm = ({
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  const navigate = useNavigate();
-
   const handleDonationSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-payment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const { data, error } = await supabase.functions.invoke('create-payment', {
+        body: {
           amount: donationAmount,
           name,
           email,
-          message,
-        }),
+          message
+        }
       });
-      const data = await res.json();
-      if (data.url) {
+
+      if (error) throw error;
+      if (data?.url) {
         window.location.href = data.url;
       } else {
-        toast.error("Could not create Stripe Checkout session.");
+        toast.error("Could not create payment session.");
       }
     } catch (err) {
-      toast.error("An error occurred launching the payment.");
+      console.error('Payment error:', err);
+      toast.error("An error occurred while processing your donation.");
     } finally {
       setSubmitting(false);
     }
@@ -90,7 +84,7 @@ const DonationForm = ({
         </div>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 mb-2 font-medium">Name</label>
+        <label className="block text-gray-700 mb-2 font-medium">Name (Optional)</label>
         <Input
           type="text"
           placeholder="Your name"
@@ -107,10 +101,11 @@ const DonationForm = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
+          required
         />
       </div>
       <div className="mb-6">
-        <label className="block text-gray-700 mb-2 font-medium">Message (optional)</label>
+        <label className="block text-gray-700 mb-2 font-medium">Message (Optional)</label>
         <Input
           placeholder="Why you're donating..."
           value={message}
@@ -119,10 +114,17 @@ const DonationForm = ({
       </div>
       <Button
         type="submit"
-        className="btn-primary w-full"
+        className="w-full bg-baby-pink hover:bg-baby-pink/90 text-white"
         disabled={!donationAmount || Number(donationAmount) <= 0 || submitting}
       >
-        {submitting ? "Processing..." : `Donate $${donationAmount ? donationAmount : "0"}`}
+        {submitting ? (
+          "Processing..."
+        ) : (
+          <>
+            <Heart className="mr-2 h-4 w-4" />
+            Donate ${donationAmount ? donationAmount : "0"}
+          </>
+        )}
       </Button>
     </form>
   );

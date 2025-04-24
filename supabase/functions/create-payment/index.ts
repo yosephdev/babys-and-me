@@ -13,23 +13,21 @@ serve(async (req) => {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Get user's JWT (for guest, use default email)
-  const supabase = createClient(
-    Deno.env.get("SUPABASE_URL") ?? "",
-    Deno.env.get("SUPABASE_ANON_KEY") ?? ""
-  );
-
   const { amount, name, email, message } = await req.json();
   let userEmail = email || "guest@example.com";
 
   try {
     let stripeCustomerId: string | undefined;
     if (req.headers.get("Authorization")) {
+      const supabase = createClient(
+        Deno.env.get("SUPABASE_URL") ?? "",
+        Deno.env.get("SUPABASE_ANON_KEY") ?? ""
+      );
+      
       const authHeader = req.headers.get("Authorization")!;
       const token = authHeader.replace("Bearer ", "");
       const { data } = await supabase.auth.getUser(token);
       if (data?.user?.email) userEmail = data.user.email;
-      // In real world: lookup or create Stripe customer with metadata.
     }
 
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
@@ -55,8 +53,8 @@ serve(async (req) => {
         },
       ],
       mode: "payment",
-      success_url: Deno.env.get("DONATION_SUCCESS_URL") || "https://babysandme.lovable.app/donate?success=1",
-      cancel_url: Deno.env.get("DONATION_CANCEL_URL") || "https://babysandme.lovable.app/donate?canceled=1",
+      success_url: `${req.headers.get("origin")}/donate?success=1`,
+      cancel_url: `${req.headers.get("origin")}/donate?canceled=1`,
       metadata: {
         name: name || "",
         message: message || "",
@@ -68,6 +66,7 @@ serve(async (req) => {
       status: 200,
     });
   } catch (err) {
+    console.error("Payment creation error:", err);
     return new Response(
       JSON.stringify({ error: err.message || "Unknown error" }),
       {
