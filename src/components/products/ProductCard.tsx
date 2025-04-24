@@ -64,9 +64,15 @@ export function ProductCard({ product }: ProductCardProps) {
   };
   
   const getCommission = () => {
-    if (isAdtractionProduct(product)) return product.commission || '5%';
-    if (isDatabaseProduct(product)) return product.commission || '5%';
-    return (product as Product).commission;
+    let commission = '';
+    if (isAdtractionProduct(product)) {
+      commission = product.commission || '5';
+    } else if (isDatabaseProduct(product)) {
+      commission = product.commission || '5';
+    } else {
+      commission = (product as Product).commission;
+    }
+    return commission.replace('%', '');
   };
   
   const isBestSeller = () => {
