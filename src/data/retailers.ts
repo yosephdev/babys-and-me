@@ -14,9 +14,9 @@ export const retailers: Retailer[] = [
     id: 1,
     name: "Jollyroom SE",
     description: "Online baby and children's store with a wide range of products",
-    logo: "https://placehold.co/100/baby-blue/white?text=Jolly",
+    logo: "/logo/jollyroom.png",
     commission: "5% per order",
-    website: "https://example.com/jollyroom",
+    website: "https://jollyroom.se",
     category: "General",
   },
   {
@@ -25,7 +25,7 @@ export const retailers: Retailer[] = [
     description: "Unique and wide range of baby products for all ages",
     logo: "https://placehold.co/100/baby-pink/white?text=BW",
     commission: "8% per sale",
-    website: "https://example.com/babyworld",
+    website: "https://babyworld.se",
     category: "General",
   },
   {

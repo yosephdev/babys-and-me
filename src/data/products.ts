@@ -64,7 +64,7 @@ export const products: Product[] = [
     priceRange: "Starting at 89 SEK",
     image: "https://cdn.pricenet.se/319863-home_default/canpol-babies---pastels-silicone-bib---silikonov-brynd-k-s-kapsou-10ks.jpg",
     retailer: "Jollyroom SE",
-    retailerLogo: "https://placehold.co/100/baby-blue/white?text=Jolly",
+    retailerLogo: "/logo/jollyroom.png",
     commission: "5%",
     link: "https://example.com/baby-bib",
     isEditorsPick: true,
