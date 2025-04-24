@@ -18,11 +18,11 @@ export function ProductCard({ product }: ProductCardProps) {
   const { toggleFavorite, isFavorite } = useFavorites();
   const isProductFavorite = isFavorite(product.id);
 
-  const isAdtractionProduct = (p: any): p is AdtractionProduct => {
+  const isAdtractionProduct = (p: AdtractionProduct | Product | DatabaseProduct): p is AdtractionProduct => {
     return 'url' in p && 'advertiserId' in p;
   };
 
-  const isDatabaseProduct = (p: any): p is DatabaseProduct => {
+  const isDatabaseProduct = (p: AdtractionProduct | Product | DatabaseProduct): p is DatabaseProduct => {
     return 'affiliate_link' in p && 'image_url' in p;
   };
 
@@ -113,7 +113,9 @@ export function ProductCard({ product }: ProductCardProps) {
           className="absolute top-2 right-2 bg-white/80 hover:bg-white"
           onClick={(e) => {
             e.preventDefault();
-            toggleFavorite(product);
+            if (!isAdtractionProduct(product) && !isDatabaseProduct(product)) {
+              toggleFavorite(product as Product);
+            }
           }}
         >
           <Heart 
@@ -130,9 +132,9 @@ export function ProductCard({ product }: ProductCardProps) {
             Editor's Pick
           </Badge>
         )}
-        <div className="absolute top-2 right-2 bg-white text-baby-blue text-xs font-medium px-2 py-1 rounded-full shadow-sm">
+        {/* <div className="absolute top-2 right-2 bg-white text-baby-blue text-xs font-medium px-2 py-1 rounded-full shadow-sm">
           {getCommission()} commission
-        </div>
+        </div> */}
       </div>
 
       <CardContent className="p-4 flex-grow">
