@@ -34,7 +34,7 @@ export const retailers: Retailer[] = [
     description: "High-quality and sustainable clothes for children",
     logo: "https://placehold.co/100/baby-yellow/white?text=POP",
     commission: "8% per order",
-    website: "https://example.com/polarn",
+    website: "https://www.polarnopyret.se//polarn",
     category: "Clothing",
   },
   {
