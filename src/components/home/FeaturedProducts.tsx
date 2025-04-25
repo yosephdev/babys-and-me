@@ -3,9 +3,8 @@ import { ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ProductCard } from "@/components/products/ProductCard";
-import { ProductCategory } from "@/data/products";
+import { ProductCategory, products } from "@/data/products";
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "@/services/adtractionApi";
 import { useState, useEffect } from "react";
 
 const FeaturedProducts = () => {
@@ -19,19 +18,40 @@ const FeaturedProducts = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["featuredProducts"],
     queryFn: async () => {
-      const allProductsPromises = categories.map(category => 
-        fetchProducts(category, 0, 1)
-      );
+      // Get featured products (best sellers or editor's picks) from each category
+      const featuredProducts = products.filter(p => p.isBestSeller || p.isEditorsPick);
       
-      const results = await Promise.all(allProductsPromises);
+      // Ensure we have representation from different categories
+      const categorizedProducts = {};
+      const result = [];
       
-      // Collect one featured product from each category
-      const featuredProducts = results.map(result => 
-        result.products.find(p => p.isBestSeller || p.isEditorsPick)
-      ).filter(Boolean);
+      // First pass: get one from each category if possible
+      for (const product of featuredProducts) {
+        if (!categorizedProducts[product.category] && result.length < 4) {
+          categorizedProducts[product.category] = true;
+          result.push(product);
+        }
+      }
       
-      // Limit to 4 products
-      return featuredProducts.slice(0, 4);
+      // If we still need more, add any remaining featured products
+      if (result.length < 4) {
+        for (const product of featuredProducts) {
+          if (!result.includes(product) && result.length < 4) {
+            result.push(product);
+          }
+        }
+      }
+      
+      // If we still don't have 4, add regular products
+      if (result.length < 4) {
+        for (const product of products) {
+          if (!result.includes(product) && result.length < 4) {
+            result.push(product);
+          }
+        }
+      }
+      
+      return result.slice(0, 4);
     },
     enabled: isClient // Only run query on client-side to avoid SSR issues
   });

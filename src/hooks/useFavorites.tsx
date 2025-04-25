@@ -61,9 +61,13 @@ export const useFavorites = () => {
         setFavorites(current => current.filter(p => p.id !== product.id));
         toast.success('Removed from favorites');
       } else {
+        // Fix the error by adding user_id field
         const { error } = await supabase
           .from('favorites')
-          .insert([{ product_id: productString }]);
+          .insert({ 
+            product_id: productString,
+            user_id: user.id 
+          });
 
         if (error) throw error;
 
