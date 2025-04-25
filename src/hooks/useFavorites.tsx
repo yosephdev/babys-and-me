@@ -47,13 +47,14 @@ export const useFavorites = () => {
     }
 
     try {
+      const productString = JSON.stringify(product);
       const exists = favorites.some((p) => p.id === product.id);
       
       if (exists) {
         const { error } = await supabase
           .from('favorites')
           .delete()
-          .eq('product_id', JSON.stringify(product));
+          .eq('product_id', productString);
 
         if (error) throw error;
         
@@ -62,7 +63,7 @@ export const useFavorites = () => {
       } else {
         const { error } = await supabase
           .from('favorites')
-          .insert([{ product_id: JSON.stringify(product) }]);
+          .insert([{ product_id: productString }]);
 
         if (error) throw error;
 
