@@ -79,7 +79,7 @@ export const products: Product[] = [
     priceRange: "Starting at 149 SEK",
     image: "https://placehold.co/400x400/soft-peach/white?text=Sippy+Cup+Set",
     retailer: "BabyWorld SE",
-    retailerLogo: "https://placehold.co/100/baby-pink/white?text=BW",
+    retailerLogo: "/logo/babyworld.png",
     commission: "8%",
     link: "https://example.com/sippy-cup-set",
     rating: 4,
