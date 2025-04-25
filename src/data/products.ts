@@ -32,7 +32,7 @@ export const products: Product[] = [
     description: "Durable, waterproof, and stylish—perfect for outdoor adventures.",
     category: ProductCategory.CLOTHING,
     priceRange: "Starting at 499 SEK",
-    image: "/images/winter-jacket.jpg",
+    image: "https://03.cdn37.se/gl/images/2.680298/isbjorn-helicopter-winter-jacket-kids-smoothie.jpeg",
     retailer: "Polarn O. Pyret",
     retailerLogo: "/images/logo-pop.png",
     commission: "8",
