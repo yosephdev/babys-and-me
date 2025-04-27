@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import { supabase } from '@/integrations/supabase/client';
+
 
 export const SeedDatabase = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -14,8 +14,8 @@ export const SeedDatabase = () => {
       setIsLoading(true);
       setMessage(null);
 
-      // Call the seed-products edge function
-      const response = await fetch("https://xdttfosbledjbiqrutsd.functions.supabase.co/seed-products");
+      // Call your backend API endpoint to seed Neon database
+      const response = await fetch("/api/seed-products");
       const data = await response.json();
 
       if (data.success) {
@@ -37,14 +37,10 @@ export const SeedDatabase = () => {
   // Count existing products
   const checkProductCount = async () => {
     try {
-      const { count, error } = await supabase
-        .from('products')
-        .select('*', { count: 'exact', head: true });
-      
-      if (error) throw error;
-      
-      if (count && count > 0) {
-        setMessage(`Database already has ${count} products.`);
+      const response = await fetch('/api/products/count');
+      const data = await response.json();
+      if (data.count && data.count > 0) {
+        setMessage(`Database already has ${data.count} products.`);
       } else {
         setMessage('Database has no products. You can seed it now.');
       }
@@ -58,6 +54,8 @@ export const SeedDatabase = () => {
   useState(() => {
     checkProductCount();
   });
+
+  // (Removed all references to supabase, now using Neon/pg client only)
 
   return (
     <div className="p-4 border rounded-lg bg-gray-50">

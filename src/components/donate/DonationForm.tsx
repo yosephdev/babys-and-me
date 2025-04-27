@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { Heart } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+
 
 type DonationFormProps = {
   presetAmounts?: number[];
@@ -26,16 +26,17 @@ const DonationForm = ({
     setSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('create-payment', {
-        body: {
+      const response = await fetch('/api/create-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           amount: donationAmount,
           name,
           email,
           message
-        }
+        })
       });
-
-      if (error) throw error;
+      const data = await response.json();
       if (data?.url) {
         window.location.href = data.url;
       } else {

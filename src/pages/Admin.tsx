@@ -9,7 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
 import { Loader2, RefreshCw, LogOut } from "lucide-react";
 import { syncProductsFromAdtraction } from "@/services/adtractionApi";
-import { supabase } from "@/integrations/supabase/client";
+
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "@/contexts/AuthContext";
 import SeedDatabase from "@/components/admin/SeedDatabase";
@@ -35,9 +35,9 @@ const Admin = () => {
   const { data: categories, isLoading: isLoadingCategories } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
-      const { data, error } = await supabase.from('categories').select('*');
-      if (error) throw error;
-      return data || [];
+      const response = await fetch('/api/categories');
+      if (!response.ok) throw new Error('Failed to fetch categories');
+      return await response.json();
     }
   });
 
@@ -45,9 +45,10 @@ const Admin = () => {
   const { data: productCount, refetch: refetchProductCount, isLoading: isLoadingCount } = useQuery({
     queryKey: ["productCount"],
     queryFn: async () => {
-      const { count, error } = await supabase.from('products').select('*', { count: 'exact', head: true });
-      if (error) throw error;
-      return count || 0;
+      const response = await fetch('/api/products/count');
+      if (!response.ok) throw new Error('Failed to fetch product count');
+      const data = await response.json();
+      return data.count || 0;
     }
   });
 
@@ -79,20 +80,12 @@ const Admin = () => {
     try {
       setIsLoading(true);
       
-      const { data, error } = await supabase.from('products').insert([{
-        name: productFormData.name,
-        description: productFormData.description,
-        price: parseFloat(productFormData.price),
-        currency: productFormData.currency,
-        category: productFormData.category,
-        advertiser_name: productFormData.advertiser_name,
-        advertiser_id: productFormData.advertiser_id,
-        image_url: productFormData.image_url,
-        affiliate_link: productFormData.affiliate_link,
-        commission: productFormData.commission
-      }]);
-      
-      if (error) throw error;
+      const response = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(productFormData)
+      });
+      if (!response.ok) throw new Error('Failed to add product');
       
       toast.success("Product added successfully!");
       setProductFormData({
@@ -123,9 +116,8 @@ const Admin = () => {
     
     try {
       setIsLoading(true);
-      const { error } = await supabase.from('products').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-      
-      if (error) throw error;
+      const response = await fetch('/api/products/clear', { method: 'POST' });
+      if (!response.ok) throw new Error('Failed to clear products');
       
       toast.success("All products cleared successfully!");
       refetchProductCount();

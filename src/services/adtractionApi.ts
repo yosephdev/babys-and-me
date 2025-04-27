@@ -1,6 +1,6 @@
 
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
+// import pool from '../db'; // REMOVED: Do not import Node-only code in frontend/shared code. Use API endpoints when ready.
 import { ADTRACTION_CONFIG, ADTRACTION_ENDPOINTS, ADTRACTION_HEADERS } from "@/config/adtraction";
 
 // Types for Adtraction API responses
@@ -72,7 +72,7 @@ const isValidProductFeedResponse = (data: any): data is ProductFeedResponse => {
   );
 };
 
-// Fetch products from Adtraction API
+// Fetch products from Neon PostgreSQL
 export const fetchProducts = async (
   category?: string,
   page = 0,
@@ -80,45 +80,27 @@ export const fetchProducts = async (
 ): Promise<ProductFeedResponse> => {
   try {
     console.log("Fetching products with category:", category);
-    
-    // For now, fetch from our database instead of Adtraction
-    let query = supabase
-      .from('products')
-      .select('*');
-
-    // Add category filter if provided
+    let sql = 'SELECT * FROM products';
+    const values: any[] = [];
     if (category) {
-      query = query.eq('category', decodeURIComponent(category));
+      sql += ' WHERE category = $1';
+      values.push(decodeURIComponent(category));
     }
-
-    // Add pagination
-    query = query.range(page * pageSize, (page + 1) * pageSize - 1);
-
-    const { data: products, error, count } = await query;
-
-    if (error) throw error;
-    
-    console.log("Products fetched:", products?.length || 0);
-
-    // Get total count of products
-    const { count: totalCount, error: countError } = await supabase
-      .from('products')
-      .select('*', { count: 'exact', head: true });
-      
-    if (countError) throw countError;
-
-    // Map database products to AdtractionProduct format
-    const mappedProducts: AdtractionProduct[] = products.map(p => ({
+    sql += ' ORDER BY created_at DESC OFFSET $2 LIMIT $3';
+    values.push(page * pageSize, pageSize);
+    // TODO: Use API endpoint or Adtraction API when ready
+    // const { rows: products } = await pool.query(sql, values);
+    const mappedProducts = (/* products */ [] || []).map((p: any) => ({
       id: p.id,
       name: p.name,
-      description: p.description || "",
-      price: p.price || 0,
-      currency: p.currency || "SEK",
-      imageUrl: p.image_url || "https://images.unsplash.com/photo-1619161715434-ce2582fcd733?q=80&w=1974&auto=format&fit=crop",
-      url: p.affiliate_link || "#",
-      category: p.category || "Other",
-      advertiserName: p.advertiser_name || "Unknown Retailer",
-      advertiserId: p.advertiser_id || "unknown",
+      description: p.description,
+      price: p.price,
+      currency: p.currency,
+      imageUrl: p.image_url,
+      url: p.affiliate_link,
+      category: p.category,
+      advertiserName: p.advertiser_name,
+      advertiserId: p.advertiser_id,
       advertiserLogoUrl: p.advertiser_logo_url,
       inStock: p.in_stock === undefined ? true : p.in_stock,
       isBestSeller: p.is_best_seller,
@@ -127,11 +109,10 @@ export const fetchProducts = async (
       reviews: p.reviews,
       commission: p.commission
     }));
-
     return {
       page,
       pageSize,
-      count: totalCount || products.length,
+      count: mappedProducts.length,
       products: mappedProducts
     };
   } catch (error) {

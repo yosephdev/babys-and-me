@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts, AdtractionProduct } from "@/services/adtractionApi";
+// import { fetchProducts, AdtractionProduct } from "@/services/adtractionApi";
+import { products as hardcodedProducts, Product } from "@/data/products";
 
 interface UseProductsProps {
   category?: string;
@@ -27,7 +28,20 @@ export const useProducts = ({
     refetch
   } = useQuery({
     queryKey: ["products", category, currentPage, pageSize],
-    queryFn: () => fetchProducts(category, currentPage, pageSize),
+    // TODO: Switch back to fetchProducts(category, currentPage, pageSize) when ready to use API
+    queryFn: () => {
+      // Filter and paginate hardcoded products
+      let filtered = hardcodedProducts;
+      if (category && category !== "All") {
+        filtered = filtered.filter(p => p.category === category);
+      }
+      const start = currentPage * pageSize;
+      const end = start + pageSize;
+      return Promise.resolve({
+        products: filtered.slice(start, end),
+        count: filtered.length
+      });
+    },
   });
   
   const nextPage = () => {

@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Product } from '@/data/products';
-import { supabase } from '@/integrations/supabase/client';
+
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 
@@ -20,25 +20,18 @@ export const useFavorites = () => {
   }, [user]);
 
   const loadFavorites = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('favorites')
-        .select('product_id');
-
-      if (error) throw error;
-
-      const products = data?.map(fav => {
-        return JSON.parse(fav.product_id) as Product;
-      }) || [];
-
-      setFavorites(products);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error loading favorites:', error);
-      toast.error('Failed to load favorites');
-      setLoading(false);
-    }
-  };
+  try {
+    if (!user) return;
+    const response = await fetch(`/api/favorites?user_id=${user.id}`);
+    const products = await response.json();
+    setFavorites(products);
+    setLoading(false);
+  } catch (error) {
+    console.error('Error loading favorites:', error);
+    toast.error('Failed to load favorites');
+    setLoading(false);
+  }
+};
 
   const toggleFavorite = async (product: Product) => {
     if (!user) {
@@ -49,28 +42,21 @@ export const useFavorites = () => {
     try {
       const productString = JSON.stringify(product);
       const exists = favorites.some((p) => p.id === product.id);
-      
-      if (exists) {
-        const { error } = await supabase
-          .from('favorites')
-          .delete()
-          .eq('product_id', productString);
 
-        if (error) throw error;
-        
+      if (exists) {
+        await fetch('/api/favorites', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product: productString, user_id: user.id })
+        });
         setFavorites(current => current.filter(p => p.id !== product.id));
         toast.success('Removed from favorites');
       } else {
-        // Fix the error by adding user_id field
-        const { error } = await supabase
-          .from('favorites')
-          .insert({ 
-            product_id: productString,
-            user_id: user.id 
-          });
-
-        if (error) throw error;
-
+        await fetch('/api/favorites', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ product: productString, user_id: user.id })
+        });
         setFavorites(current => [...current, product]);
         toast.success('Added to favorites');
       }

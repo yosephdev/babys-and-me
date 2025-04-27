@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -20,17 +21,12 @@ const Subscribe = () => {
 
     try {
       // Add subscriber to the database
-      const { error } = await supabase
-        .from('subscribers')
-        .insert([
-          {
-            email,
-            name,
-            subscribed_at: new Date().toISOString()
-          }
-        ]);
-
-      if (error) throw error;
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, name })
+      });
+      if (!response.ok) throw new Error('Failed to subscribe');
 
       toast.success('Successfully subscribed to our newsletter!');
       setEmail('');
