@@ -15,16 +15,16 @@ const Footer = () => {
               Your trusted source for affordable, high-quality baby products – because every baby deserves the best.
             </p>
             <div className="flex space-x-3">
-              <a href="#" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
+              <a href="https://www.facebook.com/babysmec/" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
                 <Facebook size={18} className="text-baby-blue" />
               </a>
-              <a href="#" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
+              <a href="https://www.instagram.com/babysmec/" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
                 <Instagram size={18} className="text-baby-pink" />
               </a>
-              <a href="#" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
+              <a href="https://x.com/BabysMe2" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
                 <Twitter size={18} className="text-baby-blue" />
               </a>
-              <a href="#" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
+              <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=babysmec@gmail.com" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
                 <Mail size={18} className="text-baby-yellow" />
               </a>
             </div>
