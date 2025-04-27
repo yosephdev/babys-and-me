@@ -82,7 +82,7 @@ const TermsOfService = () => {
                 Questions about the Terms of Service should be sent to us at:
               </p>
               <p className="mb-4">
-                Email: legal@babysandme.com<br />                
+                Email: legal@babysme.com<br />                
               </p>
             </section>
 
