@@ -23,7 +23,7 @@ export const retailers: Retailer[] = [
     id: 2,
     name: "BabyWorld SE",
     description: "Unique and wide range of baby products for all ages",
-    logo: "/images/logo-babyv.png",
+    logo: "/images/logo-babyworld.png",
     commission: "8",
     website: "https://babyworld.se",
     category: "General",
