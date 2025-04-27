@@ -1,49 +1,40 @@
-# Welcome to your Lovable project
+# Welcome to BabysMe.com
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/501b4493-1b3c-4df9-8952-febdf78c09cf
+**Website URL**: [https://babysme.com](https://babysme.com)
+
+BabysMe.com is an online shop specializing in products for babies and expecting moms. Discover a curated selection of essentials, gifts, and must-haves for your parenting journey.
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
+You can work on this project locally using your preferred IDE. The project is built with modern web technologies for a smooth development experience.
 
-**Use Lovable**
+**Requirements:**
+- Node.js & npm (recommended to install via [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/501b4493-1b3c-4df9-8952-febdf78c09cf) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+**Development Setup:**
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Step 1: Clone the repository using your project's Git URL
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Step 2: Navigate to the project directory
+cd baby-blossom-hub
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Step 3: Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Step 4: Start the development server
 npm run dev
 ```
 
 **Edit a file directly in GitHub**
-
 - Navigate to the desired file(s).
 - Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Make your changes and commit them.
 
 **Use GitHub Codespaces**
-
 - Navigate to the main page of your repository.
 - Click on the "Code" button (green button) near the top right.
 - Select the "Codespaces" tab.
@@ -53,7 +44,6 @@ npm run dev
 ## What technologies are used for this project?
 
 This project is built with:
-
 - Vite
 - TypeScript
 - React
@@ -62,12 +52,16 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/501b4493-1b3c-4df9-8952-febdf78c09cf) and click on Share -> Publish.
+You can deploy this project using your preferred hosting provider (such as Vercel, Netlify, or your own server). Make sure to build the project before deploying:
 
-## Can I connect a custom domain to my Lovable project?
+```sh
+npm run build
+```
 
-Yes, you can!
+Then, follow your hosting provider's instructions for deploying a Vite/React application.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Can I connect a custom domain?
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Yes! Most hosting platforms allow you to connect a custom domain. Refer to your hosting provider's documentation for step-by-step instructions.
+
+For any questions or support, feel free to reach out via [https://babysme.com](https://babysme.com/contact).
