@@ -43,7 +43,7 @@ export const retailers: Retailer[] = [
     description: "Premium strollers and travel systems for modern parents",
     logo: "/images/logo-bugabo.png",
     commission: "6",
-    website: "https://example.com/bugaboo",
+    website: "https://www.bugaboo.com/se-en/",
     category: "Travel",
   },
   {
@@ -52,7 +52,7 @@ export const retailers: Retailer[] = [
     description: "Real baby store with carefully selected products",
     logo: "/images/logo-babyv.png",
     commission: "7",
-    website: "https://example.com/babyv",
+    website: "https://babyv.se",
     category: "General",
   },
   {
@@ -61,7 +61,7 @@ export const retailers: Retailer[] = [
     description: "Affordable baby products for everyday use",
     logo: "/images/logo-babyland.png",
     commission: "4",
-    website: "https://example.com/babyland",
+    website: "https://www.babyland.se",
     category: "General",
   },
   {
@@ -70,7 +70,7 @@ export const retailers: Retailer[] = [
     description: "Specialized in rear-facing car seats for maximum safety",
     logo: "/images/logo-axkid.png",
     commission: "5",
-    website: "https://example.com/axkid",
+    website: "https://axkid.com/se/",
     category: "Safety",
   },
   {
@@ -79,7 +79,7 @@ export const retailers: Retailer[] = [
     description: "Wooden toys and nursery furniture with Scandinavian design",
     logo: "/images/logo-kidsconcept.png",
     commission: "10",
-    website: "https://example.com/kidsconcept",
+    website: "https://www.kidsconcept.se",
     category: "Toys",
   },
 ];

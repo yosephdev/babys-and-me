@@ -114,7 +114,7 @@ export const fetchProducts = async (
       description: p.description || "",
       price: p.price || 0,
       currency: p.currency || "SEK",
-      imageUrl: p.image_url || "https://placehold.co/400x400/soft-blue/white?text=Product",
+      imageUrl: p.image_url || "https://images.unsplash.com/photo-1619161715434-ce2582fcd733?q=80&w=1974&auto=format&fit=crop",
       url: p.affiliate_link || "#",
       category: p.category || "Other",
       advertiserName: p.advertiser_name || "Unknown Retailer",
