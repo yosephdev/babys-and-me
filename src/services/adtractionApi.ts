@@ -1,3 +1,4 @@
+
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { ADTRACTION_CONFIG, ADTRACTION_ENDPOINTS, ADTRACTION_HEADERS } from "@/config/adtraction";
@@ -78,6 +79,8 @@ export const fetchProducts = async (
   pageSize = 10
 ): Promise<ProductFeedResponse> => {
   try {
+    console.log("Fetching products with category:", category);
+    
     // For now, fetch from our database instead of Adtraction
     let query = supabase
       .from('products')
@@ -91,23 +94,33 @@ export const fetchProducts = async (
     // Add pagination
     query = query.range(page * pageSize, (page + 1) * pageSize - 1);
 
-    const { data: products, error } = await query;
+    const { data: products, error, count } = await query;
 
     if (error) throw error;
+    
+    console.log("Products fetched:", products?.length || 0);
+
+    // Get total count of products
+    const { count: totalCount, error: countError } = await supabase
+      .from('products')
+      .select('*', { count: 'exact', head: true });
+      
+    if (countError) throw countError;
 
     // Map database products to AdtractionProduct format
     const mappedProducts: AdtractionProduct[] = products.map(p => ({
       id: p.id,
       name: p.name,
-      description: p.description,
-      price: p.price,
-      currency: p.currency,
-      imageUrl: p.image_url,
-      url: p.affiliate_link,
-      category: p.category,
-      advertiserName: p.advertiser_name,
-      advertiserId: p.advertiser_id,
-      inStock: p.in_stock,
+      description: p.description || "",
+      price: p.price || 0,
+      currency: p.currency || "SEK",
+      imageUrl: p.image_url || "https://placehold.co/400x400/soft-blue/white?text=Product",
+      url: p.affiliate_link || "#",
+      category: p.category || "Other",
+      advertiserName: p.advertiser_name || "Unknown Retailer",
+      advertiserId: p.advertiser_id || "unknown",
+      advertiserLogoUrl: p.advertiser_logo_url,
+      inStock: p.in_stock === undefined ? true : p.in_stock,
       isBestSeller: p.is_best_seller,
       isEditorsPick: p.is_editors_pick,
       rating: p.rating,
@@ -118,7 +131,7 @@ export const fetchProducts = async (
     return {
       page,
       pageSize,
-      count: products.length,
+      count: totalCount || products.length,
       products: mappedProducts
     };
   } catch (error) {

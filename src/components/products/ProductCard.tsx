@@ -1,3 +1,4 @@
+
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
@@ -106,6 +107,10 @@ export function ProductCard({ product }: ProductCardProps) {
           src={getProductImage()} 
           alt={getProductName()} 
           className="object-cover w-full h-full transition-transform hover:scale-105"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://placehold.co/400x400/soft-blue/white?text=Image+Error';
+          }}
         />
         <Button
           variant="ghost"
@@ -132,9 +137,6 @@ export function ProductCard({ product }: ProductCardProps) {
             Editor's Pick
           </Badge>
         )}
-        {/* <div className="absolute top-2 right-2 bg-white text-baby-blue text-xs font-medium px-2 py-1 rounded-full shadow-sm">
-          {getCommission()} commission
-        </div> */}
       </div>
 
       <CardContent className="p-4 flex-grow">
@@ -144,6 +146,10 @@ export function ProductCard({ product }: ProductCardProps) {
               src={getRetailerLogo()} 
               alt={getRetailer()} 
               className="w-full h-full object-cover"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = 'https://placehold.co/100/baby-pink/white?text=LOGO';
+              }}
             />
           </div>
           <div>
@@ -196,4 +202,4 @@ export function ProductCard({ product }: ProductCardProps) {
       </CardFooter>
     </Card>
   );
-}
+};
