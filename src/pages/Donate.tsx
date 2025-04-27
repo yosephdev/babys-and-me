@@ -88,7 +88,7 @@ const Donate = () => {
                     <div className="mb-6">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-bold">Progress to Goal</span>
-                        <span>$1,750 of $5,000</span>
+                        <span>$3,750 of $5,000</span>
                       </div>
                       <Progress value={75} className="h-3 bg-white/30" />
                     </div>
