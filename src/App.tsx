@@ -19,6 +19,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import BlogPost from "@/pages/BlogPost";
 import Favorites from "./pages/Favorites";
+import Contact from "./pages/Contact";
 
 const queryClient = new QueryClient();
 
@@ -49,6 +50,7 @@ const App = () => (
             />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

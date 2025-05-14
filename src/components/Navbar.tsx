@@ -29,6 +29,7 @@ const Navbar = () => {
           <Link to="/blog" className="text-foreground hover:text-baby-pink font-medium transition-colors">Blog</Link>
           <Link to="/products" className="text-foreground hover:text-baby-pink font-medium transition-colors">Products</Link>
           <Link to="/donate" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donate</Link>
+          <Link to="/contact" className="text-foreground hover:text-baby-pink font-medium transition-colors">Contact</Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
