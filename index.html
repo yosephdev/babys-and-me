@@ -1,24 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Basic Page Needs -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baby's & Me</title>
-    <meta name="description" content="Welcome to Baby's & Me – your trusted space for parents and little ones to connect, share, and grow together." />
+    <title>Baby's & Me – Nurturing Connections Between Parents & Little Ones</title>
+    <meta name="description" content="Baby's & Me is your trusted online shop and parenting hub. Shop curated baby essentials, discover expert parenting tips, and join a warm, growing community of parents and caregivers." />
     <meta name="author" content="Yoseph Berhane" />
 
-    <meta property="og:title" content="Baby's & Me" />
-    <meta property="og:description" content="Discover Baby's & Me: a warm, supportive hub for parents and babies, offering resources, tips, and a caring community." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="" />
+    <!-- Canonical -->
+    <link rel="canonical" href="https://babysme.com/" />
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/logo-main.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Baby's & Me – Nurturing Connections Between Parents & Little Ones" />
+    <meta property="og:description" content="Discover Baby's & Me: a warm, supportive hub for parents and babies, offering curated products, practical resources, and expert parenting advice." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://babysme.com/" />
+    <meta property="og:image" content="https://babysme.com/images/logo-main.png" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Baby's & Me – Nurturing Connections Between Parents & Little Ones" />
+    <meta name="twitter:description" content="A thoughtful online destination for parents. Shop baby essentials and explore trusted parenting content from Baby's & Me." />
+    <meta name="twitter:image" content="https://babysme.com/images/logo-alt.png" />
     <meta name="twitter:site" content="@babysmec" />
-    <meta name="twitter:image" content="" />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#FBBF24" />
+
+    <!-- Accessibility & Language -->
+    <meta http-equiv="Content-Language" content="en" />
+
+    <!-- FlexOffers -->
+    <meta name="fo-verify" content="d7e60e5e-8739-459b-b967-7a29871a5ddc" />
+
+    <!-- Performance Enhancements -->
+    <link rel="preload" href="/images/logo-main.png" as="image" />
+    <link rel="preload" href="/src/main.tsx" as="script" />
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Baby's & Me",
+        "url": "https://babysme.com",
+        "logo": "https://babysme.com/images/logo-main.png",
+        "sameAs": [
+          "https://www.facebook.com/babysme",
+          "https://www.instagram.com/babysmec",
+          "https://twitter.com/babysmec"
+        ],
+        "description": "An online shop and parenting hub offering curated baby products, expert parenting guidance, and a supportive community for parents and caregivers."
+      }
+    </script>
   </head>
 
   <body>
-    <div id="root"></div>  
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
