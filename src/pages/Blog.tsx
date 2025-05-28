@@ -8,21 +8,20 @@ import { Link } from "react-router-dom";
 import { blogPosts } from "@/data/blogPosts";
 
 const categories = [
-  "All Posts",
-  "Parenting Tips",
-  "Product Reviews",
-  "Budget Tips",
-  "Baby Health",
-  "Shopping Guide",
-  "Development",
+  "Alla inlägg",
+  "Shoppingguide",
+  "Föräldraskapstips",
+  "Budgettips",
+  "Barnhälsa",
+  "Produktrecensioner"
 ];
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState("All Posts");
+  const [activeCategory, setActiveCategory] = useState("Alla inlägg");
   const [searchTerm, setSearchTerm] = useState("");
 
   const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = activeCategory === "All Posts" || post.category === activeCategory;
+    const matchesCategory = activeCategory === "Alla inlägg" || post.category === activeCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                          post.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
@@ -35,15 +34,15 @@ const Blog = () => {
         <section className="bg-gradient-soft py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">Parenting Tips & Advice</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">Föräldraskapstips & Råd</h1>
               <p className="text-xl text-gray-600 mb-8">
-                Expert insights, product reviews, and practical advice for your parenting journey
+                Expertinsikter, produktrecensioner och praktiska råd för din föräldraresa
               </p>
               
               <div className="relative max-w-xl mx-auto">
                 <Input 
                   type="text" 
-                  placeholder="Search articles..." 
+                  placeholder="Sök artiklar..." 
                   className="pl-10 rounded-full"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -117,8 +116,8 @@ const Blog = () => {
               </div>
             ) : (
               <div className="text-center py-12">
-                <h3 className="text-xl font-bold mb-2">No articles found</h3>
-                <p className="text-gray-600">Try adjusting your search or category filter</p>
+                <h3 className="text-xl font-bold mb-2">Inga artiklar hittades</h3>
+                <p className="text-gray-600">Försök justera din sökning eller kategorifilter</p>
               </div>
             )}
           </div>

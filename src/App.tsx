@@ -12,7 +12,9 @@ import Blog from "./pages/Blog";
 import Products from "./pages/Products";
 import Donate from "./pages/Donate";
 import Admin from "./pages/Admin";
-import Login from "./pages/Login";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import ForgotPassword from "./pages/auth/ForgotPassword";
 import Subscribe from "./pages/Subscribe";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -37,6 +39,8 @@ const App = () => (
             <Route path="/products" element={<Products />} />
             <Route path="/donate" element={<Donate />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/subscribe" element={<Subscribe />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />

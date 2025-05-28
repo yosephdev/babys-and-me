@@ -8,74 +8,74 @@ const PrivacyPolicy = () => {
       <Navbar />
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-12">
-          <h1 className="text-3xl font-heading font-bold mb-8">Privacy Policy</h1>
+          <h1 className="text-3xl font-heading font-bold mb-8">Integritetspolicy</h1>
           
           <div className="prose max-w-none">
             <section className="mb-8">
-              <h2 className="text-2xl font-heading font-semibold mb-4">1. Information We Collect</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-4">1. Information vi samlar in</h2>
               <p className="mb-4">
-                We collect information that you provide directly to us, including when you:
+                Vi samlar in information när du:
               </p>
               <ul className="list-disc pl-6 mb-4">
-                <li>Create an account</li>
-                <li>Make a purchase</li>
-                <li>Sign up for our newsletter</li>
-                <li>Contact our customer service</li>
+                <li>Skapar ett konto</li>
+                <li>Prenumererar på vårt nyhetsbrev</li>
+                <li>Kontaktar vår kundtjänst</li>
+                <li>Gör ett köp</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-heading font-semibold mb-4">2. How We Use Your Information</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-4">2. Hur vi använder din information</h2>
               <p className="mb-4">
-                We use the information we collect to:
+                Vi använder den information vi samlar in för att:
               </p>
               <ul className="list-disc pl-6 mb-4">
-                <li>Process your orders and payments</li>
-                <li>Send you order confirmations and updates</li>
-                <li>Provide customer support</li>
-                <li>Send you marketing communications (with your consent)</li>
-                <li>Improve our website and services</li>
+                <li>Förbättra vår webbplats</li>
+                <li>Ge kundservice</li>
+                <li>Skicka e-postuppdateringar</li>
+                <li>Hantera transaktioner</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-heading font-semibold mb-4">3. Information Sharing</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-4">3. Delning av information</h2>
               <p className="mb-4">
-                We do not sell your personal information. We may share your information with:
+                Vi säljer inte din personliga information. Vi kan dela din information med:
               </p>
               <ul className="list-disc pl-6 mb-4">
-                <li>Service providers who assist in our operations</li>
-                <li>Payment processors</li>
-                <li>Shipping partners</li>
+                <li>Tjänsteleverantörer som hjälper till i våra operationer</li>
+                <li>Betalningsprocessorer</li>
+                <li>Leveranspartners</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-heading font-semibold mb-4">4. Your Rights</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-4">4. Dina rättigheter</h2>
               <p className="mb-4">
-                You have the right to:
+                Du har rätt att:
               </p>
               <ul className="list-disc pl-6 mb-4">
-                <li>Access your personal information</li>
-                <li>Correct inaccurate information</li>
-                <li>Request deletion of your information</li>
-                <li>Opt-out of marketing communications</li>
+                <li>Komma åt din personliga information</li>
+                <li>Korrigera felaktig information</li>
+                <li>Begära radering av din information</li>
+                <li>Avbryta marknadsföringskommunikation</li>
               </ul>
             </section>
 
             <section className="mb-8">
-              <h2 className="text-2xl font-heading font-semibold mb-4">5. Contact Us</h2>
+              <h2 className="text-2xl font-heading font-semibold mb-4">5. Kontakta oss</h2>
               <p className="mb-4">
-                If you have any questions about this Privacy Policy, please contact us at:
+                Om du har några frågor om denna integritetspolicy, vänligen kontakta oss på:
               </p>
               <p className="mb-4">
-                Email: privacy@babysme.com<br />               
+                E-post: privacy@babysme.com<br />
+                Telefon: +46 70 356 61 08<br />
               </p>
             </section>
 
             <section>
               <p className="text-sm text-gray-600">
-                Last updated: {new Date().toLocaleDateString()}
+                Senast uppdaterad: {new Date().toLocaleDateString()}
               </p>
             </section>
           </div>

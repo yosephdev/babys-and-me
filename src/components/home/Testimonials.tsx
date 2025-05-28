@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 
@@ -6,24 +5,24 @@ const testimonials = [
   {
     id: 1,
     name: "Emily Johnson",
-    role: "Mother of 2",
-    quote: "Baby's & Me helped me find affordable, high-quality products for my newborn without breaking the bank. Their recommendations are always spot-on!",
+    role: "Mamma till 2",
+    quote: "Baby's & Me hjälpte mig att hitta prisvärda, högkvalitativa produkter för min nyfödda utan att spräcka budgeten. Deras rekommendationer är alltid perfekta!",
     avatar: "https://placehold.co/100/baby-pink/white?text=EJ",
     rating: 5,
   },
   {
     id: 2,
     name: "Marcus Peterson",
-    role: "New Dad",
-    quote: "As a first-time father, I was overwhelmed by all the baby product choices. This site guided me to only the essentials that actually work!",
+    role: "Nybliven pappa",
+    quote: "Som förstagångspappa var jag överväldigad av alla val av babyprodukter. Den här sidan guidade mig till endast det nödvändiga som faktiskt fungerar!",
     avatar: "https://placehold.co/100/baby-blue/white?text=MP",
     rating: 5,
   },
   {
     id: 3,
     name: "Sophia Chen",
-    role: "Mother & Pediatrician",
-    quote: "I love that Baby's & Me prioritizes quality and safety. As a pediatrician, I often recommend this site to parents in my practice.",
+    role: "Mamma & Barnläkare",
+    quote: "Jag älskar att Baby's & Me prioriterar kvalitet och säkerhet. Som barnläkare rekommenderar jag ofta denna sida till föräldrar i min praktik.",
     avatar: "https://placehold.co/100/baby-yellow/white?text=SC",
     rating: 5,
   },
@@ -47,7 +46,7 @@ const Testimonials = () => {
   return (
     <section className="py-16 bg-gradient-soft">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">What Parents Say</h2>
+        <h2 className="section-title">Vad föräldrar säger</h2>
         
         <div className="mt-12 relative max-w-4xl mx-auto">
           <div className="relative bg-white rounded-2xl shadow-lg p-6 md:p-10">
@@ -92,7 +91,7 @@ const Testimonials = () => {
                 className={`w-3 h-3 rounded-full transition-colors ${
                   idx === currentTestimonial ? "bg-baby-pink" : "bg-gray-300"
                 }`}
-                aria-label={`View testimonial ${idx + 1}`}
+                aria-label={`Visa omdöme ${idx + 1}`}
               />
             ))}
           </div>
@@ -100,7 +99,7 @@ const Testimonials = () => {
           <button 
             className="absolute top-1/2 -left-4 md:-left-6 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-baby-pink hover:text-white transition-colors"
             onClick={prevTestimonial}
-            aria-label="Previous testimonial"
+            aria-label="Föregående omdöme"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -108,7 +107,7 @@ const Testimonials = () => {
           <button 
             className="absolute top-1/2 -right-4 md:-right-6 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-baby-pink hover:text-white transition-colors"
             onClick={nextTestimonial}
-            aria-label="Next testimonial"
+            aria-label="Nästa omdöme"
           >
             <ChevronRight className="w-5 h-5" />
           </button>

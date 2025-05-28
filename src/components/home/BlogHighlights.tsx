@@ -1,4 +1,3 @@
-
 import { ChevronRight, Heart, User, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -11,7 +10,7 @@ const BlogHighlights = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Parenting Tips & Advice</h2>
+        <h2 className="section-title">Föräldraskapstips & Råd</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           {highlightPosts.map((post) => (
@@ -48,7 +47,7 @@ const BlogHighlights = () => {
                     </span>
                   </div>
                   <span className="text-baby-pink font-medium flex items-center group-hover:underline mt-4">
-                    Read More <ChevronRight className="w-4 h-4 ml-1" />
+                    Läs mer <ChevronRight className="w-4 h-4 ml-1" />
                   </span>
                 </div>
               </div>
@@ -59,7 +58,7 @@ const BlogHighlights = () => {
         <div className="text-center mt-12">
           <Button className="btn-secondary" asChild>
             <Link to="/blog">
-              View All Articles <ChevronRight className="w-5 h-5 ml-1" />
+              Visa alla artiklar <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </Button>
         </div>

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 
@@ -19,15 +18,15 @@ const ThankYouMessage = ({
         <CheckCircle2 className="w-8 h-8" />
       </div>
       <h2 className="text-2xl font-bold mb-2">
-        {success ? "Thank You!" : "Donation Canceled"}
+        {success ? "Tack!" : "Donation avbruten"}
       </h2>
       <p className="text-gray-600 mb-6">
         {success
-          ? "Your donation was successful and is greatly appreciated. You make a real difference for families in need."
-          : "Your donation did not go through. Feel free to try again or contact support if you need help."}
+          ? "Din donation lyckades och uppskattas verkligen. Du gör en verklig skillnad för familjer i behov."
+          : "Din donation kunde inte genomföras. Försök gärna igen eller kontakta support om du behöver hjälp."}
       </p>
       <Button className="btn-secondary" onClick={onReset}>
-        {success ? "Make Another Donation" : "Try Again"}
+        {success ? "Gör en ny donation" : "Försök igen"}
       </Button>
     </div>
   );

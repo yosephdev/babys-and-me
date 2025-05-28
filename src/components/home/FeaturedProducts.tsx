@@ -1,4 +1,3 @@
-
 import { ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -59,20 +58,20 @@ const FeaturedProducts = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Featured Products</h2>
+        <h2 className="section-title">Utvalda produkter</h2>
         <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-          Explore our handpicked selection of high-quality baby products from trusted brands. 
-          From clothing to safety gear, we've got everything your little one needs.
+          Utforska vårt handplockade urval av högkvalitativa babyprodukter från pålitliga varumärken. 
+          Från kläder till säkerhetsutrustning, vi har allt din lilla behöver.
         </p>
         
         {isLoading ? (
           <div className="flex justify-center items-center py-10">
             <Loader2 className="animate-spin w-8 h-8 text-baby-blue" />
-            <span className="ml-2 text-lg">Loading featured products...</span>
+            <span className="ml-2 text-lg">Laddar utvalda produkter...</span>
           </div>
         ) : error ? (
           <div className="text-center py-10">
-            <p className="text-gray-600">Unable to load featured products. Please try again later.</p>
+            <p className="text-gray-600">Kunde inte ladda utvalda produkter. Försök igen senare.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
@@ -85,7 +84,7 @@ const FeaturedProducts = () => {
         <div className="text-center mt-12">
           <Button className="btn-secondary" asChild>
             <Link to="/products">
-              View All Products <ChevronRight className="w-5 h-5 ml-1" />
+              Visa alla produkter <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </Button>
         </div>

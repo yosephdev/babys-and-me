@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,11 +39,11 @@ const DonationForm = ({
       if (data?.url) {
         window.location.href = data.url;
       } else {
-        toast.error("Could not create payment session.");
+        toast.error("Kunde inte skapa betalningssession.");
       }
     } catch (err) {
-      console.error('Payment error:', err);
-      toast.error("An error occurred while processing your donation.");
+      console.error('Betalningsfel:', err);
+      toast.error("Ett fel uppstod vid behandling av din donation.");
     } finally {
       setSubmitting(false);
     }
@@ -52,9 +51,9 @@ const DonationForm = ({
 
   return (
     <form onSubmit={handleDonationSubmit} data-testid="donation-form">
-      <h2 className="text-2xl md:text-3xl font-bold mb-6">Make a Donation</h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-6">Gör ett bidrag</h2>
       <div className="mb-6">
-        <label className="block text-gray-700 mb-2 font-medium">Choose an amount</label>
+        <label className="block text-gray-700 mb-2 font-medium">Välj belopp</label>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-3">
           {presetAmounts.map((amount) => (
             <Button
@@ -68,15 +67,15 @@ const DonationForm = ({
               }`}
               onClick={() => setDonationAmount(amount)}
             >
-              ${amount}
+              {amount} kr
             </Button>
           ))}
         </div>
         <div className="relative">
-          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+          <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">kr</span>
           <Input
             type="number"
-            placeholder="Enter custom amount"
+            placeholder="Ange eget belopp"
             className="pl-8"
             value={donationAmount}
             onChange={(e) => setDonationAmount(e.target.value === "" ? "" : Number(e.target.value))}
@@ -85,20 +84,20 @@ const DonationForm = ({
         </div>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 mb-2 font-medium">Name (Optional)</label>
+        <label className="block text-gray-700 mb-2 font-medium">Namn (Valfritt)</label>
         <Input
           type="text"
-          placeholder="Your name"
+          placeholder="Ditt namn"
           value={name}
           onChange={(e) => setName(e.target.value)}
           autoComplete="name"
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 mb-2 font-medium">Email</label>
+        <label className="block text-gray-700 mb-2 font-medium">E-post</label>
         <Input
           type="email"
-          placeholder="Your email address"
+          placeholder="Din e-postadress"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
@@ -106,9 +105,9 @@ const DonationForm = ({
         />
       </div>
       <div className="mb-6">
-        <label className="block text-gray-700 mb-2 font-medium">Message (Optional)</label>
+        <label className="block text-gray-700 mb-2 font-medium">Meddelande (Valfritt)</label>
         <Input
-          placeholder="Why you're donating..."
+          placeholder="Varför du donerar..."
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
@@ -119,11 +118,11 @@ const DonationForm = ({
         disabled={!donationAmount || Number(donationAmount) <= 0 || submitting}
       >
         {submitting ? (
-          "Processing..."
+          "Bearbetar..."
         ) : (
           <>
             <Heart className="mr-2 h-4 w-4" />
-            Donate ${donationAmount ? donationAmount : "0"}
+            Donera {donationAmount ? donationAmount : "0"} kr
           </>
         )}
       </Button>

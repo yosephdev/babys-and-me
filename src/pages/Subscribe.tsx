@@ -26,15 +26,16 @@ const Subscribe = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, name })
       });
-      if (!response.ok) throw new Error('Failed to subscribe');
+      if (!response.ok) throw new Error('Kunde inte prenumerera');
 
-      toast.success('Successfully subscribed to our newsletter!');
+      toast.success('Du har nu prenumererat på vårt nyhetsbrev!');
       setEmail('');
       setName('');
       navigate('/');
-    } catch (error: any) {
-      console.error('Error subscribing:', error);
-      toast.error(error.message || 'Failed to subscribe. Please try again.');
+    } catch (error: unknown) {
+      console.error('Fel vid prenumeration:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Kunde inte prenumerera. Vänligen försök igen.';
+      toast.error(errorMessage);
     } finally {
       setIsLoading(false);
     }
@@ -47,63 +48,65 @@ const Subscribe = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-md mx-auto">
             <div className="text-center mb-8">
-              <h1 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h1>
-              <p className="text-gray-600">
-                Stay updated with the latest baby products, tips, and exclusive offers.
+              <h1 className="text-3xl font-bold mb-4">Prenumerera på vårt nyhetsbrev</h1>
+              <p className="text-gray-600 mb-8">
+                Håll dig uppdaterad med de senaste babyprodukterna, tips och exklusiva erbjudanden.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Your Name
+                  Ditt namn
                 </label>
                 <Input
                   id="name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
+                  placeholder="Ange ditt namn"
                   required
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
+                  E-postadress
                 </label>
                 <Input
                   id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
+                  placeholder="din.epost@exempel.se"
                   required
                 />
               </div>
 
-              <Button
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  name="consent"
+                  required
+                  className="h-4 w-4 text-baby-pink focus:ring-baby-pink border-gray-300 rounded"
+                />
+                <label htmlFor="consent" className="ml-2 block text-sm text-gray-700">
+                  Jag godkänner att få e-postuppdateringar från Baby's & Me
+                </label>
+              </div>
+
+              <button
                 type="submit"
-                className="w-full"
+                className="w-full bg-baby-pink text-white py-2 px-4 rounded-md hover:bg-pink-600 transition-colors"
                 disabled={isLoading}
               >
-                {isLoading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Subscribing...
-                  </>
-                ) : (
-                  <>
-                    <Mail className="mr-2 h-4 w-4" />
-                    Subscribe Now
-                  </>
-                )}
-              </Button>
+                {isLoading ? 'Prenumererar...' : 'Prenumerera nu'}
+              </button>
             </form>
 
             <div className="mt-8 text-center text-sm text-gray-600">
-              <p>By subscribing, you agree to receive our newsletter and marketing emails.</p>
-              <p className="mt-2">You can unsubscribe at any time.</p>
+              <p>Du kan avprenumerera när som helst.</p>
             </div>
           </div>
         </div>

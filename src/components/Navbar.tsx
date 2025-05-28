@@ -24,12 +24,12 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-foreground hover:text-baby-pink font-medium transition-colors">Home</Link>
-          <Link to="/about" className="text-foreground hover:text-baby-pink font-medium transition-colors">About</Link>
-          <Link to="/blog" className="text-foreground hover:text-baby-pink font-medium transition-colors">Blog</Link>
-          <Link to="/products" className="text-foreground hover:text-baby-pink font-medium transition-colors">Products</Link>
-          <Link to="/donate" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donate</Link>
-          <Link to="/contact" className="text-foreground hover:text-baby-pink font-medium transition-colors">Contact</Link>
+          <Link to="/" className="text-foreground hover:text-baby-pink font-medium transition-colors">Hem</Link>
+          <Link to="/about" className="text-foreground hover:text-baby-pink font-medium transition-colors">Om oss</Link>          
+          <Link to="/products" className="text-foreground hover:text-baby-pink font-medium transition-colors">Produkter</Link>
+          <Link to="/blog" className="text-foreground hover:text-baby-pink font-medium transition-colors">Blogg</Link>
+          <Link to="/donate" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donera</Link>
+          <Link to="/contact" className="text-foreground hover:text-baby-pink font-medium transition-colors">Kontakt</Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -47,7 +47,7 @@ const Navbar = () => {
           <Link to="/subscribe">
             <Button className="btn-primary flex items-center gap-2">
               <Mail className="w-4 h-4" />
-              Subscribe
+              Prenumerera
             </Button>
           </Link>
         </div>
@@ -62,16 +62,16 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-3">
-            <Link to="/" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Home</Link>
-            <Link to="/about" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>About</Link>
-            <Link to="/blog" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Blog</Link>
-            <Link to="/products" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Products</Link>
-            <Link to="/donate" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Donate</Link>
+            <Link to="/" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Hem</Link>
+            <Link to="/about" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Om oss</Link>
+            <Link to="/blog" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Blogg</Link>
+            <Link to="/products" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Produkter</Link>
+            <Link to="/contact" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Kontakt</Link>
             {isAuthenticated && (
               <Link to="/admin" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Admin</Link>
             )}
             <Link to="/subscribe" className="btn-primary w-full text-center" onClick={toggleMenu}>
-              Subscribe
+              Prenumerera
             </Link>
           </div>
         </div>

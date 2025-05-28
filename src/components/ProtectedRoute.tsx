@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
@@ -11,6 +11,11 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   const location = useLocation();
 
+  // Debug logging
+  useEffect(() => {
+    console.log('ProtectedRoute - Auth state:', { isAuthenticated, loading });
+  }, [isAuthenticated, loading]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -20,10 +25,11 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }) => {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />;
+    // Save the current location to redirect back after login
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
   }
 
   return <>{children}</>;
 };
 
-export default ProtectedRoute; 
+export default ProtectedRoute;

@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h3 className="text-xl font-heading font-bold mb-4 text-foreground">Baby's & Me</h3>
             <p className="text-sm text-gray-600 mb-4">
-              Your trusted source for affordable, high-quality baby products – because every baby deserves the best.
+              Din pålitliga källa för prisvärda, högkvalitativa babyprodukter – eftersom varje bebis förtjänar det bästa.
             </p>
             <div className="flex space-x-3">
               <a href="https://www.facebook.com/babysmec/" className="p-2 bg-white rounded-full shadow-sm hover:shadow-md transition-shadow">
@@ -31,26 +31,25 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Quick Links</h3>
+            <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Snabblänkar</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Home</Link></li>
-              <li><Link to="/about" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">About Us</Link></li>
-              <li><Link to="/blog" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Blog</Link></li>
-              <li><Link to="/products" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Products</Link></li>
-              <li><Link to="/donate" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Donate</Link></li>
-              <li><Link to="/contact" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Contact</Link></li>
+              <li><Link to="/" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Hem</Link></li>
+              <li><Link to="/about" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Om oss</Link></li>
+              <li><Link to="/blog" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Blogg</Link></li>
+              <li><Link to="/products" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Produkter</Link></li>
+              <li><Link to="/contact" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Categories</h3>
+            <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Kategorier</h3>
             <ul className="space-y-2">
               <li>
                 <Link 
                   to="/products"
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
-                  All Products
+                  Alla produkter
                 </Link>
               </li>
               <li>
@@ -97,17 +96,17 @@ const Footer = () => {
           </div>
 
           <div className="md:col-span-1">
-            <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Newsletter</h3>
+            <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Nyhetsbrev</h3>
             <p className="text-sm text-gray-600 mb-4">
-              Subscribe to our newsletter for exclusive deals and parenting tips.
+              Prenumerera på vårt nyhetsbrev för exklusiva erbjudanden och föräldratips.
             </p>
             <div className="space-y-2">
               <Input 
                 type="email" 
-                placeholder="Your email address" 
+                placeholder="Din e-postadress" 
                 className="rounded-full" 
               />
-              <Button className="w-full btn-primary">Subscribe</Button>
+              <Button className="w-full btn-primary">Prenumerera</Button>
             </div>
           </div>
         </div>
@@ -115,14 +114,14 @@ const Footer = () => {
         <div className="border-t border-gray-200 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-center text-xs text-gray-500 mb-4 md:mb-0">
-              &copy; {new Date().getFullYear()} Baby's & Me. All rights reserved.
+              &copy; {new Date().getFullYear()} Baby's & Me. Alla rättigheter förbehållna.
             </p>
             <div className="flex space-x-4">
               <Link to="/privacy-policy" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
-                Privacy Policy
+                Integritetspolicy
               </Link>
               <Link to="/terms-of-service" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
-                Terms of Service
+                Användarvillkor
               </Link>
             </div>
           </div>

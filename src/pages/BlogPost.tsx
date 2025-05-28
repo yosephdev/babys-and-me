@@ -14,14 +14,14 @@ const BlogPost = () => {
         <Navbar />
         <main className="flex-grow flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4">404 - Post Not Found</h1>
-            <p className="text-gray-600 mb-8">The blog post you're looking for doesn't exist.</p>
+            <h1 className="text-4xl font-bold mb-4">404 - Inlägg hittades inte</h1>
+            <p className="text-gray-600 mb-8">Blogginlägget du letar efter finns inte.</p>
             <Link
               to="/blog"
               className="inline-flex items-center text-baby-pink hover:underline"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
-              Back to Blog
+              Tillbaka till bloggen
             </Link>
           </div>
         </main>
@@ -32,109 +32,118 @@ const BlogPost = () => {
 
   const getPostContent = (slug: string) => {
     switch (slug) {
-      case "essential-baby-products-2024":
+      case "baby-products-2024": {
         return {
-          introduction: "As a new parent, navigating the world of baby products can be overwhelming. With countless options available, it's crucial to focus on items that truly make a difference in your daily life. After consulting with pediatricians, experienced parents, and child development experts, we've compiled a list of essential products that will help you provide the best care for your little one.",
+          introduction: "Som ny förälder kan det vara överväldigande att navigera i världen av babyprodukter. Med otaliga alternativ tillgängliga är det viktigt att fokusera på produkter som verkligen gör skillnad i ditt vardagliga liv.",
           keyPoints: [
-            "Smart Baby Monitor: Modern monitors with video, temperature, and breathing tracking",
-            "Eco-Friendly Diapers: Sustainable options that are gentle on baby's skin",
-            "Baby Carrier: Ergonomic design for comfortable carrying",
-            "Sleep Solution: Safe sleep space with proper ventilation"
+            "Smart babyövervakare med video och temperaturövervakning",
+            "Miljövänliga blöjor som är skonsamma mot barnets hud",
+            "Ergonomisk barnbärsele för bekväm bärning",
+            "Säker sovplats med korrekt ventilation och stöd"
           ],
-          expertAdvice: "Dr. Sarah Johnson, a pediatrician with 15 years of experience, emphasizes the importance of choosing products that meet safety standards. 'Look for certifications like CPSC, JPMA, or ASTM when selecting baby gear. These ensure the products have undergone rigorous safety testing.'",
-          conclusion: "Remember that every baby is unique, and what works for one family might not work for another. Start with these essentials and add more items as you discover your baby's specific needs. Quality over quantity is key when building your baby's first collection of products."
+          expertAdvice: "Dr. Sarah Johnson, barnläkare med 15 års erfarenhet, betonar vikten av att välja produkter som uppfyller säkerhetsstandarder. 'Let efter certifieringar som CPSC, JPMA eller ASTM när du väljer babyutrustning.'",
+          conclusion: "Kom ihåg att varje barn är unikt. Börja med dessa grundläggande produkter och lägg till fler när du upptäcker ditt barns specifika behov."
         };
-      case "baby-sleep-science":
+      }
+      case "baby-sleep-science": {
         return {
-          introduction: "Sleep is crucial for your baby's development, but achieving consistent, restful sleep can be challenging for many families. Understanding the science behind baby sleep patterns can help you create a more effective sleep routine for your little one.",
+          introduction: "Sömn är avgörande för din babys utveckling och välbefinnande. Denna artikel utforskar den senaste forskningen om babysömn och ger praktiska tips för att hjälpa din lilla att få den vila de behöver.",
           keyPoints: [
-            "Sleep Cycles: Babies have shorter sleep cycles than adults",
-            "Circadian Rhythm: Development of natural sleep-wake patterns",
-            "Sleep Associations: Creating positive sleep connections",
-            "Safe Sleep Environment: Following AAP guidelines"
+            "Förstå din babys naturliga sömnrytm och cykler",
+            "Skapa en säker och optimal sovmiljö",
+            "Hantera sömnregressioner och utmanande perioder",
+            "Etablera konsekventa sömnrutiner"
           ],
-          expertAdvice: "Dr. Emily Chen, a sleep specialist, explains: 'Babies' sleep patterns are different from adults. They spend more time in REM sleep, which is crucial for brain development. Understanding these differences helps parents set realistic expectations and create appropriate sleep schedules.'",
-          conclusion: "By understanding the science behind baby sleep, you can make informed decisions about your child's sleep routine. Remember that sleep training is a personal choice, and what works for one family may not work for another. Focus on creating a safe, consistent sleep environment and responding to your baby's needs."
+          expertAdvice: "Dr. Emily Chen, barnsömnsexpert, förklarar: 'Babysömn är komplex och förändras snabbt under det första året. Fokusera på att skapa en konsekvent och lugnande sömnrutin.'",
+          conclusion: "Genom att förstå vetenskapen bakom babysömn och implementera evidensbaserade strategier kan du hjälpa din lilla att utveckla hälsosamma sömnvanor."
         };
-      case "budget-friendly-baby-gear":
+      }
+      case "best-baby-carriers-2024": {
         return {
-          introduction: "Having a baby doesn't have to break the bank. With careful planning and smart shopping strategies, you can find high-quality baby essentials that fit your budget. This guide will help you make informed decisions about where to spend and where to save.",
+          introduction: "En bra barnbärsele kan göra stor skillnad i ditt vardagliga liv som förälder. Denna guide hjälper dig att välja rätt bärsele för dina behov och din babys utvecklingsstadium.",
           keyPoints: [
-            "Research and Compare: Use price comparison tools and read reviews",
-            "Buy Second-Hand: Many items can be safely purchased used",
-            "Focus on Safety: Invest in certified safety items",
-            "Multi-Purpose Items: Choose products that grow with your baby"
+            "Ergonomisk design som stödjer babys höftutveckling",
+            "Jämnt fördelad vikt och justerbara remmar för föräldern",
+            "Mångsidighet för olika åldrar och situationer",
+            "Andningsbart och hållbart material"
           ],
-          expertAdvice: "Michael Brown, a family finance expert, suggests: 'Create a baby budget before shopping. Prioritize safety-certified items and consider joining parent groups for gently used items. Many high-quality products can be found at a fraction of the retail price.'",
-          conclusion: "Remember that the most expensive option isn't always the best. Focus on safety certifications, durability, and versatility when making purchases. With careful planning and smart shopping, you can provide everything your baby needs without overspending."
+          expertAdvice: "Jessica Taylor, barnbärseleexpert, rekommenderar: 'Let efter en bärsele som möjliggör öga-mot-öga-kontakt och har M-position för optimal höftutveckling.'",
+          conclusion: "Att investera i en högkvalitativ barnbärsele är att investera i både din och din babys komfort och säkerhet."
         };
-      case "baby-first-year-milestones":
+      }
+      case "baby-health-concerns": {
         return {
-          introduction: "Your baby's first year is filled with incredible growth and development. Understanding these milestones helps you support your child's progress and identify any areas that might need additional attention.",
+          introduction: "Som förälder kan det vara svårt att veta när ett symptom är normalt och när det kräver medicinsk uppmärksamhet. Denna guide hjälper dig att navigera vanliga hälsoproblem hos bebisar.",
           keyPoints: [
-            "Physical Development: Motor skills and movement milestones",
-            "Cognitive Growth: Learning and problem-solving abilities",
-            "Social Development: Interaction and communication skills",
-            "Emotional Progress: Bonding and emotional expression"
+            "När och hur man hanterar feber hos bebisar",
+            "Identifiera varningssignaler för andningsbesvär",
+            "Vanliga orsaker och lösningar för matningsproblem",
+            "Olika typer av hudutslag och när man ska oroa sig"
           ],
-          expertAdvice: "Dr. Lisa Martinez, a child development specialist, notes: 'Every baby develops at their own pace. While milestones provide a general guide, focus on your baby's individual progress. Early intervention can make a significant difference if there are any concerns.'",
-          conclusion: "Celebrate each milestone while remembering that development isn't a race. Your baby's unique journey is what matters most. Regular check-ups with your pediatrician will help ensure your baby is on track with their development."
+          expertAdvice: "Dr. Emily Chen, barnläkare, betonar: 'Lita på din intuition som förälder. Om något känns fel, är det bättre att vara försiktig och söka vård.'",
+          conclusion: "Att vara förberedd på vanliga hälsoproblem kan hjälpa dig att känna dig mer säker i din roll som förälder."
         };
-      case "best-baby-carriers-2024":
+      }
+      case "baby-immune-system": {
         return {
-          introduction: "A good baby carrier can be a game-changer for parents, offering hands-free comfort while keeping your baby close. We've tested numerous carriers to find the best options for different needs and budgets.",
+          introduction: "Ett starkt immunförsvar är avgörande för din babys hälsa och utveckling. Lär dig hur du kan stödja din lillas naturliga försvarssystem.",
           keyPoints: [
-            "Ergonomic Design: Proper hip and spine support",
-            "Comfort Features: Padded straps and breathable materials",
-            "Safety Standards: Meeting current safety guidelines",
-            "Versatility: Multiple carrying positions and adjustability"
+            "Fördelar med amning för immunförsvaret",
+            "Vikten av vaccinationer för skydd mot sjukdomar",
+            "Balansera hygien och naturlig exponering",
+            "Näringsrik kost för att bygga upp immunförsvaret"
           ],
-          expertAdvice: "Jessica Taylor, a babywearing consultant, emphasizes: 'The best carrier is one that both parent and baby find comfortable. Look for carriers that support the natural 'M' position for baby's hips and provide adequate head support for newborns.'",
-          conclusion: "Investing in a quality baby carrier can make daily activities easier while promoting bonding with your baby. Consider your lifestyle, climate, and specific needs when choosing a carrier. The right carrier can be used from newborn through toddler years."
+          expertAdvice: "Dr. Lisa Martinez, immunolog, förklarar: 'Ett barns immunförsvar utvecklas gradvis under de första åren. Amning ger viktiga antikroppar och näringsämnen.'",
+          conclusion: "Att stödja din babys immunförsvar är en kontinuerlig process som kombinerar vetenskapligt beprövade metoder med sunt förnuft."
         };
-      case "baby-health-concerns":
+      }
+      case "baby-nutrition-guide": {
         return {
-          introduction: "As a parent, it's natural to worry about your baby's health. Understanding common health concerns and knowing when to seek medical attention can help you feel more confident in caring for your little one.",
+          introduction: "En komplett guide till din babys näringsbehov från födseln till ettårsåldern, med fokus på amning och introduktion av fast mat.",
           keyPoints: [
-            "Fever: When to call the doctor based on age and temperature",
-            "Feeding Issues: Common concerns and solutions",
-            "Skin Conditions: Identifying and treating common rashes",
-            "Respiratory Symptoms: Warning signs to watch for"
+            "Fördelar med amning och när man bör introducera fast mat",
+            "Tecken på att din baby är redo för fast mat",
+            "Säker introduktion av allergener",
+            "Balanserad näring för optimal utveckling"
           ],
-          expertAdvice: "Dr. Emily Chen advises: 'Trust your instincts as a parent. If something doesn't seem right, it's better to call your pediatrician. Keep a record of symptoms, including when they started and any changes you notice.'",
-          conclusion: "While it's important to be vigilant about your baby's health, remember that many common concerns are normal and easily treatable. Regular check-ups and open communication with your pediatrician will help ensure your baby stays healthy."
+          expertAdvice: "Maria Svensson, barnnutritionist, rekommenderar: 'Introducera en ny mat i taget och vänta 3-5 dagar mellan varje ny mat för att upptäcka eventuella allergier.'",
+          conclusion: "Varje barns näringsbehov är unika. Fokusera på att erbjuda en varierad och näringsrik kost som stödjer deras utveckling."
         };
-      case "eco-friendly-baby-products":
+      }
+      case "baby-development-milestones": {
         return {
-          introduction: "Making eco-friendly choices for your baby not only benefits the environment but can also create a healthier living space for your little one. Discover sustainable alternatives to common baby products that are both safe and effective.",
+          introduction: "Följ din babys utveckling månad för månad och lär dig hur du kan stödja deras tillväxt och utveckling under det första året.",
           keyPoints: [
-            "Sustainable Materials: Choosing natural, biodegradable options",
-            "Chemical-Free Products: Avoiding harmful substances",
-            "Long-Lasting Items: Investing in durable products",
-            "Reusable Alternatives: Reducing single-use items"
+            "Motorisk utveckling: från huvudkontroll till första steg",
+            "Språkutveckling: från gurglande till första ord",
+            "Social och emotionell utveckling",
+            "Kognitiv utveckling och lek"
           ],
-          expertAdvice: "Sarah Johnson, an environmental health expert, suggests: 'Start with the basics - diapers, wipes, and clothing. Look for products with minimal packaging and certifications like GOTS for organic textiles or EWG Verified for personal care items.'",
-          conclusion: "Making eco-friendly choices for your baby is a journey, not a destination. Start with small changes and gradually incorporate more sustainable options. Every eco-friendly choice makes a difference for your baby's future."
+          expertAdvice: "Dr. Sofia Berg, barnutvecklingsexpert, förklarar: 'Varje barn utvecklas i sin egen takt. Fokusera på att skapa en stimulerande och trygg miljö.'",
+          conclusion: "Att förstå utvecklingsmilstolpar hjälper dig att stödja din babys tillväxt och upptäcka eventuella utmaningar i tid."
         };
-      case "baby-immune-system":
+      }
+      case "baby-proofing-home": {
         return {
-          introduction: "Your baby's immune system is developing from birth, and there are many ways you can support its healthy development. Understanding how the immune system works helps you make informed decisions about your baby's health.",
+          introduction: "En omfattande guide till att göra ditt hem säkert för din nyfödda, med fokus på förebyggande åtgärder och säkerhetsprodukter.",
           keyPoints: [
-            "Breastfeeding Benefits: Natural immune support",
-            "Vaccination Schedule: Following recommended guidelines",
-            "Healthy Environment: Creating a clean but not sterile space",
-            "Nutrition: Supporting immune function through diet"
+            "Säkerhetskontroll i varje rum",
+            "Viktiga säkerhetsprodukter för hemmet",
+            "Hantering av eluttag och kablar",
+            "Säkra möbler och lekområden"
           ],
-          expertAdvice: "Dr. Lisa Martinez explains: 'A baby's immune system is like a muscle that needs to be exercised. Exposure to common germs in a controlled way helps build immunity, while vaccinations provide protection against serious diseases.'",
-          conclusion: "Supporting your baby's immune system is a combination of good nutrition, proper vaccination, and creating a healthy environment. Work with your pediatrician to develop a plan that's right for your baby's specific needs."
+          expertAdvice: "Emma Nilsson, säkerhetsexpert, betonar: 'Börja med att se ditt hem från din babys perspektiv. Allt som är inom räckhåll behöver säkras.'",
+          conclusion: "Att göra ditt hem säkert är en kontinuerlig process som anpassas efter din babys utveckling och rörlighet."
         };
-      default:
+      }
+      default: {
         return {
-          introduction: "This article provides valuable insights and practical advice for parents.",
-          keyPoints: ["Key point 1", "Key point 2", "Key point 3", "Key point 4"],
-          expertAdvice: "Expert advice for parents.",
-          conclusion: "Summary and final thoughts."
+          introduction: "Detta inlägg är under uppbyggnad. Kom tillbaka snart för komplett innehåll.",
+          keyPoints: [],
+          expertAdvice: "",
+          conclusion: ""
         };
+      }
     }
   };
 
@@ -155,7 +164,7 @@ const BlogPost = () => {
               className="inline-flex items-center text-baby-pink hover:underline mb-8"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
-              Back to Blog
+              Tillbaka till bloggen
             </Link>
 
             {/* Post Header */}
@@ -206,7 +215,7 @@ const BlogPost = () => {
               </p>
 
               {/* Key Points */}
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Key Points</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Viktiga punkter</h2>
               <ul className="list-disc pl-6 space-y-2 text-gray-700">
                 {content.keyPoints.map((point, index) => (
                   <li key={index} className="text-lg">
@@ -216,13 +225,13 @@ const BlogPost = () => {
               </ul>
 
               {/* Expert Advice */}
-              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Expert Advice</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Expertisråd</h2>
               <blockquote className="border-l-4 border-baby-pink pl-6 text-gray-700 italic text-lg">
                 {content.expertAdvice}
               </blockquote>
 
               {/* Conclusion */}
-              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Conclusion</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mt-12 mb-6">Sammanfattning</h2>
               <p className="text-gray-700 leading-relaxed text-lg">
                 {content.conclusion}
               </p>

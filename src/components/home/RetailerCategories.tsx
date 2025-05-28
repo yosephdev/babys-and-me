@@ -1,4 +1,3 @@
-
 import { Baby, Utensils, Puzzle, Home, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ProductCategory } from "@/data/products";
@@ -7,7 +6,7 @@ const categories = [
   {
     id: 1,
     name: ProductCategory.CLOTHING,
-    description: "Quality clothes, shoes, and accessories for babies and toddlers",
+    description: "Kvalitetskläder, skor och accessoarer för bebisar och småbarn",
     icon: Baby,
     link: `/products?category=${encodeURIComponent(ProductCategory.CLOTHING)}`,
     color: "baby-pink",
@@ -15,7 +14,7 @@ const categories = [
   {
     id: 2,
     name: ProductCategory.FEEDING,
-    description: "Bottles, bibs, high chairs and everything for meal time",
+    description: "Flaskor, haklappar, barnstolar och allt för måltider",
     icon: Utensils,
     link: `/products?category=${encodeURIComponent(ProductCategory.FEEDING)}`,
     color: "baby-blue",
@@ -23,7 +22,7 @@ const categories = [
   {
     id: 3,
     name: ProductCategory.TOYS,
-    description: "Fun and educational toys to stimulate growing minds",
+    description: "Roliga och pedagogiska leksaker för att stimulera växande sinnen",
     icon: Puzzle,
     link: `/products?category=${encodeURIComponent(ProductCategory.TOYS)}`,
     color: "baby-yellow",
@@ -31,7 +30,7 @@ const categories = [
   {
     id: 4,
     name: ProductCategory.NURSERY,
-    description: "Cribs, changing stations, and decor for the perfect nursery",
+    description: "Barnsängar, skötbord och inredning för det perfekta barnrummet",
     icon: Home,
     link: `/products?category=${encodeURIComponent(ProductCategory.NURSERY)}`,
     color: "baby-pink",
@@ -39,7 +38,7 @@ const categories = [
   {
     id: 5,
     name: ProductCategory.SAFETY,
-    description: "Products to keep your little one safe and healthy",
+    description: "Produkter för att hålla din lilla säker och frisk",
     icon: Heart,
     link: `/products?category=${encodeURIComponent(ProductCategory.SAFETY)}`,
     color: "baby-blue",
@@ -50,7 +49,7 @@ const RetailerCategories = () => {
   return (
     <section className="py-16 bg-gradient-soft">
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Shop By Category</h2>
+        <h2 className="section-title">Handla efter kategori</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-6 mt-12">
           {categories.map((category) => (

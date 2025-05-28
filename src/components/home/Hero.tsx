@@ -27,7 +27,7 @@ const Hero = () => {
           <img
             key={index}
             src={img}
-            alt={`Hero Slide ${index + 1}`}
+            alt={`Hero Bild ${index + 1}`}
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               index === currentImage ? "opacity-100" : "opacity-0"
             }`}
@@ -40,10 +40,10 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-16 md:py-24 lg:py-32 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-md animate-fade-in">
-            Your Trusted Source for Affordable, High-Quality Baby Products
+            Din pålitliga källa för prisvärda, högkvalitativa babyprodukter
           </h1>
           <p className="text-xl md:text-2xl text-white mb-8 drop-shadow-md animate-slide-up">
-            Because Every Baby Deserves the Best
+            Eftersom varje bebis förtjänar det bästa
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-slide-up">
             <Button 
@@ -51,7 +51,7 @@ const Hero = () => {
               asChild
             >
               <Link to="/products">
-                Shop Now <ShoppingBag className="w-5 h-5" />
+                Handla nu <ShoppingBag className="w-5 h-5" />
               </Link>
             </Button>
             <Button 
@@ -60,7 +60,7 @@ const Hero = () => {
               asChild
             >
               <Link to="/donate">
-                Support Our Mission <Heart className="w-5 h-5" />
+                Stöd vårt uppdrag <Heart className="w-5 h-5" />
               </Link>
             </Button>
           </div>
@@ -76,7 +76,7 @@ const Hero = () => {
                 className={`w-3 h-3 rounded-full transition-colors ${
                   idx === currentImage ? "bg-white" : "bg-white/50"
                 }`}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={`Gå till bild ${idx + 1}`}
               />
             ))}
           </div>

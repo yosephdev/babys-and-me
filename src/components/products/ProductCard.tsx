@@ -1,4 +1,3 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
@@ -41,14 +40,14 @@ export function ProductCard({ product }: ProductCardProps) {
   };
   
   const getProductPrice = () => {
-    if (isAdtractionProduct(product)) return `Starting at ${product.price} ${product.currency}`;
-    if (isDatabaseProduct(product)) return `Starting at ${product.price} ${product.currency || 'SEK'}`;
+    if (isAdtractionProduct(product)) return `Från ${product.price} ${product.currency}`;
+    if (isDatabaseProduct(product)) return `Från ${product.price} ${product.currency || 'SEK'}`;
     return (product as Product).priceRange;
   };
   
   const getRetailer = () => {
     if (isAdtractionProduct(product)) return product.advertiserName;
-    if (isDatabaseProduct(product)) return product.advertiser_name || 'Unknown Retailer';
+    if (isDatabaseProduct(product)) return product.advertiser_name || 'Okänd återförsäljare';
     return (product as Product).retailer;
   };
   
@@ -129,12 +128,12 @@ export function ProductCard({ product }: ProductCardProps) {
         </Button>
         {isBestSeller() && (
           <Badge className="absolute top-2 left-2 bg-baby-pink text-white">
-            Best Seller
+            Bästsäljare
           </Badge>
         )}
         {isEditorsPick() && (
           <Badge className="absolute top-2 left-2 bg-baby-yellow text-foreground">
-            Editor's Pick
+            Redaktörens val
           </Badge>
         )}
       </div>
@@ -180,7 +179,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <HoverCardContent className="w-52">
             <div className="space-y-1">
               <p className="text-sm">
-                This price is provided by {getRetailer()}. Click "Buy Now" to see the latest price and any available discounts!
+                Detta pris tillhandahålls av {getRetailer()}. Klicka på "Köp nu" för att se det senaste priset och eventuella tillgängliga rabatter!
               </p>
             </div>
           </HoverCardContent>
@@ -196,7 +195,7 @@ export function ProductCard({ product }: ProductCardProps) {
             rel="noopener noreferrer"
             className="flex items-center"
           >
-            Buy Now <ExternalLink className="ml-1 w-4 h-4" />
+            Köp nu <ExternalLink className="ml-1 w-4 h-4" />
           </a>
         </Button>
       </CardFooter>

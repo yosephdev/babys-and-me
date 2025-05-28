@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Facebook, Twitter, Instagram } from "lucide-react";
 import { toast } from "sonner";
@@ -7,7 +6,7 @@ import { Link } from "react-router-dom";
 const shareOnSocial = (platform: string) => {
   const url = encodeURIComponent(window.location.origin);
   const text = encodeURIComponent(
-    "Support Baby's & Me - helping families find affordable baby products!"
+    "Stöd Baby's & Me - hjälper familjer hitta prisvärda babyprodukter!"
   );
 
   let shareUrl = "";
@@ -21,7 +20,7 @@ const shareOnSocial = (platform: string) => {
       window.open(shareUrl, "_blank", "width=600,height=400");
       break;
     case "instagram":
-      toast.info("Copy the page link to share on Instagram");
+      toast.info("Kopiera sidlänken för att dela på Instagram");
       navigator.clipboard.writeText(window.location.origin);
       break;
     default:
@@ -32,12 +31,12 @@ const shareOnSocial = (platform: string) => {
 const OtherWaysToSupport = () => {
   return (
     <div className="mt-12 bg-white p-8 rounded-xl shadow-md">
-      <h2 className="text-2xl font-bold mb-4">Other Ways to Support</h2>
+      <h2 className="text-2xl font-bold mb-4">Andra sätt att stödja</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <h3 className="font-heading font-bold text-xl mb-2">Share Our Mission</h3>
+          <h3 className="font-heading font-bold text-xl mb-2">Dela vårt uppdrag</h3>
           <p className="text-gray-600 mb-4">
-            Help spread the word by sharing our website with friends and family who might benefit from our resources.
+            Hjälp oss sprida ordet genom att dela vår webbplats med vänner och familj som kan dra nytta av våra resurser.
           </p>
           <div className="flex space-x-3">
             <Button
@@ -70,13 +69,13 @@ const OtherWaysToSupport = () => {
           </div>
         </div>
         <div>
-          <h3 className="font-heading font-bold text-xl mb-2">Shop Through Our Links</h3>
+          <h3 className="font-heading font-bold text-xl mb-2">Handla via våra länkar</h3>
           <p className="text-gray-600 mb-4">
-            When you shop using our affiliate links, we earn a small commission that helps support our work.
+            När du handlar via våra affiliate-länkar tjänar vi en liten provision som hjälper till att stödja vårt arbete.
           </p>
           <Link to="/products">
             <Button className="bg-baby-blue text-white hover:bg-opacity-90">
-              Browse Products
+              Bläddra bland produkter
             </Button>
           </Link>
         </div>

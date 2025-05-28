@@ -32,6 +32,12 @@ const categories = Object.values(ProductCategory);
 
 type SortOption = 'alphabetical' | 'price-low-high' | 'price-high-low';
 
+const sortOptions: Record<SortOption, string> = {
+  'alphabetical': 'Alfabetiskt',
+  'price-low-high': 'Pris: Lågt till högt',
+  'price-high-low': 'Pris: Högt till lågt'
+};
+
 const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryParam = searchParams.get("category");
@@ -98,16 +104,16 @@ const Products = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Discover the Best Baby Products from Trusted Brands
+                Upptäck de bästa babyprodukterna från pålitliga varumärken
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Explore handpicked products across categories like clothing, toys, safety gear, and more.
+                Utforska handplockade produkter inom kategorier som kläder, leksaker, säkerhetsutrustning och mer.
               </p>
               
               <div className="relative max-w-xl mx-auto">
                 <Input 
                   type="text" 
-                  placeholder="Search products or retailers..." 
+                  placeholder="Sök produkter eller återförsäljare..." 
                   className="pl-10 rounded-full"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
@@ -131,7 +137,7 @@ const Products = () => {
                   }`}
                   onClick={() => handleCategoryChange("All")}
                 >
-                  All Products
+                  Alla produkter
                 </Button>
                 {Object.values(ProductCategory).map((category) => (
                   <Button
@@ -149,26 +155,28 @@ const Products = () => {
                 ))}
               </div>
               
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="flex items-center gap-2">
-                    <Tag className="w-4 h-4" /> Sort <ChevronDown className="w-4 h-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Sort by</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={() => handleSort('alphabetical')}>
-                    Alphabetical (A-Z)
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleSort('price-low-high')}>
-                    Price: Low to High
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleSort('price-high-low')}>
-                    Price: High to Low
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <div className="flex justify-end mb-4">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="outline" className="gap-2">
+                      Sortera efter: {sortOptions[sortOption]}
+                      <ChevronDown className="w-4 h-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>Sortera efter</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    {Object.entries(sortOptions).map(([value, label]) => (
+                      <DropdownMenuItem
+                        key={value}
+                        onClick={() => handleSort(value as SortOption)}
+                      >
+                        {label}
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
             </div>
             
             {activeCategory !== "All" && (
@@ -176,27 +184,29 @@ const Products = () => {
                 <h2 className="text-2xl font-bold mb-4">{activeCategory}</h2>
                 <p className="text-gray-600">
                   {activeCategory === ProductCategory.CLOTHING 
-                    ? "Quality clothes, shoes, and accessories for babies and toddlers"
+                    ? "Kvalitetskläder, skor och accessoarer för bebisar och småbarn"
                     : activeCategory === ProductCategory.FEEDING
-                    ? "Bottles, bibs, high chairs and everything for meal time"
+                    ? "Flaskor, haklappar, barnstolar och allt för måltider"
                     : activeCategory === ProductCategory.TOYS
-                    ? "Fun and educational toys to stimulate growing minds"
+                    ? "Roliga och pedagogiska leksaker för att stimulera växande sinnen"
                     : activeCategory === ProductCategory.NURSERY
-                    ? "Cribs, changing stations, and decor for the perfect nursery"
-                    : "Products to keep your little one safe and healthy"}
+                    ? "Spjälsängar, skötbord och inredning för det perfekta barnrummet"
+                    : "Produkter för att hålla ditt lilla barn säkert och friskt"}
                 </p>
               </div>
             )}
             
             {isLoading ? (
-              <div className="flex justify-center items-center py-20">
-                <Loader2 className="animate-spin w-8 h-8 text-baby-blue" />
-                <span className="ml-2 text-lg">Loading products...</span>
+              <div className="flex justify-center items-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin text-baby-pink" />
               </div>
             ) : error ? (
               <div className="text-center py-12">
-                <h3 className="text-xl font-bold mb-2">Error loading products</h3>
-                <p className="text-gray-600">Please try again later</p>
+                <p className="text-red-500">Ett fel uppstod vid hämtning av produkter. Försök igen senare.</p>
+              </div>
+            ) : filteredProducts.length === 0 ? (
+              <div className="text-center py-12">
+                <p className="text-gray-600">Inga produkter hittades som matchar din sökning.</p>
               </div>
             ) : (
               <>
@@ -208,8 +218,8 @@ const Products = () => {
                 
                 {sortedProducts.length === 0 && (
                   <div className="text-center py-12">
-                    <h3 className="text-xl font-bold mb-2">No products found</h3>
-                    <p className="text-gray-600">Try adjusting your search or category filter</p>
+                    <h3 className="text-xl font-bold mb-2">Inga produkter hittades</h3>
+                    <p className="text-gray-600">Försök justera din sökning eller kategorifilter</p>
                   </div>
                 )}
                 
@@ -249,7 +259,7 @@ const Products = () => {
             )}
 
             <div className="mt-16">
-              <h2 className="text-2xl font-bold mb-6">Our Retail Partners</h2>
+              <h2 className="text-2xl font-bold mb-6">Våra återförsäljare</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {retailers.map((retailer) => (
                   <a 
@@ -279,9 +289,9 @@ const Products = () => {
                       <div className="flex justify-between items-center">
                         <div className="flex items-center">
                           <Star className="w-4 h-4 fill-baby-yellow text-baby-yellow mr-1" />
-                          <span className="text-sm font-medium text-baby-pink">{retailer.commission} commission</span>
+                          <span className="text-sm font-medium text-baby-pink">{retailer.commission} provision</span>
                         </div>
-                        <span className="text-sm text-baby-blue font-medium">Visit Store →</span>
+                        <span className="text-sm text-baby-blue font-medium">Besök butik →</span>
                       </div>
                     </div>
                   </a>
