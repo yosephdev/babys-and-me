@@ -40,7 +40,7 @@ const SubscriptionCTA = () => {
                 </li>
               </ul>
               
-              <Link to="/register" className="block">
+              <Link to="/registrera" className="block">
                 <Button variant="outline" className="w-full">Gå med i gemenskapen</Button>
               </Link>
             </div>

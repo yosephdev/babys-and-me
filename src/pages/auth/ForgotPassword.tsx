@@ -69,7 +69,7 @@ const ForgotPassword = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Kom du ihåg ditt lösenord?{' '}
-              <Link to="/login" className="text-baby-pink hover:text-pink-600">
+              <Link to="/logga-in" className="text-baby-pink hover:text-pink-600">
                 Logga in
               </Link>
             </p>

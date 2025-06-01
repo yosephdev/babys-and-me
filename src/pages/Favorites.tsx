@@ -28,7 +28,7 @@ export default function Favorites() {
               Logga in för att se och hantera dina favoriter.
             </p>
             <Link
-              to="/login"
+              to="/logga-in"
               className="inline-block bg-baby-pink text-white px-6 py-3 rounded-md hover:bg-pink-600 transition-colors"
             >
               Logga in

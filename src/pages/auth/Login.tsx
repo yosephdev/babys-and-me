@@ -113,7 +113,7 @@ const Login = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Har du inget konto?{' '}
-              <Link to="/register" className="text-baby-pink hover:text-pink-600">
+              <Link to="/registrera" className="text-baby-pink hover:text-pink-600">
                 Registrera dig
               </Link>
             </p>

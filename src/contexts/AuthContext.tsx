@@ -75,7 +75,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       localStorage.setItem('auth_token', token);
       setUser(user);
       toast.success('Registrering lyckades! Vänligen verifiera din e-postadress.');
-      navigate('/login');
+      navigate('/logga-in');
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);
@@ -89,7 +89,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       await authService.requestPasswordReset(email);
       toast.success('Återställningslänk har skickats till din e-postadress.');
-      navigate('/login');
+      navigate('/logga-in');
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message);
