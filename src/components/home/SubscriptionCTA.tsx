@@ -40,7 +40,7 @@ const SubscriptionCTA = () => {
                 </li>
               </ul>
               
-              <Link to="/subscribe">
+              <Link to="/register" className="block">
                 <Button variant="outline" className="w-full">Gå med i gemenskapen</Button>
               </Link>
             </div>
@@ -71,8 +71,8 @@ const SubscriptionCTA = () => {
                   <span>Prioriterad kundsupport</span>
                 </li>
               </ul>
-              
-              <Link to="/subscribe">
+
+              <Link to="/prenumerera">
                 <Button className="w-full bg-baby-pink hover:bg-baby-pink/90">
                   Bli premiummedlem
                 </Button>

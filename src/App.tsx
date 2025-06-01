@@ -34,18 +34,18 @@ const App = () => (
         <AuthProvider>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/donate" element={<Donate />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/subscribe" element={<Subscribe />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route 
-              path="/admin" 
+            <Route path="/om-oss" element={<About />} />
+            <Route path="/blogg" element={<Blog />} />
+            <Route path="/produkter" element={<Products />} />
+            <Route path="/donera" element={<Donate />} />
+            <Route path="/logga-in" element={<Login />} />
+            <Route path="/registrera" element={<Register />} />
+            <Route path="/glomd-e-losenord" element={<ForgotPassword />} />
+            <Route path="/prenumerera" element={<Subscribe />} />
+            <Route path="/integritetspolicy" element={<PrivacyPolicy />} />
+            <Route path="/anvandarvillkor" element={<TermsOfService />} />
+            <Route
+              path="/admin"
               element={
                 <ProtectedRoute>
                   <Admin />
@@ -53,8 +53,8 @@ const App = () => (
               } 
             />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/favoriter" element={<Favorites />} />
+            <Route path="/kontakta-oss" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

@@ -34,10 +34,10 @@ const Footer = () => {
             <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Snabblänkar</h3>
             <ul className="space-y-2">
               <li><Link to="/" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Hem</Link></li>
-              <li><Link to="/about" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Om oss</Link></li>
-              <li><Link to="/blog" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Blogg</Link></li>
-              <li><Link to="/products" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Produkter</Link></li>
-              <li><Link to="/contact" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Kontakt</Link></li>
+              <li><Link to="/om-oss" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Om oss</Link></li>
+              <li><Link to="/blogg" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Blogg</Link></li>
+              <li><Link to="/produkter" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Produkter</Link></li>
+              <li><Link to="/kontakta-oss" className="text-sm text-gray-600 hover:text-baby-pink transition-colors">Kontakt</Link></li>
             </ul>
           </div>
 
@@ -45,48 +45,48 @@ const Footer = () => {
             <h3 className="text-lg font-heading font-bold mb-4 text-foreground">Kategorier</h3>
             <ul className="space-y-2">
               <li>
-                <Link 
-                  to="/products"
+                <Link
+                  to="/produkter"
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
                   Alla produkter
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={`/products?category=${encodeURIComponent(ProductCategory.CLOTHING)}`}
+                <Link
+                  to={`/produkter?category=${encodeURIComponent(ProductCategory.CLOTHING)}`}
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
                   {ProductCategory.CLOTHING}
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={`/products?category=${encodeURIComponent(ProductCategory.FEEDING)}`}
+                <Link
+                  to={`/produkter?category=${encodeURIComponent(ProductCategory.FEEDING)}`}
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
                   {ProductCategory.FEEDING}
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={`/products?category=${encodeURIComponent(ProductCategory.TOYS)}`}
+                <Link
+                  to={`/produkter?category=${encodeURIComponent(ProductCategory.TOYS)}`}
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
                   {ProductCategory.TOYS}
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={`/products?category=${encodeURIComponent(ProductCategory.NURSERY)}`}
+                <Link
+                  to={`/produkter?category=${encodeURIComponent(ProductCategory.NURSERY)}`}
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
                   {ProductCategory.NURSERY}
                 </Link>
               </li>
               <li>
-                <Link 
-                  to={`/products?category=${encodeURIComponent(ProductCategory.SAFETY)}`}
+                <Link
+                  to={`/produkter?category=${encodeURIComponent(ProductCategory.SAFETY)}`}
                   className="text-sm text-gray-600 hover:text-baby-pink transition-colors"
                 >
                   {ProductCategory.SAFETY}
@@ -117,10 +117,10 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} Baby's & Me. Alla rättigheter förbehållna.
             </p>
             <div className="flex space-x-4">
-              <Link to="/privacy-policy" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
+              <Link to="/integritetspolicy" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
                 Integritetspolicy
               </Link>
-              <Link to="/terms-of-service" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
+              <Link to="/anvandarvillkor" className="text-xs text-gray-500 hover:text-baby-pink transition-colors">
                 Användarvillkor
               </Link>
             </div>

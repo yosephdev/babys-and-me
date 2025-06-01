@@ -25,18 +25,18 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link to="/" className="text-foreground hover:text-baby-pink font-medium transition-colors">Hem</Link>
-          <Link to="/about" className="text-foreground hover:text-baby-pink font-medium transition-colors">Om oss</Link>          
-          <Link to="/products" className="text-foreground hover:text-baby-pink font-medium transition-colors">Produkter</Link>
-          <Link to="/blog" className="text-foreground hover:text-baby-pink font-medium transition-colors">Blogg</Link>
-          <Link to="/donate" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donera</Link>
-          <Link to="/contact" className="text-foreground hover:text-baby-pink font-medium transition-colors">Kontakt</Link>
+          <Link to="/om-oss" className="text-foreground hover:text-baby-pink font-medium transition-colors">Om oss</Link>
+          <Link to="/produkter" className="text-foreground hover:text-baby-pink font-medium transition-colors">Produkter</Link>
+          <Link to="/blogg" className="text-foreground hover:text-baby-pink font-medium transition-colors">Blogg</Link>
+          <Link to="/donera" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donera</Link>
+          <Link to="/kontakta-oss" className="text-foreground hover:text-baby-pink font-medium transition-colors">Kontakt</Link>
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Link to="/favorites" className="p-2 rounded-full hover:bg-soft-pink transition-colors">
+          <Link to="/favoriter" className="p-2 rounded-full hover:bg-soft-pink transition-colors">
             <Heart className="w-5 h-5 text-baby-pink" />
           </Link>
-          <Link to="/products" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
+          <Link to="/produkter" className="p-2 rounded-full hover:bg-soft-blue transition-colors">
             <ShoppingBag className="w-5 h-5 text-baby-blue" />
           </Link>
           {isAuthenticated && (
@@ -44,7 +44,7 @@ const Navbar = () => {
               <Settings className="w-5 h-5 text-baby-blue" />
             </Link>
           )}
-          <Link to="/subscribe">
+          <Link to="/prenumerera" className="btn-primary flex items-center gap-2">
             <Button className="btn-primary flex items-center gap-2">
               <Mail className="w-4 h-4" />
               Prenumerera
@@ -63,14 +63,14 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t">
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-3">
             <Link to="/" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Hem</Link>
-            <Link to="/about" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Om oss</Link>
-            <Link to="/blog" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Blogg</Link>
-            <Link to="/products" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Produkter</Link>
-            <Link to="/contact" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Kontakt</Link>
+            <Link to="/om-oss" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Om oss</Link>
+            <Link to="/blogg" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Blogg</Link>
+            <Link to="/produkter" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Produkter</Link>
+            <Link to="/kontakta-oss" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Kontakt</Link>
             {isAuthenticated && (
               <Link to="/admin" className="text-foreground hover:text-baby-pink py-2" onClick={toggleMenu}>Admin</Link>
             )}
-            <Link to="/subscribe" className="btn-primary w-full text-center" onClick={toggleMenu}>
+            <Link to="/prenumerera" className="btn-primary w-full text-center" onClick={toggleMenu}>
               Prenumerera
             </Link>
           </div>
