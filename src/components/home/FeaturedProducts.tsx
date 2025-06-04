@@ -2,9 +2,10 @@ import { ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ProductCard } from "@/components/products/ProductCard";
-import { ProductCategory, products } from "@/data/products";
+import { ProductCategory } from "@/data/products";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
+import { fetchProducts } from "@/services/adtractionApi";
 
 const FeaturedProducts = () => {
   const categories = Object.values(ProductCategory);
@@ -17,11 +18,14 @@ const FeaturedProducts = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["featuredProducts"],
     queryFn: async () => {
-      // Get featured products (best sellers or editor's picks) from each category
-      const featuredProducts = products.filter(p => p.isBestSeller || p.isEditorsPick);
+      // Fetch a larger set of products to filter from
+      const response = await fetchProducts(undefined, 0, 20);
+      
+      // Get featured products (best sellers or editor's picks)
+      const featuredProducts = response.products.filter(p => p.isBestSeller || p.isEditorsPick);
       
       // Ensure we have representation from different categories
-      const categorizedProducts = {};
+      const categorizedProducts: Record<string, boolean> = {};
       const result = [];
       
       // First pass: get one from each category if possible
@@ -43,7 +47,7 @@ const FeaturedProducts = () => {
       
       // If we still don't have 4, add regular products
       if (result.length < 4) {
-        for (const product of products) {
+        for (const product of response.products) {
           if (!result.includes(product) && result.length < 4) {
             result.push(product);
           }

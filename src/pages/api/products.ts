@@ -1,19 +1,42 @@
-// API endpoint: /api/products
-// This file should be placed in src/pages/api/products.ts
-// Handles GET requests to fetch all products from Neon (PostgreSQL)
+// src/pages/api/products.ts
+import { NextApiRequest, NextApiResponse } from 'next';
+import axios from 'axios';
+import { ADTRACTION_CONFIG, ADTRACTION_ENDPOINTS } from '@/config/adtraction';
 
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-import pool from '../../../db';
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  if (req.method !== 'GET') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
-  }
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { category, page = 1, pageSize = 10 } = req.query;
+  
   try {
-    const { rows } = await pool.query('SELECT * FROM products ORDER BY created_at DESC');
-    res.status(200).json(rows);
+    // Prepare query parameters
+    const params: Record<string, any> = {
+      page: parseInt(page as string),
+      pageSize: parseInt(pageSize as string),
+    };
+    
+    if (category && category !== "All") {
+      params.category = category;
+    }
+    
+    // Make API request to Adtraction
+    const response = await axios.get(
+      `${ADTRACTION_CONFIG.API_URL}/${ADTRACTION_CONFIG.API_VERSION}${ADTRACTION_ENDPOINTS.PRODUCTS}`,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'apikey': process.env.ADTRACTION_API_KEY || '',
+        },
+        params,
+      }
+    );
+    
+    // Return the data
+    res.status(200).json(response.data);
   } catch (error: any) {
-    res.status(500).json({ error: error.message || 'Failed to fetch products' });
+    console.error('Error fetching products from Adtraction API:', error);
+    res.status(error.response?.status || 500).json({
+      error: error.message,
+      details: error.response?.data || 'Unknown error'
+    });
   }
 }

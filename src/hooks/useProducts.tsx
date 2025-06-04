@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
-// import { fetchProducts, AdtractionProduct } from "@/services/adtractionApi";
-import { products as hardcodedProducts, Product } from "@/data/products";
+import { fetchProducts, AdtractionProduct } from "@/services/adtractionApi";
+import { Product } from "@/data/products";
 
 interface UseProductsProps {
   category?: string;
   initialPage?: number;
   pageSize?: number;
+  useRealApi?: boolean;
 }
 
 export const useProducts = ({
   category,
   initialPage = 0,
-  pageSize = 10
+  pageSize = 10,
+  useRealApi = true
 }: UseProductsProps = {}) => {
   const [currentPage, setCurrentPage] = useState(initialPage);
   
@@ -27,20 +29,14 @@ export const useProducts = ({
     error,
     refetch
   } = useQuery({
-    queryKey: ["products", category, currentPage, pageSize],
-    // TODO: Switch back to fetchProducts(category, currentPage, pageSize) when ready to use API
+    queryKey: ["products", category, currentPage, pageSize, useRealApi],
     queryFn: () => {
-      // Filter and paginate hardcoded products
-      let filtered = hardcodedProducts;
-      if (category && category !== "All") {
-        filtered = filtered.filter(p => p.category === category);
-      }
-      const start = currentPage * pageSize;
-      const end = start + pageSize;
-      return Promise.resolve({
-        products: filtered.slice(start, end),
-        count: filtered.length
-      });
+      // Use the real Adtraction API
+      return fetchProducts(
+        category !== "All" ? category : undefined, 
+        currentPage, 
+        pageSize
+      );
     },
   });
   

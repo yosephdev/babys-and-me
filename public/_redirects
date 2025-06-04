@@ -1,0 +1,2 @@
+/api/products/* https://api.adtraction.com/v1/products/:splat 200
+/api/* https://api.adtraction.com/v1/:splat 200

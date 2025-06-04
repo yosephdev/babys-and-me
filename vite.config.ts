@@ -12,9 +12,15 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:3000',
+      '/api/adtraction': {
+        target: 'https://api.adtraction.com/v1',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/adtraction/, ''),
+        configure: (proxy, options) => {
+          proxy.on('proxyReq', function(proxyReq, req, res) {
+            proxyReq.setHeader('apikey', '68D033B724D8E3A1AC14B2AA5A984203A99339BB');
+          });
+        },
       },
     },
   },
