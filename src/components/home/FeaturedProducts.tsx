@@ -41,6 +41,7 @@ const FeaturedProducts = () => {
           !priorityAdvertisers.includes(p.advertiserName)
         );
         featuredProducts = [...featuredProducts, ...otherFeatured];
+      }
       
       // Ensure we have representation from different categories
       const categorizedProducts: Record<string, boolean> = {};
