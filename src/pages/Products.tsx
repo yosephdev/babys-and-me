@@ -268,6 +268,11 @@ const Products = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-white rounded-xl overflow-hidden shadow-md card-hover border border-gray-100"
+                    onClick={() => {
+                      // Track retailer click for analytics
+                      console.log(`Retailer click: ${retailer.name}`);
+                      // Could add more sophisticated tracking here
+                    }}
                   >
                     <div className="flex p-6 items-center gap-4">
                       <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">

@@ -22,7 +22,25 @@ const FeaturedProducts = () => {
       const response = await fetchProducts(undefined, 0, 20);
       
       // Get featured products (best sellers or editor's picks)
-      const featuredProducts = response.products.filter(p => p.isBestSeller || p.isEditorsPick);
+      // Prioritize products from advertisers we've applied to partner with
+      const priorityAdvertisers = [
+        "Jollyroom SE", "Babyland", "Polarn O. Pyret", "Baby V", 
+        "Bugaboo SE", "Zcooly", "BabyWorld SE", "Safekid SE", "Axkid SE"
+      ];
+      
+      // First get products from priority advertisers
+      let featuredProducts = response.products.filter(p => 
+        (p.isBestSeller || p.isEditorsPick) && 
+        priorityAdvertisers.includes(p.advertiserName)
+      );
+      
+      // If we don't have enough, add other featured products
+      if (featuredProducts.length < 8) {
+        const otherFeatured = response.products.filter(p => 
+          (p.isBestSeller || p.isEditorsPick) && 
+          !priorityAdvertisers.includes(p.advertiserName)
+        );
+        featuredProducts = [...featuredProducts, ...otherFeatured];
       
       // Ensure we have representation from different categories
       const categorizedProducts: Record<string, boolean> = {};

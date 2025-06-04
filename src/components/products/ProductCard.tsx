@@ -72,7 +72,13 @@ export function ProductCard({ product }: ProductCardProps) {
     } else {
       commission = (product as Product).commission;
     }
-    return commission.replace('%', '');
+    
+    // Handle special commission formats (like fixed amounts)
+    if (commission.includes('SEK') || !isNaN(Number(commission))) {
+      return commission.includes('%') ? commission : commission + '%';
+    }
+    
+    return commission.replace('%', '') + '%';
   };
   
   const isBestSeller = () => {
@@ -194,6 +200,11 @@ export function ProductCard({ product }: ProductCardProps) {
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center"
+            onClick={() => {
+              // Track click for analytics (could be expanded later)
+              console.log(`Product click: ${getProductName()} from ${getRetailer()}`);
+              // Could add more sophisticated tracking here
+            }}
           >
             Köp nu <ExternalLink className="ml-1 w-4 h-4" />
           </a>
