@@ -57,8 +57,7 @@ const AcceptedPartners = () => {
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/logo-alt.png" 
-                  alt="BERG SE logo" 
+                  src="/images/berg-logo.png" alt="BERG SE logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
