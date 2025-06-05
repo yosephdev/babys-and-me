@@ -73,8 +73,7 @@ const OtherWaysToSupport = () => {
           <p className="text-gray-600 mb-4">
             När du handlar via våra affiliate-länkar tjänar vi en liten provision som hjälper till att stödja vårt arbete.
           </p>
-          <Link to="/products">
-            <Button className="bg-baby-blue text-white hover:bg-opacity-90">
+         <Link to="/produkter">            <Button className="bg-baby-blue text-white hover:bg-opacity-90">
               Bläddra bland produkter
             </Button>
           </Link>
