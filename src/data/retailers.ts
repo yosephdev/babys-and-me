@@ -112,8 +112,7 @@ export const retailers: Retailer[] = [
     id: 12,
     name: "BERG SE",
     description: "Förvandla din plats till en lekplats för alla åldrar",
-    logo: "/images/logo-alt.png", // Replace with actual logo when available
-    commission: "10",
+    logo: "/images/berg-logo.png",    commission: "10",
     website: "https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1",
     category: "Leksaker",
   },
