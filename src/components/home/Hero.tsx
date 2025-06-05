@@ -50,7 +50,7 @@ const Hero = () => {
               className="btn-tertiary flex items-center gap-2 text-lg" 
               asChild
             >
-              <Link to="/products">
+              <Link to="/produkter">
                 Handla nu <ShoppingBag className="w-5 h-5" />
               </Link>
             </Button>

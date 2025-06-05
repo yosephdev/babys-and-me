@@ -17,8 +17,7 @@ const BlogPost = () => {
             <h1 className="text-4xl font-bold mb-4">404 - Inlägg hittades inte</h1>
             <p className="text-gray-600 mb-8">Blogginlägget du letar efter finns inte.</p>
             <Link
-              to="/blog"
-              className="inline-flex items-center text-baby-pink hover:underline"
+              to="/blogg" className="inline-flex items-center text-baby-pink hover:underline"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Tillbaka till bloggen
@@ -160,8 +159,7 @@ const BlogPost = () => {
           <div className="container mx-auto px-4">
             {/* Back to Blog Link */}
             <Link
-              to="/blog"
-              className="inline-flex items-center text-baby-pink hover:underline mb-8"
+              to="/blogg" className="inline-flex items-center text-baby-pink hover:underline mb-8"
             >
               <ChevronLeft className="w-4 h-4 mr-1" />
               Tillbaka till bloggen

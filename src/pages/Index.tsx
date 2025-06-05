@@ -7,6 +7,7 @@ import RetailerCategories from "@/components/home/RetailerCategories";
 import DonationSection from "@/components/home/DonationSection";
 import SubscriptionCTA from "@/components/home/SubscriptionCTA";
 import AcceptedPartners from "@/components/home/AcceptedPartners";
+import AxkidProducts from "@/components/home/AxkidProducts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -17,6 +18,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <AcceptedPartners />
+        <AxkidProducts />
         <FeaturedProducts />
         <Testimonials />
         <RetailerCategories />

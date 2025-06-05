@@ -74,9 +74,95 @@ const AcceptedPartners = () => {
           </a>
         </div>
         
+        {/* BERG Featured Products */}
+        <div className="mt-12">
+          <h3 className="text-xl font-bold mb-6 text-center">Populära produkter från BERG</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {/* Product 1 */}
+            <a 
+              href="https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-go2-retro-pink"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+            >
+              <div className="aspect-square bg-gray-100 relative">
+                <img src="https://cdn.berg.com/media/catalog/product/2/4/24.50.07.00_1_berg_go2_retro_pink.png" alt="BERG GO² Mint" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3">
+                <h4 className="font-medium text-sm">BERG GO² Pink </h4>
+                <p className="text-baby-pink font-bold mt-1">829 SEK</p>
+              </div>
+            </a>
+            
+            {/* Product 2 */}
+            <a 
+              href="https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/klatterstallning/berg-playbase-nest-swing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+            >
+              <div className="aspect-square bg-gray-100 relative">
+                <img src="https://cdn.berg.com/media/catalog/product/2/0/20.21.03.00_1_BERG_PlayBase_Nest_swing.png" alt="BERG PlayBase Nest Swing" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3">
+                <h4 className="font-medium text-sm">BERG PlayBase Nest Swing</h4>
+                <p className="text-baby-pink font-bold mt-1">859 SEK</p>
+              </div>
+            </a>
+            
+            {/* Product 3 */}
+            <a 
+              href="https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-dempy-black"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+            >
+              <div className="aspect-square bg-gray-100 relative">
+                <img src="https://cdn.berg.com/media/catalog/product/2/5/25.17.01.00_1_berg_dempy_black_1.png" alt="BERG Dempy Black" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3">
+                <h4 className="font-medium text-sm">BERG Dempy Black</h4>
+                <p className="text-baby-pink font-bold mt-1">899 SEK</p>
+              </div>
+            </a>
+            
+            {/* Product 4 */}
+            <a 
+              href="https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-nexo-foldable-lime"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+            >
+              <div className="aspect-square bg-gray-100 relative">
+                <img src="https://cdn.berg.com/media/catalog/product/2/4/24.77.00.00_1_berg_nexo_foldable_lime.png" alt="BERG Nexo Foldable Lime" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3">
+                <h4 className="font-medium text-sm">BERG Nexo Foldable Lime</h4>
+                <p className="text-baby-pink font-bold mt-1">949 SEK</p>
+              </div>
+            </a>
+            
+            {/* Product 5 */}
+            <a 
+              href="https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-nexo-foldable-mint"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
+            >
+              <div className="aspect-square bg-gray-100 relative">
+                <img src="https://cdn.berg.com/media/catalog/product/2/4/24.77.03.00_1_berg_nexo_foldable_mint.png" alt="BERG Nexo Foldable Mint" className="w-full h-full object-cover" />
+              </div>
+              <div className="p-3">
+                <h4 className="font-medium text-sm">BERG Nexo Foldable Mint</h4>
+                <p className="text-baby-pink font-bold mt-1">949 SEK</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
         <div className="text-center mt-10">
           <Button className="btn-secondary" asChild>
-            <Link to="/products">
+            <Link to="/produkter">
               Utforska alla produkter <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </Button>

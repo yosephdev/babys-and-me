@@ -63,7 +63,7 @@ export default function Favorites() {
               Du har inte lagt till några produkter i dina favoriter än.
             </p>
             <Link
-              to="/products"
+              to="/produkter"
               className="inline-block bg-baby-pink text-white px-6 py-3 rounded-md hover:bg-pink-600 transition-colors"
             >
               Utforska produkter

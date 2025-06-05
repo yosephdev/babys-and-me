@@ -8,7 +8,7 @@ const categories = [
     name: ProductCategory.CLOTHING,
     description: "Kvalitetskläder, skor och accessoarer för bebisar och småbarn",
     icon: Baby,
-    link: `/products?category=${encodeURIComponent(ProductCategory.CLOTHING)}`,
+    link: `/produkter?category=${encodeURIComponent(ProductCategory.CLOTHING)}`,
     color: "baby-pink",
   },
   {
@@ -16,7 +16,7 @@ const categories = [
     name: ProductCategory.FEEDING,
     description: "Flaskor, haklappar, barnstolar och allt för måltider",
     icon: Utensils,
-    link: `/products?category=${encodeURIComponent(ProductCategory.FEEDING)}`,
+    link: `/produkter?category=${encodeURIComponent(ProductCategory.FEEDING)}`,
     color: "baby-blue",
   },
   {
@@ -24,7 +24,7 @@ const categories = [
     name: ProductCategory.TOYS,
     description: "Roliga och pedagogiska leksaker för att stimulera växande sinnen",
     icon: Puzzle,
-    link: `/products?category=${encodeURIComponent(ProductCategory.TOYS)}`,
+    link: `/produkter?category=${encodeURIComponent(ProductCategory.TOYS)}`,
     color: "baby-yellow",
   },
   {
@@ -32,7 +32,7 @@ const categories = [
     name: ProductCategory.NURSERY,
     description: "Barnsängar, skötbord och inredning för det perfekta barnrummet",
     icon: Home,
-    link: `/products?category=${encodeURIComponent(ProductCategory.NURSERY)}`,
+    link: `/produkter?category=${encodeURIComponent(ProductCategory.NURSERY)}`,
     color: "baby-pink",
   },
   {
@@ -40,7 +40,7 @@ const categories = [
     name: ProductCategory.SAFETY,
     description: "Produkter för att hålla din lilla säker och frisk",
     icon: Heart,
-    link: `/products?category=${encodeURIComponent(ProductCategory.SAFETY)}`,
+    link: `/produkter?category=${encodeURIComponent(ProductCategory.SAFETY)}`,
     color: "baby-blue",
   },
 ];

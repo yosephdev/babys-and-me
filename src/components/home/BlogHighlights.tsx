@@ -57,8 +57,7 @@ const BlogHighlights = () => {
 
         <div className="text-center mt-12">
           <Button className="btn-secondary" asChild>
-            <Link to="/blog">
-              Visa alla artiklar <ChevronRight className="w-5 h-5 ml-1" />
+            <Link to="/blogg">              Visa alla artiklar <ChevronRight className="w-5 h-5 ml-1" />
             </Link>
           </Button>
         </div>
