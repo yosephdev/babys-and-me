@@ -6,8 +6,10 @@ import BlogHighlights from "@/components/home/BlogHighlights";
 import RetailerCategories from "@/components/home/RetailerCategories";
 import DonationSection from "@/components/home/DonationSection";
 import SubscriptionCTA from "@/components/home/SubscriptionCTA";
-import AcceptedPartners from "@/components/home/AcceptedPartners";
+import OfficialPartners from "@/components/home/OfficialPartners";
 import AxkidProducts from "@/components/home/AxkidProducts";
+import BergProducts from "@/components/home/BergProducts";
+import BabyworldProducts from "@/components/home/BabyworldProducts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -17,9 +19,10 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <AcceptedPartners />
+        <OfficialPartners />
         <AxkidProducts />
-        <FeaturedProducts />
+        <BergProducts />
+        <BabyworldProducts />
         <Testimonials />
         <RetailerCategories />
         <BlogHighlights />

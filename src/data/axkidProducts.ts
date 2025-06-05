@@ -136,7 +136,7 @@ export const axkidProducts = [
     description: "Skyddar ditt barn från skadligt solljus under resor.",
     category: "Hälsa & Säkerhet",
     priceRange: "249 SEK",
-    image: "https://axkid.com/app/uploads/Modukid-Infant-suflett-med-båge.png",
+    image: "https://axkid.com/app/uploads/Modukid-Infant-suflett-med-ba%CC%8Age.png",
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
