@@ -69,7 +69,7 @@ export const retailers: Retailer[] = [
     description: "Vi vill sätta nya, högre standarder för barns säkerhet i trafiken genom bakåtvänt åkande",
     logo: "/images/logo-axkid.png",
     commission: "5",
-    website: "https://axkid.com/se/",
+    website: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1",
     category: "Säkerhet",
   },
   {
@@ -107,5 +107,14 @@ export const retailers: Retailer[] = [
     commission: "10",
     website: "https://safekid.se",
     category: "Säkerhet",
+  },
+  {
+    id: 12,
+    name: "BERG SE",
+    description: "Förvandla din plats till en lekplats för alla åldrar",
+    logo: "/images/logo-alt.png", // Replace with actual logo when available
+    commission: "10",
+    website: "https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1",
+    category: "Leksaker",
   },
 ];

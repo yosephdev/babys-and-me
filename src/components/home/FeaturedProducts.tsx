@@ -105,9 +105,9 @@ const FeaturedProducts = () => {
         )}
 
         <div className="text-center mt-12">
-          <Button className="btn-secondary" asChild>
-            <Link to="/products">
-              Visa alla produkter <ChevronRight className="w-5 h-5 ml-1" />
+          <Button variant="secondary" asChild>
+            <Link to="/produkter">
+              Visa alla produkter <ChevronRight className="w-5 h-5" />
             </Link>
           </Button>
         </div>
