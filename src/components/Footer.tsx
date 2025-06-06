@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { ProductCategory } from "@/data/products";
+import NewsletterForm from "./NewsletterForm";
 
 const Footer = () => {
   return (
@@ -101,12 +100,7 @@ const Footer = () => {
               Prenumerera på vårt nyhetsbrev för exklusiva erbjudanden och föräldratips.
             </p>
             <div className="space-y-2">
-              <Input 
-                type="email" 
-                placeholder="Din e-postadress" 
-                className="rounded-full" 
-              />
-              <Button className="w-full btn-primary">Prenumerera</Button>
+              <NewsletterForm />
             </div>
           </div>
         </div>
