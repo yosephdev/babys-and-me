@@ -13,7 +13,7 @@ const OfficialPartners = () => {
           Vi är stolta över att samarbeta med dessa fantastiska varumärken för att erbjuda dig de bästa produkterna för ditt barn.
         </p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Axkid SE */}
           <a 
             href="https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1"
@@ -99,6 +99,168 @@ const OfficialPartners = () => {
                 <h3 className="font-heading font-bold text-xl mt-1">BabyWorld SE</h3>
                 <p className="text-sm text-gray-600 mt-1">
                   Baby- & barnbutik online - unikt & brett sortiment
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Babyland */}
+          <a 
+            href="https://pin.babyland.se/t/t?a=1066444612&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-babyland.png" 
+                  alt="Babyland logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Babyland</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Allt för barn och baby
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Bugaboo SE */}
+          <a 
+            href="https://do.bugaboo.com/t/t?a=1625527092&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-bugaboo.png" 
+                  alt="Bugaboo SE logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Bugaboo SE</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Innovativa barnvagnar och tillbehör
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Litenleker */}
+          <a 
+            href="https://go.adt256.com/t/t?a=1325987281&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-litenleker.png" 
+                  alt="Litenleker logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Litenleker</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Leksaker för alla åldrar
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Polarn O. Pyret */}
+          <a 
+            href="https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-polarn.png" 
+                  alt="Polarn O. Pyret logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Polarn O. Pyret</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Hållbara barnkläder
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Stor&Liten */}
+          <a 
+            href="https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-storliten.png" 
+                  alt="Stor&Liten logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Stor&Liten</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Allt för barnfamiljen
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Baby V */}
+          <a 
+            href="https://go.adt231.net/t/t?a=1327902115&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-babyv.png" 
+                  alt="Baby V logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Baby V</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Kvalitetsprodukter för de minsta
                 </p>
               </div>
             </div>
