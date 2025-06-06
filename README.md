@@ -17,7 +17,7 @@ You can work on this project locally using your preferred IDE. The project is bu
 
 ```sh
 # Step 1: Clone the repository using your project's Git URL
-git clone <YOUR_GIT_URL>
+git clone https://github.com/yosephdev/baby-blossom-hub
 
 # Step 2: Navigate to the project directory
 cd baby-blossom-hub
