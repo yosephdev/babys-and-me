@@ -10,6 +10,7 @@ import OfficialPartners from "@/components/home/OfficialPartners";
 import AxkidProducts from "@/components/home/AxkidProducts";
 import BergProducts from "@/components/home/BergProducts";
 import BabyworldProducts from "@/components/home/BabyworldProducts";
+import PolarnProducts from "@/components/home/PolarnProducts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -20,6 +21,7 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <OfficialPartners />
+        <PolarnProducts />
         <AxkidProducts />
         <BergProducts />
         <BabyworldProducts />

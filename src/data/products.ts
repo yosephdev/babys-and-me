@@ -174,6 +174,7 @@ export const bergProducts: Product[] = [
 // Import partner products
 import { axkidProducts } from "./axkidProducts";
 import { babyworldProducts } from "./babyworldProducts";
+import { polarnProducts } from "./polarnProducts";
 
 // Only include products from official partners
 export const products: Product[] = [
@@ -197,5 +198,9 @@ export const products: Product[] = [
   // Add all partner products to the main products array
   ...bergProducts,
   ...axkidProducts,
-  ...babyworldProducts
+  ...babyworldProducts,
+  ...polarnProducts.map(product => ({
+    ...product,
+    category: ProductCategory.CLOTHING
+  }))
 ];
