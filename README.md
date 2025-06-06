@@ -65,3 +65,4 @@ Then, follow your hosting provider's instructions for deploying a Vite/React app
 Yes! Most hosting platforms allow you to connect a custom domain. Refer to your hosting provider's documentation for step-by-step instructions.
 
 For any questions or support, feel free to reach out via [https://babysme.com](https://babysme.com/contact).
+# redeploy trigger
