@@ -173,8 +173,13 @@ export const bergProducts: Product[] = [
 
 // Import partner products
 import { axkidProducts } from "./axkidProducts";
+import { babylandProducts } from "./babylandProducts";
 import { babyworldProducts } from "./babyworldProducts";
+import { babyvProducts } from "./babyvProducts";
+import { bugabooProducts } from "./bugabooProducts";
+import { litenlekerProducts } from "./litenlekerProducts";
 import { polarnProducts } from "./polarnProducts";
+import { storlitenProducts } from "./storlitenProducts";
 
 // Only include products from official partners
 export const products: Product[] = [
@@ -198,7 +203,12 @@ export const products: Product[] = [
   // Add all partner products to the main products array
   ...bergProducts,
   ...axkidProducts,
+  ...babylandProducts,
   ...babyworldProducts,
+  ...babyvProducts,
+  ...bugabooProducts,
+  ...litenlekerProducts,
+  ...storlitenProducts,
   ...polarnProducts.map(product => ({
     ...product,
     category: ProductCategory.CLOTHING

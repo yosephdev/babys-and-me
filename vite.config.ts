@@ -11,13 +11,12 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api/adtraction': {
-        target: 'https://api.adtraction.com/v1',
+      "/api/adtraction": {
+        target: "https://api.adtraction.net/v2",
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/adtraction/, ''),
-        configure: (proxy, options) => {
-          proxy.on('proxyReq', function(proxyReq, req, res) {
-            // Use process.env for server-side code
+        rewrite: (path) => path.replace(/^\/api\/adtraction/, ""),
+        configure: (proxy) => {
+          proxy.on('proxyReq', (proxyReq) => {
             proxyReq.setHeader('apikey', process.env.VITE_ADTRACTION_API_KEY || '');
           });
         },

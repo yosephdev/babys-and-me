@@ -106,7 +106,7 @@ export const babyworldProducts = [
     description: "Mjuk och bekväm långärmad body i premium cashmere i naturlig grön färg.",
     category: "Kläder & Accessoarer",
     priceRange: "279 SEK",
-    image: "https://www.babyworld.se/assets/blobs/Babyworld_Minymo_La%CC%8Anga%CC%88rmad_Body_Blue_Fog_145206_1-5f4eddf40c.png",
+    image: "https://www.babyworld.se/assets/blobs/Babyworld_Minymo_La%CC%8Anga%CC%88rmad_Body_Pure_Cashmere_145134_1-5890c543d3.png",
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
