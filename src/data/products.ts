@@ -212,5 +212,7 @@ export const products: Product[] = [
   ...polarnProducts.map(product => ({
     ...product,
     category: ProductCategory.CLOTHING
-  }))
+  })),
+  
+  // No blog posts in products array
 ];

@@ -9,6 +9,7 @@ export interface BlogPost {
   author: string;
   readTime: string;
   likes: number;
+  content?: BlogPostContent;
 }
 
 export interface BlogPostContent {
@@ -16,4 +17,5 @@ export interface BlogPostContent {
   keyPoints: string[];
   expertAdvice: string;
   conclusion: string;
+  recommendedProducts?: string[];
 } 
