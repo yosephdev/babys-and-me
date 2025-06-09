@@ -22,7 +22,7 @@ async function parseJsonBody(req: VercelRequest): Promise<any> {
     return req.body;
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req: VercelRequest, res: VercelResponse) {
     // Add Content-Type header
     res.setHeader('Content-Type', 'application/json');
 
