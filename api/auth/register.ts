@@ -3,7 +3,7 @@ import { neon } from '@neondatabase/serverless';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
-import { sendVerificationEmail } from '@/utils/sendVerificationEmail';
+import { sendVerificationEmail } from '../../utils/sendVerificationEmail';
 
 
 // Initialize Neon client

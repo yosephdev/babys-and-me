@@ -26,41 +26,41 @@ import Contact from "./pages/Contact";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/om-oss" element={<About />} />
-            <Route path="/blogg" element={<Blog />} />
-            <Route path="/produkter" element={<Products />} />
-            <Route path="/donera" element={<Donate />} />
-            <Route path="/logga-in" element={<Login />} />
-            <Route path="/registrera" element={<Register />} />
-            <Route path="/glomd-e-losenord" element={<ForgotPassword />} />
-            <Route path="/prenumerera" element={<Subscribe />} />
-            <Route path="/integritetspolicy" element={<PrivacyPolicy />} />
-            <Route path="/anvandarvillkor" element={<TermsOfService />} />
-            <Route
-              path="/admin"
-              element={
-                <ProtectedRoute>
-                  <Admin />
-                </ProtectedRoute>
-              } 
-            />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/favoriter" element={<Favorites />} />
-            <Route path="/kontakta-oss" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+                <AuthProvider>
+                    <Routes>
+                        <Route path="/" element={<Index />} />
+                        <Route path="/om-oss" element={<About />} />
+                        <Route path="/blogg" element={<Blog />} />
+                        <Route path="/produkter" element={<Products />} />
+                        <Route path="/donera" element={<Donate />} />
+                        <Route path="/logga-in" element={<Login />} />
+                        <Route path="/registrera" element={<Register />} />
+                        <Route path="/glomd-e-losenord" element={<ForgotPassword />} />
+                        <Route path="/prenumerera" element={<Subscribe />} />
+                        <Route path="/integritetspolicy" element={<PrivacyPolicy />} />
+                        <Route path="/anvandarvillkor" element={<TermsOfService />} />
+                        <Route
+                            path="/admin"
+                            element={
+                                <ProtectedRoute>
+                                    <Admin />
+                                </ProtectedRoute>
+                            }
+                        />
+                        <Route path="/blog/:slug" element={<BlogPost />} />
+                        <Route path="/favoriter" element={<Favorites />} />
+                        <Route path="/kontakta-oss" element={<Contact />} />
+                        <Route path="*" element={<NotFound />} />
+                    </Routes>
+                </AuthProvider>
+            </BrowserRouter>
+        </TooltipProvider>
+    </QueryClientProvider>
 );
 
 export default App;
