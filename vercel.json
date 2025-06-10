@@ -9,5 +9,15 @@
             "use": "@vercel/static-build"
         }
     ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/api/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
+        }
+    ],
     "outputDirectory": "dist"
 }
