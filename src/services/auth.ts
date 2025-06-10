@@ -40,9 +40,7 @@ export const authService = {
 
     async register(email: string, password: string): Promise<{ user: Omit<User, 'password_hash'>; token: string }> {
         try {
-            const apiUrl = import.meta.env.PROD 
-                ? '/api/auth/register' 
-                : 'http://localhost:3000/api/auth/register';
+            const apiUrl = '/api/register';
                 
             const response = await fetch(apiUrl, {
                 method: 'POST',
