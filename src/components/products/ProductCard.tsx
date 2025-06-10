@@ -1,215 +1,126 @@
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
-import { Star, ExternalLink, Heart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { AdtractionProduct } from "@/services/adtractionApi";
-import { Product } from "@/data/products";
-import { Database } from "@/integrations/supabase/types";
-import { useFavorites } from "@/hooks/useFavorites";
+import React from 'react';
+import { Heart } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { useFavorites } from '@/hooks/useFavorites';
+import { useAuth } from '@/contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
-type DatabaseProduct = Database['public']['Tables']['products']['Row'];
-
-interface ProductCardProps {
-  product: AdtractionProduct | Product | DatabaseProduct;
+interface Product {
+  id: string | number;
+  name: string;
+  description: string;
+  price?: number;
+  priceRange?: string;
+  imageUrl?: string;
+  image?: string;
+  category?: string;
+  brand?: string;
+  retailer?: string;
+  retailerLogo?: string;
+  advertiserName?: string;
+  link?: string;
+  url?: string;
+  trackingUrl?: string;
+  affiliateLink?: string;
+  commission?: string;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
-  const { toggleFavorite, isFavorite } = useFavorites();
-  const isProductFavorite = isFavorite(product.id);
+interface ProductCardProps {
+  product: Product;
+}
 
-  const isAdtractionProduct = (p: AdtractionProduct | Product | DatabaseProduct): p is AdtractionProduct => {
-    return 'url' in p && 'advertiserId' in p;
-  };
-
-  const isDatabaseProduct = (p: AdtractionProduct | Product | DatabaseProduct): p is DatabaseProduct => {
-    return 'affiliate_link' in p && 'image_url' in p;
-  };
-
-  const getProductImage = () => {
-    if (isAdtractionProduct(product)) return product.imageUrl;
-    if (isDatabaseProduct(product)) return product.image_url || 'https://placehold.co/400x400/soft-blue/white?text=Product';
-    return (product as Product).image;
-  };
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { isFavorite, addFavorite, removeFavorite } = useFavorites();
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   
-  const getProductName = () => product.name;
-  
-  const getProductDescription = () => {
-    if (isDatabaseProduct(product)) return product.description || '';
-    return product.description;
-  };
-  
-  const getProductPrice = () => {
-    if (isAdtractionProduct(product)) return `Från ${product.price} ${product.currency}`;
-    if (isDatabaseProduct(product)) return `Från ${product.price} ${product.currency || 'SEK'}`;
-    return (product as Product).priceRange;
-  };
-  
-  const getRetailer = () => {
-    if (isAdtractionProduct(product)) return product.advertiserName;
-    if (isDatabaseProduct(product)) return product.advertiser_name || 'Okänd återförsäljare';
-    return (product as Product).retailer;
-  };
-  
-  const getRetailerLogo = () => {
-    if (isAdtractionProduct(product)) return product.advertiserLogoUrl;
-    if (isDatabaseProduct(product)) return product.advertiser_logo_url || 'https://placehold.co/100/baby-pink/white?text=LOGO';
-    return (product as Product).retailerLogo;
-  };
-  
-  const getProductLink = () => {
-    if (isAdtractionProduct(product)) return product.url;
-    if (isDatabaseProduct(product)) return product.affiliate_link || '#';
-    return (product as Product).link;
-  };
-  
-  const getCommission = () => {
-    let commission = '';
-    if (isAdtractionProduct(product)) {
-      commission = product.commission || '5';
-    } else if (isDatabaseProduct(product)) {
-      commission = product.commission || '5';
+  const handleFavoriteClick = () => {
+    if (!isAuthenticated) {
+      toast.error('Du måste logga in för att spara favoriter');
+      navigate('/logga-in');
+      return;
+    }
+    
+    if (isFavorite(product.id.toString())) {
+      removeFavorite(product.id.toString());
+      toast.success('Borttagen från favoriter');
     } else {
-      commission = (product as Product).commission;
+      addFavorite(product.id.toString(), product);
+      toast.success('Tillagd i favoriter');
     }
-    
-    // Handle special commission formats (like fixed amounts)
-    if (commission.includes('SEK') || !isNaN(Number(commission))) {
-      return commission.includes('%') ? commission : commission + '%';
+  };
+  
+  const handleProductClick = () => {
+    // Check all possible link properties
+    const url = product.url || product.link || product.trackingUrl || product.affiliateLink;
+    if (url) {
+      window.open(url, '_blank');
+    } else {
+      toast.error('Produktlänk saknas');
     }
-    
-    return commission.replace('%', '') + '%';
   };
   
-  const isBestSeller = () => {
-    if (isAdtractionProduct(product)) return product.isBestSeller;
-    if (isDatabaseProduct(product)) return product.is_best_seller;
-    return (product as Product).isBestSeller;
-  };
+  const isFav = isFavorite(product.id.toString());
+  const imageUrl = product.imageUrl || product.image || 'https://via.placeholder.com/300x300?text=Produktbild';
+  const price = product.price || (product.priceRange ? product.priceRange : '0 kr');
+  const brandName = product.brand || product.retailer || product.advertiserName || '';
   
-  const isEditorsPick = () => {
-    if (isAdtractionProduct(product)) return product.isEditorsPick;
-    if (isDatabaseProduct(product)) return product.is_editors_pick;
-    return (product as Product).isEditorsPick;
-  };
-  
-  const getRating = () => {
-    if (isAdtractionProduct(product)) return product.rating;
-    if (isDatabaseProduct(product)) return product.rating;
-    return (product as Product).rating;
-  };
-  
-  const getReviews = () => {
-    if (isAdtractionProduct(product)) return product.reviews;
-    if (isDatabaseProduct(product)) return product.reviews;
-    return (product as Product).reviews;
-  };
-
   return (
-    <Card className="overflow-hidden card-hover border border-gray-100 h-full flex flex-col">
-      <div className="aspect-square relative overflow-hidden">
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+      <div className="relative cursor-pointer" onClick={handleProductClick}>
         <img 
-          src={getProductImage()} 
-          alt={getProductName()} 
-          className="object-cover w-full h-full transition-transform hover:scale-105"
-          onError={(e) => {
-            const target = e.target as HTMLImageElement;
-            target.src = 'https://placehold.co/400x400/soft-blue/white?text=Image+Error';
-          }}
+          src={imageUrl} 
+          alt={product.name} 
+          className="w-full h-64 object-cover"
         />
-        <Button
-          variant="ghost"
-          size="icon"
-          className="absolute top-2 right-2 bg-white/80 hover:bg-white"
+        <button 
           onClick={(e) => {
-            e.preventDefault();
-            if (!isAdtractionProduct(product) && !isDatabaseProduct(product)) {
-              toggleFavorite(product as Product);
-            }
+            e.stopPropagation();
+            handleFavoriteClick();
           }}
+          className={`absolute top-4 right-4 p-2 rounded-full ${
+            isFav ? 'bg-baby-pink text-white' : 'bg-white text-gray-400'
+          }`}
         >
-          <Heart 
-            className={`w-5 h-5 ${isProductFavorite ? 'fill-baby-pink text-baby-pink' : 'text-gray-600'}`}
-          />
-        </Button>
-        {isBestSeller() && (
-          <Badge className="absolute top-2 left-2 bg-baby-pink text-white">
-            Bästsäljare
-          </Badge>
-        )}
-        {isEditorsPick() && (
-          <Badge className="absolute top-2 left-2 bg-baby-yellow text-foreground">
-            Redaktörens val
-          </Badge>
-        )}
-      </div>
-
-      <CardContent className="p-4 flex-grow">
-        <div className="flex items-start mb-2">
-          <div className="w-10 h-10 rounded overflow-hidden mr-2 flex-shrink-0">
+          <Heart className={`w-5 h-5 ${isFav ? 'fill-current' : ''}`} />
+        </button>
+        
+        {product.retailerLogo && (
+          <div className="absolute bottom-4 right-4 bg-white p-1 rounded-md">
             <img 
-              src={getRetailerLogo()} 
-              alt={getRetailer()} 
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = 'https://placehold.co/100/baby-pink/white?text=LOGO';
-              }}
+              src={product.retailerLogo} 
+              alt={product.retailer || ''} 
+              className="h-6 w-auto"
             />
           </div>
-          <div>
-            <h3 className="font-heading font-bold text-lg text-foreground">{getProductName()}</h3>
-            <p className="text-xs text-baby-blue">{getRetailer()}</p>
-          </div>
-        </div>
-        <p className="text-sm text-gray-600 mb-3 line-clamp-3">{getProductDescription()}</p>
-        
-        {getRating() && (
-          <div className="flex items-center mb-2">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star 
-                key={i} 
-                className={`w-4 h-4 ${i < (getRating() || 0) ? "fill-baby-yellow text-baby-yellow" : "text-gray-300"}`} 
-              />
-            ))}
-            <span className="text-xs text-gray-500 ml-1">({getReviews() || 0})</span>
-          </div>
         )}
-      </CardContent>
-
-      <CardFooter className="flex items-center justify-between p-4 pt-0 border-t border-gray-100 mt-auto">
-        <HoverCard>
-          <HoverCardTrigger asChild>
-            <span className="font-bold text-lg">{getProductPrice()}</span>
-          </HoverCardTrigger>
-          <HoverCardContent className="w-52">
-            <div className="space-y-1">
-              <p className="text-sm">
-                Detta pris tillhandahålls av {getRetailer()}. Klicka på "Köp nu" för att se det senaste priset och eventuella tillgängliga rabatter!
-              </p>
-            </div>
-          </HoverCardContent>
-        </HoverCard>
-        
-        <Button
-          asChild
-          className="bg-baby-blue hover:bg-baby-blue/90 text-white"
+      </div>
+      
+      <div className="p-4 flex-grow flex flex-col">
+        {brandName && (
+          <span className="text-sm text-gray-500 mb-1">{brandName}</span>
+        )}
+        <h3 
+          className="font-bold text-lg mb-2 line-clamp-2 cursor-pointer hover:text-baby-pink" 
+          onClick={handleProductClick}
         >
-          <a 
-            href={getProductLink()} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center"
-            onClick={() => {
-              // Track click for analytics (could be expanded later)
-              console.log(`Product click: ${getProductName()} from ${getRetailer()}`);
-              // Could add more sophisticated tracking here
-            }}
+          {product.name}
+        </h3>
+        <p className="text-gray-600 mb-4 line-clamp-3">{product.description}</p>
+        
+        <div className="mt-auto flex justify-between items-center">
+          <span className="font-bold text-xl">{typeof price === 'number' ? `${price} kr` : price}</span>
+          <Button 
+            className="bg-baby-pink hover:bg-pink-600"
+            onClick={handleProductClick}
           >
-            Köp nu <ExternalLink className="ml-1 w-4 h-4" />
-          </a>
-        </Button>
-      </CardFooter>
-    </Card>
+            Visa produkt
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
+
+export default ProductCard;

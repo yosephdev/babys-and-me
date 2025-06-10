@@ -21,23 +21,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `;
       
       if (!tableExists[0].exists) {
-        return res.status(200).json({ count: 0 });
+        return res.status(200).json({ categories: [] });
       }
     } catch (error) {
       console.error('Error checking table existence:', error);
-      return res.status(200).json({ count: 0 });
+      return res.status(200).json({ categories: [] });
     }
 
-    // Get product count
-    const result = await sql`SELECT COUNT(*) FROM products`;
+    // Get distinct categories
+    const result = await sql`
+      SELECT DISTINCT category 
+      FROM products 
+      WHERE category IS NOT NULL
+    `;
     
-    return res.status(200).json({ 
-      count: parseInt(result[0].count) || 0
-    });
+    const categories = result.map(row => row.category).filter(Boolean);
+    
+    return res.status(200).json({ categories });
   } catch (error) {
-    console.error('Error getting product count:', error);
+    console.error('Error getting categories:', error);
     return res.status(500).json({ 
-      error: 'Failed to get product count',
+      error: 'Failed to get categories',
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }

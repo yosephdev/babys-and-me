@@ -1,79 +1,109 @@
-
 import { useState, useEffect } from 'react';
-import { Product } from '@/data/products';
-
 import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
 
+// Simple localStorage-based favorites implementation
 export const useFavorites = () => {
-  const [favorites, setFavorites] = useState<Product[]>([]);
+  const { user, isAuthenticated } = useAuth();
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [favoriteProducts, setFavoriteProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
+  const [error, setError] = useState<Error | null>(null);
 
+  // Load favorites from localStorage when user changes
   useEffect(() => {
-    if (user) {
-      loadFavorites();
-    } else {
-      setFavorites([]);
-      setLoading(false);
-    }
+    const loadFavorites = async () => {
+      if (!user) {
+        setFavorites([]);
+        setFavoriteProducts([]);
+        setLoading(false);
+        return;
+      }
+
+      try {
+        setLoading(true);
+        // Use localStorage instead of Firestore
+        const savedFavorites = localStorage.getItem(`favorites_${user.uid}`);
+        if (savedFavorites) {
+          const parsedFavorites = JSON.parse(savedFavorites);
+          setFavorites(parsedFavorites.productIds || []);
+          setFavoriteProducts(parsedFavorites.products || []);
+        } else {
+          // Initialize empty favorites
+          localStorage.setItem(`favorites_${user.uid}`, JSON.stringify({ 
+            productIds: [], 
+            products: [] 
+          }));
+          setFavorites([]);
+          setFavoriteProducts([]);
+        }
+        setError(null);
+      } catch (err) {
+        console.error('Error loading favorites:', err);
+        setError(err instanceof Error ? err : new Error('Failed to load favorites'));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadFavorites();
   }, [user]);
 
-  const loadFavorites = async () => {
-  try {
-    if (!user) return;
-    const response = await fetch(`/api/favorites?user_id=${user.id}`);
-    const products = await response.json();
-    setFavorites(products);
-    setLoading(false);
-  } catch (error) {
-    console.error('Error loading favorites:', error);
-    toast.error('Failed to load favorites');
-    setLoading(false);
-  }
-};
-
-  const toggleFavorite = async (product: Product) => {
+  const addFavorite = async (productId: string, productData: any) => {
     if (!user) {
-      toast.error('Please log in to save favorites');
+      toast.error('Du måste logga in för att spara favoriter');
       return;
     }
-
+    
     try {
-      const productString = JSON.stringify(product);
-      const exists = favorites.some((p) => p.id === product.id);
-
-      if (exists) {
-        await fetch('/api/favorites', {
-          method: 'DELETE',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ product: productString, user_id: user.id })
-        });
-        setFavorites(current => current.filter(p => p.id !== product.id));
-        toast.success('Removed from favorites');
-      } else {
-        await fetch('/api/favorites', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ product: productString, user_id: user.id })
-        });
-        setFavorites(current => [...current, product]);
-        toast.success('Added to favorites');
-      }
-    } catch (error) {
-      console.error('Error toggling favorite:', error);
-      toast.error('Failed to update favorites');
+      // Update local state
+      setFavorites(prev => [...prev, productId]);
+      setFavoriteProducts(prev => [...prev, productData]);
+      
+      // Save to localStorage
+      localStorage.setItem(`favorites_${user.uid}`, JSON.stringify({
+        productIds: [...favorites, productId],
+        products: [...favoriteProducts, productData]
+      }));
+      
+    } catch (err) {
+      console.error('Error adding favorite:', err);
+      setError(err instanceof Error ? err : new Error('Failed to add favorite'));
     }
   };
 
-  const isFavorite = (productId: string | number) => {
-    return favorites.some((p) => p.id === productId);
+  const removeFavorite = async (productId: string) => {
+    if (!user) return;
+    
+    try {
+      // Update local state
+      setFavorites(prev => prev.filter(id => id !== productId));
+      setFavoriteProducts(prev => prev.filter(product => product.id !== productId));
+      
+      // Save to localStorage
+      localStorage.setItem(`favorites_${user.uid}`, JSON.stringify({
+        productIds: favorites.filter(id => id !== productId),
+        products: favoriteProducts.filter(product => product.id !== productId)
+      }));
+      
+    } catch (err) {
+      console.error('Error removing favorite:', err);
+      setError(err instanceof Error ? err : new Error('Failed to remove favorite'));
+    }
+  };
+
+  const isFavorite = (productId: string) => {
+    return favorites.includes(productId);
   };
 
   return {
     favorites,
+    favoriteProducts,
     loading,
-    toggleFavorite,
-    isFavorite
+    error,
+    addFavorite,
+    removeFavorite,
+    isFavorite,
+    isAuthenticated
   };
 };

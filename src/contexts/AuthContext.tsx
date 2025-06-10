@@ -9,7 +9,8 @@ import {
   onAuthStateChanged,
   User as FirebaseUser
 } from 'firebase/auth';
-import { auth } from '@/firebase/config';
+import { auth, db } from '@/firebase/config';
+import { doc, getDoc, setDoc } from 'firebase/firestore';
 
 interface AuthContextType {
   user: FirebaseUser | null;
@@ -19,19 +20,32 @@ interface AuthContextType {
   resetPassword: (email: string) => Promise<void>;
   signOut: () => Promise<void>;
   isAuthenticated: boolean;
+  isAdmin: boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Admin email - only this user will be admin
+const ADMIN_EMAIL = 'admin@babysme.com';
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<FirebaseUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     // Listen for auth state changes
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      
+      // Check if user is admin (only specific email is admin)
+      if (currentUser) {
+        setIsAdmin(currentUser.email === ADMIN_EMAIL);
+      } else {
+        setIsAdmin(false);
+      }
+      
       setLoading(false);
     });
 
@@ -52,7 +66,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signUp = async (email: string, password: string) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      
+      // Create user favorites document
+      const userFavoritesRef = doc(db, 'userFavorites', userCredential.user.uid);
+      await setDoc(userFavoritesRef, { productIds: [] });
+      
       toast.success('Registrering lyckades!');
       navigate('/');
     } catch (error: any) {
@@ -91,7 +110,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       signUp,
       resetPassword,
       signOut,
-      isAuthenticated: !!user
+      isAuthenticated: !!user,
+      isAdmin
     }}>
       {children}
     </AuthContext.Provider>

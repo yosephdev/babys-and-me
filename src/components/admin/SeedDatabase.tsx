@@ -1,89 +1,60 @@
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { toast } from 'sonner';
+import { bergProducts } from '@/data/products';
 
-import { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
+interface SeedDatabaseProps {
+  onSeedComplete?: () => void;
+}
 
+const SeedDatabase: React.FC<SeedDatabaseProps> = ({ onSeedComplete }) => {
+  const [loading, setLoading] = useState(false);
 
-export const SeedDatabase = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState<string | null>(null);
-
-  const handleSeed = async () => {
+  const seedProducts = async () => {
+    setLoading(true);
     try {
-      setIsLoading(true);
-      setMessage(null);
+      // Use the API endpoint to seed the database
+      const response = await fetch('/api/products/seed', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ products: bergProducts })
+      });
 
-      // Call your backend API endpoint to seed Neon database
-      const response = await fetch("/api/seed-products");
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to seed database');
+      }
+
       const data = await response.json();
-
-      if (data.success) {
-        toast.success(data.message);
-        setMessage(data.message);
-      } else {
-        toast.error(data.message);
-        setMessage(`Error: ${data.message}`);
+      toast.success(`Successfully added ${data.count} products to the database`);
+      
+      // Call the callback to refresh data
+      if (onSeedComplete) {
+        onSeedComplete();
       }
     } catch (error) {
-      console.error("Error seeding database:", error);
-      toast.error("Failed to seed database. See console for details.");
-      setMessage("Failed to seed database. See console for details.");
+      console.error('Error seeding database:', error);
+      toast.error('Failed to seed database: ' + (error instanceof Error ? error.message : String(error)));
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
-
-  // Count existing products
-  const checkProductCount = async () => {
-    try {
-      const response = await fetch('/api/products/count');
-      const data = await response.json();
-      if (data.count && data.count > 0) {
-        setMessage(`Database already has ${data.count} products.`);
-      } else {
-        setMessage('Database has no products. You can seed it now.');
-      }
-    } catch (error) {
-      console.error("Error checking products:", error);
-      setMessage('Error checking product count.');
-    }
-  };
-
-  // Check product count on mount
-  useState(() => {
-    checkProductCount();
-  });
-
-  // (Removed all references to supabase, now using Neon/pg client only)
 
   return (
-    <div className="p-4 border rounded-lg bg-gray-50">
-      <h3 className="text-lg font-bold mb-2">Seed Database</h3>
-      <p className="text-gray-600 mb-4">
-        Populate your database with sample product data. This is useful for testing.
+    <div className="mt-8 p-6 bg-white rounded-lg shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Database Management</h2>
+      <p className="mb-4 text-gray-600">
+        Seed the database with BERG product data. This is useful for testing.
       </p>
-      
-      {message && (
-        <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded">
-          {message}
-        </div>
-      )}
-      
-      <div className="flex space-x-4">
-        <Button onClick={handleSeed} disabled={isLoading}>
-          {isLoading ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Seeding...
-            </>
-          ) : 'Seed Database'}
-        </Button>
-        
-        <Button variant="outline" onClick={checkProductCount} disabled={isLoading}>
-          Check Products
-        </Button>
-      </div>
+      <Button 
+        onClick={seedProducts} 
+        disabled={loading}
+        className="bg-baby-pink hover:bg-pink-600"
+      >
+        {loading ? 'Seeding Database...' : 'Seed Database with Products'}
+      </Button>
     </div>
   );
 };
