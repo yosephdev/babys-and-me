@@ -17,5 +17,5 @@ export const ADTRACTION_ENDPOINTS = {
 export const ADTRACTION_HEADERS = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'apikey': '68D033B724D8E3A1AC14B2AA5A984203A99339BB',
-}; 
+  'apikey': process.env.ADTRACTION_API_KEY || '',
+};
