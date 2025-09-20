@@ -3,6 +3,10 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 
+// User Registration API Endpoint
+// This file handles user registration with proper validation and security
+// Moved to correct folder structure for better API organization
+
 // Initialize Neon client
 const sql = neon(process.env.DATABASE_URL);
 // Add fallback for JWT_SECRET

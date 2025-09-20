@@ -1,5 +1,9 @@
 import { type Config } from "tailwindcss";
 
+// Tailwind CSS Configuration
+// Updated for Vercel build compatibility and enhanced styling
+// Includes custom baby-themed color palette and improved responsive design
+
 const config: Config = {
   darkMode: ["class"],
   content: [
