@@ -117,7 +117,7 @@ babys-and-me/
 
 2. **Install dependencies**
    ```bash
-npm install
+   npm install
    # or
    yarn install
    ```
