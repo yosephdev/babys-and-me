@@ -258,19 +258,51 @@ export const blogPosts: BlogPost[] = [
         slug: "berg-toys-child-development",
         author: "Erik Johansson",
         readTime: "10 min",
-        likes: 189
+        likes: 189,
+        content: {
+          introduction: "BERG:s utomhusleksaker är designade för att främja barns fysiska och mentala utveckling genom aktiv lek. Deras produkter kombinerar säkerhet, kvalitet och rolighet för att skapa en optimal lekupplevelse.",
+          keyPoints: [
+            "Balanscyklar tränar koordination och självförtroende",
+            "Lekhus och klätterramar utvecklar grovmotorik och balans",
+            "Utomhuslek stärker immunförsvaret och minskar stress",
+            "Kvalitetsmaterial som tål intensiv användning i alla väder"
+          ],
+          expertAdvice: "Erik Johansson, barnutvecklingsexpert, rekommenderar minst en timmes utomhuslek dagligen för att främja både fysisk och mental hälsa hos barn.",
+          conclusion: "BERG:s leksaker erbjuder en perfekt kombination av säkerhet, kvalitet och utvecklingspotential. Produkter som GO² balanscykel och PlayBase lekhus ger barnen möjlighet att utforska sina gränser i en trygg miljö.",
+          recommendedProducts: [
+            "BERG GO² Retro Pink",
+            "BERG PlayBase Nest Swing",
+            "BERG Dempy Black"
+          ]
+        }
     },
     {
         id: 3,
-        title: "Stilfull Komfort: Minymo Barnkläder från BabyWorld",
-        excerpt: "Upptäck Minymos mjuka och hållbara barnkläder i cashmere och andra premium material, perfekta för din bebis känsliga hud.",
-        image: "https://www.babyworld.se/assets/blobs/Babyworld_Minymo_Jumpsuit_Ribbad_Peach_Whip_145238_1-e9ef15278e.png",
+        title: "Klassiska Leksaker: Varför LEGO Fortfarande Är Bäst",
+        excerpt: "Upptäck varför LEGO:s tidlösa byggleksaker fortsätter att vara favoriter bland barn och föräldrar, med fokus på utveckling och kreativitet.",
+        image: "https://media.storochliten.se/product-images/XL/lego-city-fire-station.jpg",
         date: "2024-05-05",
         category: "Produktrecensioner",
-        slug: "minymo-baby-clothes",
+        slug: "lego-classic-toys",
         author: "Lina Ekström",
         readTime: "7 min",
-        likes: 156
+        likes: 156,
+        content: {
+          introduction: "LEGO har i decennier varit synonymt med kreativ lek och utveckling. Deras byggleksaker kombinerar underhållning med pedagogisk värde på ett sätt som få andra leksaker kan mäta sig med.",
+          keyPoints: [
+            "Utvecklar finmotorik och problemlösningsförmåga",
+            "Stimulerar kreativitet och fantasi",
+            "Hållbara delar som kan användas i generationer",
+            "Lämpliga för alla åldrar från småbarn till vuxna"
+          ],
+          expertAdvice: "Lina Ekström, lekterapeut, framhäver att LEGO:s byggleksaker utvecklar viktiga kognitiva färdigheter samtidigt som de ger timmar av rolig lek.",
+          conclusion: "LEGO:s produkter från Stor&Liten erbjuder en perfekt kombination av underhållning och utveckling. Från LEGO City Fire Station till LEGO DUPLO Town, det finns något för alla åldrar och intressen.",
+          recommendedProducts: [
+            "LEGO City Fire Station",
+            "LEGO DUPLO Town",
+            "BRIO World Railway Starter Set"
+          ]
+        }
     },
     {
         id: 4,
@@ -314,29 +346,29 @@ export const blogPosts: BlogPost[] = [
     },
     {
         id: 6,
-        title: "Hållbart Mode för Barn: Varför Kvalitet Lönar Sig i Längden",
-        excerpt: "En guide till att välja hållbara och högkvalitativa barnkläder som BabyWorlds Minymo-kollektion, som är bättre för både plånboken och miljön.",
-        image: "https://www.babyworld.se/assets/blobs/Babyworld_Minymo_Sweatshirt_Flint_Stone_145214_1-aeae812525.png",
+        title: "Träleksaker: Varför Kid's Concept Är Perfekt för Utveckling",
+        excerpt: "Upptäck varför träleksaker från Kid's Concept är det bästa valet för din barns utveckling, med fokus på hållbarhet och pedagogisk värde.",
+        image: "https://media.kidsconcept.se/product-images/XL/kids-hub-play-kitchen.jpg",
         date: "2024-04-15",
-        category: "Budgettips",
-        slug: "sustainable-baby-fashion",
+        category: "Barnutveckling",
+        slug: "wooden-toys-development",
         author: "Maria Svensson",
         readTime: "11 min",
         likes: 167,
         content: {
-          introduction: "Att välja hållbara barnkläder är bra för både miljön och plånboken. Så här gör du smarta val för ditt barns garderob.",
+          introduction: "Träleksaker från Kid's Concept kombinerar hållbarhet med pedagogisk värde på ett sätt som främjar barns utveckling och kreativitet. Deras produkter är designade för att växa med barnet.",
           keyPoints: [
-            "Satsa på kvalitet framför kvantitet",
-            "Välj miljömärkta och certifierade material",
-            "Ta hand om kläderna för längre livslängd",
-            "Återanvänd och återvinn när det är möjligt"
+            "Naturliga material som är säkra för barn och miljö",
+            "Stimulerar kreativitet och fantasi genom öppen lek",
+            "Utvecklar finmotorik och problemlösningsförmåga",
+            "Hållbara produkter som kan användas i generationer"
           ],
-          expertAdvice: "Maria Svensson, hållbarhetsrådgivare, tipsar om att köpa färre men bättre plagg och att tvätta i låga temperaturer för att bevara både färg och kvalitet.",
-          conclusion: "Hållbart mode för barn är en investering i framtiden – både för ditt barn och för planeten. Varumärken som Polarn O. Pyret och Minymo erbjuder hållbara alternativ som håller för flera barn.",
+          expertAdvice: "Maria Svensson, barnutvecklingsexpert, rekommenderar träleksaker för att de ger en sensorisk upplevelse som plastleksaker inte kan ersätta, vilket främjar hjärnans utveckling.",
+          conclusion: "Kid's Concept träleksaker erbjuder en perfekt kombination av hållbarhet, säkerhet och utvecklingspotential. Produkter som Play Kitchen och Rocking Mammoth ger barnen möjlighet att utforska och lära på ett naturligt sätt.",
           recommendedProducts: [
-            "Polarn O. Pyret Regnställ",
-            "Minymo Ekologiska Basplagg",
-            "Polarn O. Pyret Ullunderställ"
+            "Kid's Hub Play Kitchen",
+            "Neo Rocking Mammoth",
+            "Children's Table and Chairs Set"
           ]
         }
     },

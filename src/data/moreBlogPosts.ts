@@ -1,29 +1,29 @@
 export const moreBlogPosts = [
     {
         id: 21,
-        title: "Babyland: Klassiska Leksaker för Generationer",
-        excerpt: "Upptäck hur Babylands tidlösa leksaker och spel stimulerar kreativitet och lärande för dagens barn, precis som för tidigare generationer.",
-        image: "https://media.babyland.se/product-images/XL/alga_alfapet-0.jpg",
+        title: "STIGA Sport: Från Tennisset till Snowracer - Aktiv Lek för Alla Åldrar",
+        excerpt: "Upptäck hur STIGA:s breda sortiment av sportleksaker och aktivitetsprodukter främjar fysisk utveckling och rolig lek för barn i alla åldrar.",
+        image: "https://media.storochliten.se/product-images/XL/26592-0.jpg",
         date: "2024-05-12",
-        category: "Leksaker & Utveckling",
-        slug: "babyland-classic-toys",
+        category: "Aktiv Lek",
+        slug: "stiga-sports-toys",
         author: "Karin Bergström",
         readTime: "8 min",
         likes: 134,
         content: {
-            introduction: "Babyland har i decennier levererat kvalitetsleksaker som står sig genom generationer. Deras fokus på klassiska spel och leksaker som Alga Alfapet och Plasto-serien erbjuder tidlösa lekvärden i en digital tidsålder.",
+            introduction: "STIGA har i decennier varit synonymt med kvalitetssportleksaker som främjar fysisk aktivitet och utveckling. Deras sortiment från minitennisset till snowracer erbjuder aktiv lek för alla åldrar och intressen.",
             keyPoints: [
-                "Klassiska spel som utvecklar språk och kognitiva förmågor",
-                "Hållbara leksaker tillverkade för att hålla i generationer",
-                "Produkter som uppmuntrar till social interaktion och familjetid",
-                "Pedagogiska värden i kombination med ren lekglädje"
+                "Sportleksaker som utvecklar koordination och balans",
+                "Produkter för både inomhus- och utomhusaktiviteter",
+                "Anpassade för olika åldrar och färdighetsnivåer",
+                "Hållbara produkter som tål intensiv användning"
             ],
-            expertAdvice: "Karin Bergström, pedagogisk expert, framhäver att klassiska brädspel som Alga Alfapet utvecklar språkförmåga och sociala färdigheter på ett sätt som digitala alternativ inte kan ersätta.",
-            conclusion: "I en tid när digitala enheter dominerar barnens vardag erbjuder Babylands sortiment en välkommen motvikt. Deras klassiska spel och leksaker skapar möjligheter för familjer att umgås, lära och utvecklas tillsammans på ett sätt som har stått tidens test.",
+            expertAdvice: "Karin Bergström, sportpedagog, framhäver att STIGA:s produkter utvecklar viktiga motoriska färdigheter samtidigt som de ger barnen rolig och engagerande fysisk aktivitet.",
+            conclusion: "STIGA:s produkter från Stor&Liten erbjuder en perfekt kombination av sport och lek. Från STIGA Minitennisset till Snowracer SX Pro, det finns något för alla barn som vill vara aktiva och ha roligt.",
             recommendedProducts: [
-                "Alga Alfapet",
-                "Alga Barnens Alfapet",
-                "Plasto Hink med köksleksaker"
+                "STIGA Minitennisset",
+                "STIGA Snowracer SX Pro",
+                "STIGA Innebandybollar EXS"
             ]
         }
     },
