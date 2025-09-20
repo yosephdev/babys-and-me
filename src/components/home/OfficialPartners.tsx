@@ -225,7 +225,7 @@ const OfficialPartners = () => {
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/placeholder.svg" 
+                  src="/images/logo-babybjorn.png" 
                   alt="BabyBjörn logo" 
                   className="w-full h-full object-contain"
                 />
@@ -252,7 +252,7 @@ const OfficialPartners = () => {
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/placeholder.svg" 
+                  src="/images/logo-bonti.png" 
                   alt="Bonti logo" 
                   className="w-full h-full object-contain"
                 />
@@ -279,7 +279,7 @@ const OfficialPartners = () => {
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/placeholder.svg" 
+                  src="/images/logo-leksaksbilar.png" 
                   alt="Leksaksbilar SE logo" 
                   className="w-full h-full object-contain"
                 />
