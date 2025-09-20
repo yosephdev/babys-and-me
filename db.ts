@@ -1,5 +1,9 @@
 import { Pool } from 'pg';
 
+// Database Configuration for Babys & Me E-commerce Platform
+// PostgreSQL connection pool with SSL support for production
+// Enhanced database connectivity and performance optimization
+
 const pool = new Pool({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),

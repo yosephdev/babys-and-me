@@ -3,6 +3,8 @@
   "style": "default",
   "rsc": false,
   "tsx": true,
+  // Shadcn/UI Configuration for Babys & Me E-commerce Platform
+  // Enhanced UI component system with proper aliases and styling
   "tailwind": {
     "config": "tailwind.config.ts",
     "css": "src/index.css",
