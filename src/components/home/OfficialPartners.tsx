@@ -214,6 +214,141 @@ const OfficialPartners = () => {
               </div>
             </div>
           </a>
+
+          {/* BabyBjörn */}
+          <a 
+            href="https://go.adt267.com/t/t?a=1960529568&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-babybjorn.png" 
+                  alt="BabyBjörn logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">BabyBjörn</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Bärsele, barnvagnar och tillbehör
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Bonti */}
+          <a 
+            href="https://go.adt242.com/t/t?a=1954032784&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-bonti.png" 
+                  alt="Bonti logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Bonti</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Premiumprodukter för barn och föräldrar
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Leksaksbilar SE */}
+          <a 
+            href="https://on.leksaksbilar.se/t/t?a=1954031375&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-leksaksbilar.png" 
+                  alt="Leksaksbilar SE logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Leksaksbilar SE</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Leksaksbilar och fordon för alla åldrar
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Polarn O. Pyret */}
+          <a 
+            href="https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-polarn.png" 
+                  alt="Polarn O. Pyret logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Polarn O. Pyret</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Hållbara barnkläder för alla väder
+                </p>
+              </div>
+            </div>
+          </a>
+
+          {/* Safekid SE */}
+          <a 
+            href="https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-safekid.png" 
+                  alt="Safekid SE logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Safekid SE</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Säkerhetsprodukter för barn - trygghet först
+                </p>
+              </div>
+            </div>
+          </a>
         </div>
         
         <div className="text-center mt-10">

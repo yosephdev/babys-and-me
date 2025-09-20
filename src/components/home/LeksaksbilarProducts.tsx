@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { kidsconceptProducts } from "@/data/kidsconceptProducts";
+import { leksaksbilarProducts } from "@/data/leksaksbilarProducts";
 
-const KidsConceptProducts = () => {
+const LeksaksbilarProducts = () => {
   // Select 5 featured products
-  const featuredProducts = kidsconceptProducts
+  const featuredProducts = leksaksbilarProducts
     .filter(product => product.isBestSeller || product.isEditorsPick)
     .slice(0, 5);
   
@@ -14,9 +14,9 @@ const KidsConceptProducts = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold">Kid's Concept Produkter</h2>
+            <h2 className="text-2xl font-bold">Leksaksbilar SE Produkter</h2>
             <p className="text-gray-600 mt-2">
-              Träleksaker & möbler för kreativ lek
+              Leksaksbilar och fordon för alla åldrar
             </p>
           </div>
           <div className="hidden md:block">
@@ -37,7 +37,7 @@ const KidsConceptProducts = () => {
               rel="noopener noreferrer"
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
               onClick={() => {
-                console.log(`Product click: ${product.name} from Kid's Concept`);
+                console.log(`Product click: ${product.name} from Leksaksbilar SE`);
               }}
             >
               <div className="aspect-square bg-gray-100 relative">
@@ -81,4 +81,4 @@ const KidsConceptProducts = () => {
   );
 };
 
-export default KidsConceptProducts;
+export default LeksaksbilarProducts;
