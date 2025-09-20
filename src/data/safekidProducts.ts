@@ -9,7 +9,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/safekid-zenit",
+    link: "https://safekid.se/safekid-zenit/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     isBestSeller: true,
     rating: 4.8,
     reviews: 89
@@ -24,7 +24,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/safekid-nova",
+    link: "https://safekid.se/safekid-nova/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     isEditorsPick: true,
     rating: 4.7,
     reviews: 56
@@ -39,7 +39,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/xl17",
+    link: "https://safekid.se/xl17/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     rating: 4.6,
     reviews: 67
   },
@@ -53,7 +53,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/safety-gate-stairs",
+    link: "https://safekid.se/safety-gate-stairs/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     isBestSeller: true,
     rating: 4.5,
     reviews: 43
@@ -68,7 +68,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/corner-protectors-set",
+    link: "https://safekid.se/corner-protectors-set/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     rating: 4.4,
     reviews: 34
   },
@@ -82,7 +82,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/window-safety-locks",
+    link: "https://safekid.se/window-safety-locks/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     isEditorsPick: true,
     rating: 4.6,
     reviews: 28
@@ -97,7 +97,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/cabinet-locks-set",
+    link: "https://safekid.se/cabinet-locks-set/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     rating: 4.5,
     reviews: 41
   },
@@ -111,7 +111,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/outlet-covers-set",
+    link: "https://safekid.se/outlet-covers-set/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     isBestSeller: true,
     rating: 4.7,
     reviews: 52
@@ -126,7 +126,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/door-knob-covers",
+    link: "https://safekid.se/door-knob-covers/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     rating: 4.3,
     reviews: 26
   },
@@ -140,7 +140,7 @@ export const safekidProducts = [
     retailer: "Safekid SE",
     retailerLogo: "/images/logo-safekid.png",
     commission: "8",
-    link: "https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se/pool-safety-alarm",
+    link: "https://safekid.se/pool-safety-alarm/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383",
     isEditorsPick: true,
     rating: 4.8,
     reviews: 38

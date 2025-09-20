@@ -76,7 +76,7 @@ const OfficialPartners = () => {
           
           {/* Safekid SE */}
           <a 
-            href="https://dot.safekid.se/t/t?a=1954028056&as=1971524470&t=2&tk=1&url=https://www.safekid.se"
+            href="https://safekid.se/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
