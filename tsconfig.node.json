@@ -4,6 +4,8 @@
         "lib": [
             "ES2023"
         ],
+        // Node.js TypeScript Configuration for Babys & Me E-commerce Platform
+        // Enhanced build tools and development server configuration
         "module": "ESNext",
         "skipLibCheck": true,
         /* Bundler mode */

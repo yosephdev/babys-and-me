@@ -4,6 +4,8 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
+  // TypeScript Configuration for Babys & Me E-commerce Platform
+  // Enhanced type checking and module resolution for better development experience
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
