@@ -4,7 +4,6 @@ import FeaturedProducts from "@/components/home/FeaturedProducts";
 import Testimonials from "@/components/home/Testimonials";
 import BlogHighlights from "@/components/home/BlogHighlights";
 import RetailerCategories from "@/components/home/RetailerCategories";
-import DonationSection from "@/components/home/DonationSection";
 import SubscriptionCTA from "@/components/home/SubscriptionCTA";
 import OfficialPartners from "@/components/home/OfficialPartners";
 import AxkidProducts from "@/components/home/AxkidProducts";
@@ -28,7 +27,6 @@ const Index = () => {
         <Testimonials />
         <RetailerCategories />
         <BlogHighlights />
-        <DonationSection />
         <SubscriptionCTA />
       </main>
       <Footer />

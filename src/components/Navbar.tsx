@@ -28,7 +28,6 @@ const Navbar = () => {
                     <Link to="/om-oss" className="text-foreground hover:text-baby-pink font-medium transition-colors">Om oss</Link>
                     <Link to="/produkter" className="text-foreground hover:text-baby-pink font-medium transition-colors">Produkter</Link>
                     <Link to="/blogg" className="text-foreground hover:text-baby-pink font-medium transition-colors">Blogg</Link>
-                    <Link to="/donera" className="text-foreground hover:text-baby-pink font-medium transition-colors">Donera</Link>
                     <Link to="/kontakta-oss" className="text-foreground hover:text-baby-pink font-medium transition-colors">Kontakt</Link>
                 </nav>
 

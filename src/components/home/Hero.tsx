@@ -54,15 +54,6 @@ const Hero = () => {
                 Handla nu <ShoppingBag className="w-5 h-5" />
               </Link>
             </Button>
-            <Button 
-              className="btn-accent flex items-center gap-2 text-lg" 
-              variant="outline" 
-              asChild
-            >
-              <Link to="/donate">
-                Stöd vårt uppdrag <Heart className="w-5 h-5" />
-              </Link>
-            </Button>
           </div>
         </div>
 

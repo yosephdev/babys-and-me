@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
 import Products from "./pages/Products";
-import Donate from "./pages/Donate";
 import Admin from "./pages/Admin";
 import Login from "./pages/api/auth/Login";
 import Register from "./pages/api/auth/Register";
@@ -37,7 +36,6 @@ const App = () => (
                         <Route path="/om-oss" element={<About />} />
                         <Route path="/blogg" element={<Blog />} />
                         <Route path="/produkter" element={<Products />} />
-                        <Route path="/donera" element={<Donate />} />
                         <Route path="/logga-in" element={<Login />} />
                         <Route path="/registrera" element={<Register />} />
                         <Route path="/glomd-e-losenord" element={<ForgotPassword />} />

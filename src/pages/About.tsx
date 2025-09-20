@@ -82,7 +82,7 @@ const About = () => {
                   </li>
                   <li className="flex items-start">
                     <span className="bg-baby-pink text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 mt-1">2</span>
-                    <span className="text-lg">Vi samarbetar med pålitliga återförsäljare för att förhandla fram exklusiva rabatter för våra gemenskapsmedlemmar.</span>
+                    <span className="text-lg">Vi samarbetar med pålitliga återförsäljare för att förhandla fram exklusiva rabatter för våra kunder.</span>
                   </li>
                   <li className="flex items-start">
                     <span className="bg-baby-pink text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0 mt-1">3</span>
