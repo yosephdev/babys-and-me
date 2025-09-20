@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { babyworldProducts } from "@/data/babyworldProducts";
+import { polarnProducts } from "@/data/polarnProducts";
 
 const BabyworldProducts = () => {
   // Select 5 featured products
-  const featuredProducts = babyworldProducts
+  const featuredProducts = polarnProducts
     .filter(product => product.isBestSeller || product.isEditorsPick)
     .slice(0, 5);
   
@@ -14,9 +14,9 @@ const BabyworldProducts = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold">BabyWorld Produkter</h2>
+            <h2 className="text-2xl font-bold">Polarn O. Pyret Produkter</h2>
             <p className="text-gray-600 mt-2">
-              Kvalitetsprodukter för barn och föräldrar från BabyWorld
+              Hållbara kläder för barn - kvalitet som håller
             </p>
           </div>
           <div className="hidden md:block">
@@ -37,7 +37,7 @@ const BabyworldProducts = () => {
               rel="noopener noreferrer"
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
               onClick={() => {
-                console.log(`Product click: ${product.name} from BabyWorld SE`);
+                console.log(`Product click: ${product.name} from Polarn O. Pyret`);
               }}
             >
               <div className="aspect-square bg-gray-100 relative">

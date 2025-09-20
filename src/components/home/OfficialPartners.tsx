@@ -74,21 +74,21 @@ const OfficialPartners = () => {
             </div>
           </a>
           
-          {/* BabyWorld SE */}
+          {/* Polarn O. Pyret */}
           <a 
-            href="https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se"
+            href="https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1&url=https://www.polarnopyret.se"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
             onClick={() => {
-              console.log("Partner click: BabyWorld SE");
+              console.log("Partner click: Polarn O. Pyret");
             }}
           >
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/logo-babyworld.png" 
-                  alt="BabyWorld SE logo" 
+                  src="/images/logo-polarn.png" 
+                  alt="Polarn O. Pyret logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -96,9 +96,9 @@ const OfficialPartners = () => {
                 <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
                   Officiell Partner
                 </span>
-                <h3 className="font-heading font-bold text-xl mt-1">BabyWorld SE</h3>
+                <h3 className="font-heading font-bold text-xl mt-1">Polarn O. Pyret</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Baby- & barnbutik online - unikt & brett sortiment
+                  Hållbara kläder för barn - kvalitet som håller
                 </p>
               </div>
             </div>
