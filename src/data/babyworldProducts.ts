@@ -9,7 +9,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-peach-whip?variantId=145199",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-peach-whip?variantId=145199",
     isBestSeller: true,
     rating: 4.9,
     reviews: 42
@@ -24,7 +24,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-blue-fog?variantId=145206",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-blue-fog?variantId=145206",
     isEditorsPick: true,
     rating: 4.8,
     reviews: 36
@@ -39,7 +39,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-regatta?variantId=145127",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-regatta?variantId=145127",
     rating: 4.7,
     reviews: 28
   },
@@ -53,7 +53,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/vanilla-copenhagen/vanilla-copenhagen-napphallare-silikone-lavender",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/vanilla-copenhagen/vanilla-copenhagen-napphallare-silikone-lavender",
     rating: 4.9,
     reviews: 52
   },
@@ -67,7 +67,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/chillafish/chillafish-charlie-glow-balanscykel-orange",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/chillafish/chillafish-charlie-glow-balanscykel-orange",
     rating: 4.8,
     reviews: 34
   },
@@ -81,7 +81,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovel-3d-patch-woodrose?variantId=149559",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovel-3d-patch-woodrose?variantId=149559",
     isBestSeller: true,
     rating: 4.7,
     reviews: 29
@@ -96,7 +96,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovlar-3d-patch-barefoot-kelp?variantId=149056",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovlar-3d-patch-barefoot-kelp?variantId=149056",
     rating: 4.6,
     reviews: 18
   },
@@ -110,7 +110,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-pure-cashmere?variantId=145135",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-pure-cashmere?variantId=145135",
     isEditorsPick: true,
     rating: 4.9,
     reviews: 47
@@ -125,7 +125,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-regatta?variantId=145127",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-regatta?variantId=145127",
     rating: 4.7,
     reviews: 23
   },
@@ -139,7 +139,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovlar-3d-patch-barefoot-kelp?variantId=149056",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovlar-3d-patch-barefoot-kelp?variantId=149056",
     rating: 4.6,
     reviews: 19
   },
@@ -153,7 +153,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/vanilla-copenhagen/vanilla-copenhagen-napphallare-silikone-lavender",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/vanilla-copenhagen/vanilla-copenhagen-napphallare-silikone-lavender",
     rating: 4.5,
     reviews: 31
   },
@@ -167,7 +167,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-blue-fog?variantId=145206",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/minymo/minymo-langarmad-body-blue-fog?variantId=145206",
     rating: 4.7,
     reviews: 26
   },
@@ -181,7 +181,7 @@ export const babyworldProducts = [
     retailer: "BabyWorld SE",
     retailerLogo: "/images/logo-babyworld.png",
     commission: "8",
-    link: "https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovel-3d-patch-woodrose?variantId=149559",
+    link: "https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se/sv/varumarken/mikkline/mikkline-gummistovel-3d-patch-woodrose?variantId=149559",
     rating: 4.8,
     reviews: 42
   }

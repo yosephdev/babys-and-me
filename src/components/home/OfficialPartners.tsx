@@ -76,7 +76,7 @@ const OfficialPartners = () => {
           
           {/* BabyWorld SE */}
           <a 
-            href="https://to.babyworld.se/t/t?a=1945556823&as=1971524470&t=2&tk=1"
+            href="https://go.adt256.com/t/t?a=1945556823&as=1971524470&t=2&tk=1&url=https://www.babyworld.se"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
