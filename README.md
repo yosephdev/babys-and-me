@@ -42,7 +42,6 @@ Babys & Me is a curated e-commerce platform that connects Swedish families with 
 | **BabyBjörn** | Baby Carriers & Gear | 8% | ✅ Active |
 | **Babyland** | Toys & Baby Products | 4% | ✅ Active |
 | **BabyWorld SE** | Baby Products | 8% | ⏸️ Paused |
-| **Polarn O. Pyret** | Children's Clothing | 8% | ✅ Active |
 | **BERG SE** | Outdoor Play Equipment | 10% | ✅ Active |
 | **Bonti** | Premium Baby Products | 6% | ✅ Active |
 | **Kid's Concept** | Wooden Toys & Furniture | 7% | ✅ Active |
