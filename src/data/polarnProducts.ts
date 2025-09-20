@@ -58,5 +58,49 @@ export const polarnProducts = [
         isBestSeller: true,
         rating: 4.9,
         reviews: 52
+    },
+    {
+        id: 205,
+        name: "Waterproof Shell Jacket",
+        description: "Hållbar och andningsbar skaljacka designad för aktiva barn, med justerbara manschetter och avtagbar huva.",
+        category: "Kläder & Accessoarer",
+        priceRange: "599 SEK",
+        image: "https://www.polarnopyret.se/globalassets/productimages-polarnopyret/waterproof-shell-jacket-blue.jpg",
+        retailer: "Polarn O. Pyret",
+        retailerLogo: "/images/logo-polarn.png",
+        commission: "8",
+        link: "https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1&url=https://www.polarnopyret.se/barnklader/klader/jackor/waterproof-shell-jacket",
+        isBestSeller: true,
+        rating: 4.8,
+        reviews: 67
+    },
+    {
+        id: 206,
+        name: "Organic Cotton Basics",
+        description: "Ny kollektion av mjuka, ekologiska bomullskläder för bebisar och barn.",
+        category: "Kläder & Accessoarer",
+        priceRange: "199 SEK",
+        image: "https://www.polarnopyret.se/globalassets/productimages-polarnopyret/organic-cotton-basics-white.jpg",
+        retailer: "Polarn O. Pyret",
+        retailerLogo: "/images/logo-polarn.png",
+        commission: "8",
+        link: "https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1&url=https://www.polarnopyret.se/barnklader/klader/basics/organic-cotton-basics",
+        isEditorsPick: true,
+        rating: 4.9,
+        reviews: 89
+    },
+    {
+        id: 207,
+        name: "Winter Overall",
+        description: "Varm vinteroverall för kalla dagar, med vattentätt material och isolering.",
+        category: "Kläder & Accessoarer",
+        priceRange: "799 SEK",
+        image: "https://www.polarnopyret.se/globalassets/productimages-polarnopyret/winter-overall-red.jpg",
+        retailer: "Polarn O. Pyret",
+        retailerLogo: "/images/logo-polarn.png",
+        commission: "8",
+        link: "https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1&url=https://www.polarnopyret.se/barnklader/klader/overallar/winter-overall",
+        rating: 4.7,
+        reviews: 54
     }
 ];

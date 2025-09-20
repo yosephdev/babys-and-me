@@ -168,6 +168,50 @@ export const bergProducts: Product[] = [
     isEditorsPick: true,
     rating: 4.9,
     reviews: 45
+  },
+  {
+    id: 111,
+    name: "BERG Ultim Elite FlatGround Trampoline",
+    description: "Högkvalitativ trampolin designad för professionella hoppare med FlatGround-teknik.",
+    category: ProductCategory.TOYS,
+    priceRange: "8999 SEK",
+    image: "https://cdn.berg.com/media/catalog/product/ultim-elite-flatground-trampoline.jpg",
+    retailer: "BERG SE",
+    retailerLogo: "/images/berg-logo.png",
+    commission: "10",
+    link: "https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-ultim-elite-flatground-trampoline",
+    isBestSeller: true,
+    rating: 4.9,
+    reviews: 78
+  },
+  {
+    id: 112,
+    name: "BERG Buzzy Nitro Go-Kart",
+    description: "Pedaldriven gokart för barn 2-5 år med justerbar sits och ratt för optimal komfort.",
+    category: ProductCategory.TOYS,
+    priceRange: "1299 SEK",
+    image: "https://cdn.berg.com/media/catalog/product/buzzy-nitro-gokart-red.jpg",
+    retailer: "BERG SE",
+    retailerLogo: "/images/berg-logo.png",
+    commission: "10",
+    link: "https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-buzzy-nitro-gokart",
+    isEditorsPick: true,
+    rating: 4.8,
+    reviews: 56
+  },
+  {
+    id: 113,
+    name: "BERG Balance Bike Pro",
+    description: "Professionell balanscykel för att lära sig cykla, med luftfyllda däck och justerbar höjd.",
+    category: ProductCategory.TOYS,
+    priceRange: "799 SEK",
+    image: "https://cdn.berg.com/media/catalog/product/balance-bike-pro-blue.jpg",
+    retailer: "BERG SE",
+    retailerLogo: "/images/berg-logo.png",
+    commission: "10",
+    link: "https://go.adt267.com/t/t?a=1954034628&as=1971524470&t=2&tk=1&url=https://www.berg.com/se/berg-balance-bike-pro",
+    rating: 4.7,
+    reviews: 43
   }
 ];
 
@@ -176,9 +220,14 @@ import { axkidProducts } from "./axkidProducts";
 import { babylandProducts } from "./babylandProducts";
 import { babyworldProducts } from "./babyworldProducts";
 import { babyvProducts } from "./babyvProducts";
+import { babybjornProducts } from "./babybjornProducts";
+import { bontiProducts } from "./bontiProducts";
 import { bugabooProducts } from "./bugabooProducts";
+import { kidsconceptProducts } from "./kidsconceptProducts";
+import { leksaksbilarProducts } from "./leksaksbilarProducts";
 import { litenlekerProducts } from "./litenlekerProducts";
 import { polarnProducts } from "./polarnProducts";
+import { safekidProducts } from "./safekidProducts";
 import { storlitenProducts } from "./storlitenProducts";
 
 // Only include products from official partners
@@ -206,9 +255,14 @@ export const products: Product[] = [
   ...babylandProducts,
   ...babyworldProducts,
   ...babyvProducts,
+  ...babybjornProducts,
+  ...bontiProducts,
   ...bugabooProducts,
+  ...kidsconceptProducts,
+  ...leksaksbilarProducts,
   ...litenlekerProducts,
   ...storlitenProducts,
+  ...safekidProducts,
   ...polarnProducts.map(product => ({
     ...product,
     category: ProductCategory.CLOTHING

@@ -200,5 +200,49 @@ export const axkidProducts = [
     isEditorsPick: true,
     rating: 5.0,
     reviews: 38
+  },
+  {
+    id: 215,
+    name: "Axkid One 3",
+    description: "Axkids säkraste bilbarnstol hittills, lämplig för barn från 0 till 7 år med ISOFIX-installation.",
+    category: "Hälsa & Säkerhet",
+    priceRange: "3999 SEK",
+    image: "https://axkid.com/app/uploads/axkid-one-3-black.jpg",
+    retailer: "Axkid SE",
+    retailerLogo: "/images/logo-axkid.png",
+    commission: "5",
+    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-one-3/",
+    isBestSeller: true,
+    rating: 4.9,
+    reviews: 67
+  },
+  {
+    id: 216,
+    name: "Axkid Spinkid - Bamboo Fiber Cover",
+    description: "Specialerbjudande: Spinkid med gratis bambufiberöverdrag för extra komfort och ventilation.",
+    category: "Hälsa & Säkerhet",
+    priceRange: "1799 SEK",
+    image: "https://axkid.com/app/uploads/spinkid-bamboo-cover-promo.jpg",
+    retailer: "Axkid SE",
+    retailerLogo: "/images/logo-axkid.png",
+    commission: "5",
+    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/spinkid-bamboo-cover-promo/",
+    isEditorsPick: true,
+    rating: 4.8,
+    reviews: 45
+  },
+  {
+    id: 217,
+    name: "Axkid Minikid 4 - New Colors",
+    description: "Populär bakåtvänd bilbarnstol nu i nya färger, designad för barn upp till 125 cm.",
+    category: "Hälsa & Säkerhet",
+    priceRange: "2499 SEK",
+    image: "https://axkid.com/app/uploads/minikid-4-new-colors.jpg",
+    retailer: "Axkid SE",
+    retailerLogo: "/images/logo-axkid.png",
+    commission: "5",
+    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-minikid-4/",
+    rating: 4.7,
+    reviews: 52
   }
 ];

@@ -214,5 +214,49 @@ export const storlitenProducts = [
         link: "https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1&url=https://www.storochliten.se/compact-curling",
         rating: 4.6,
         reviews: 21
+    },
+    {
+        id: 216,
+        name: "LEGO City Fire Station",
+        description: "LEGO-set med flervånings brandstation, brandbilar och brandmän, lämpligt för åldrarna 6+.",
+        category: "Leksaker & Pedagogiska artiklar",
+        priceRange: "899 SEK",
+        image: "https://media.storochliten.se/product-images/XL/lego-city-fire-station.jpg",
+        retailer: "Stor&Liten",
+        retailerLogo: "/images/logo-storliten.png",
+        commission: "8",
+        link: "https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1&url=https://www.storochliten.se/lego-city-fire-station",
+        isBestSeller: true,
+        rating: 4.9,
+        reviews: 78
+    },
+    {
+        id: 217,
+        name: "BRIO World Railway Starter Set",
+        description: "Börjarvänligt träbantågsset för att introducera barn till tågvärlden.",
+        category: "Leksaker & Pedagogiska artiklar",
+        priceRange: "599 SEK",
+        image: "https://media.storochliten.se/product-images/XL/brio-world-railway-starter-set.jpg",
+        retailer: "Stor&Liten",
+        retailerLogo: "/images/logo-storliten.png",
+        commission: "8",
+        link: "https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1&url=https://www.storochliten.se/brio-world-railway-starter-set",
+        isEditorsPick: true,
+        rating: 4.8,
+        reviews: 56
+    },
+    {
+        id: 218,
+        name: "LEGO DUPLO Town",
+        description: "Nya LEGO DUPLO-sets designade för småbarn att uppmuntra fantasifull lek.",
+        category: "Leksaker & Pedagogiska artiklar",
+        priceRange: "399 SEK",
+        image: "https://media.storochliten.se/product-images/XL/lego-duplo-town.jpg",
+        retailer: "Stor&Liten",
+        retailerLogo: "/images/logo-storliten.png",
+        commission: "8",
+        link: "https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1&url=https://www.storochliten.se/lego-duplo-town",
+        rating: 4.7,
+        reviews: 43
     }
 ];

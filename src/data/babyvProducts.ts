@@ -142,5 +142,49 @@ export const babyvProducts = [
         link: "https://go.adt231.net/t/t?a=1327902115&as=1971524470&t=2&tk=1&url=https://m.babyv.se/sv/articles/1.131.323/la-millou-angel-wings-nackkudde-violetgreen",
         rating: 4.6,
         reviews: 29
+    },
+    {
+        id: 411,
+        name: "Emmaljunga NXT90",
+        description: "Mångsidig vagn som passar både urbana och terrängmiljöer med reversibel sits och kompakt hopfällning.",
+        category: "Barnkammarnödvändigheter",
+        priceRange: "8999 SEK",
+        image: "https://m.babyv.se/images/emmaljunga-nxt90-black.jpg",
+        retailer: "Baby V",
+        retailerLogo: "/images/logo-babyv.png",
+        commission: "8",
+        link: "https://go.adt231.net/t/t?a=1327902115&as=1971524470&t=2&tk=1&url=https://m.babyv.se/sv/articles/emmaljunga-nxt90",
+        isBestSeller: true,
+        rating: 4.8,
+        reviews: 67
+    },
+    {
+        id: 412,
+        name: "Maxi-Cosi Pebble 360",
+        description: "Rotationsbilbarnstol designad för nyfödda upp till 15 månader med 360-graders rotation.",
+        category: "Hälsa & Säkerhet",
+        priceRange: "2999 SEK",
+        image: "https://m.babyv.se/images/maxi-cosi-pebble-360-black.jpg",
+        retailer: "Baby V",
+        retailerLogo: "/images/logo-babyv.png",
+        commission: "8",
+        link: "https://go.adt231.net/t/t?a=1327902115&as=1971524470&t=2&tk=1&url=https://m.babyv.se/sv/articles/maxi-cosi-pebble-360",
+        isEditorsPick: true,
+        rating: 4.9,
+        reviews: 89
+    },
+    {
+        id: 413,
+        name: "Britax Römer Dualfix i-Size",
+        description: "360-graders roterande bilbarnstol med förlängd bakåtvänd resa och flera lutningspositioner.",
+        category: "Hälsa & Säkerhet",
+        priceRange: "3999 SEK",
+        image: "https://m.babyv.se/images/britax-romer-dualfix-isize-grey.jpg",
+        retailer: "Baby V",
+        retailerLogo: "/images/logo-babyv.png",
+        commission: "8",
+        link: "https://go.adt231.net/t/t?a=1327902115&as=1971524470&t=2&tk=1&url=https://m.babyv.se/sv/articles/britax-romer-dualfix-isize",
+        rating: 4.7,
+        reviews: 54
     }
 ];
