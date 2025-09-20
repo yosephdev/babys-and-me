@@ -207,7 +207,7 @@ export const axkidProducts = [
     description: "Axkids säkraste bilbarnstol hittills, lämplig för barn från 0 till 7 år med ISOFIX-installation.",
     category: "Hälsa & Säkerhet",
     priceRange: "3999 SEK",
-    image: "https://axkid.com/app/uploads/axkid-one-3-black.jpg",
+    image: "https://axkid.com/app/uploads/7350057589601_1.png",
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
