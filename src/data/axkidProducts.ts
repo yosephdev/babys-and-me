@@ -211,7 +211,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-one-3/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-one-3-textile-headrest-cover/?attribute_pa_color=arctic-mist-grey",
     isBestSeller: true,
     rating: 4.9,
     reviews: 67
