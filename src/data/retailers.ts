@@ -53,7 +53,6 @@ export const retailers: Retailer[] = [
         commission: "4",
         website: "https://pin.babyland.se/t/t?a=1066444612&as=1971524470&t=2&tk=1",
         category: "Allmänt",
-        status: "paused"
     },
     {
         id: 6,

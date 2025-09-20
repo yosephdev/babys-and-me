@@ -24,8 +24,8 @@ const FeaturedProducts = () => {
       // Get featured products (best sellers or editor's picks)
       // Prioritize products from advertisers we've applied to partner with
       const priorityAdvertisers = [
-        "Jollyroom SE", "Stor&Liten", "Baby V", 
-        "Bugaboo SE", "Zcooly", "BabyWorld SE", "Axkid SE", "Kid's Concept"
+        "Jollyroom SE", "Babyland", "Stor&Liten", "Baby V", 
+        "Bugaboo SE", "Zcooly", "BabyWorld SE", "Axkid SE"
       ];
       
       // First get products from priority advertisers

@@ -105,6 +105,33 @@ const OfficialPartners = () => {
           </a>
 
 
+          {/* Babyland */}
+          <a 
+            href="https://pin.babyland.se/t/t?a=1066444612&as=1971524470&t=2&tk=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
+          >
+            <div className="p-6 flex items-center gap-4">
+              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
+                <img 
+                  src="/images/logo-babyland.png" 
+                  alt="Babyland logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div>
+                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
+                  Officiell Partner
+                </span>
+                <h3 className="font-heading font-bold text-xl mt-1">Babyland</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Allt för barn och baby
+                </p>
+              </div>
+            </div>
+          </a>
+
           {/* Bugaboo SE */}
           <a 
             href="https://do.bugaboo.com/t/t?a=1625527092&as=1971524470&t=2&tk=1"

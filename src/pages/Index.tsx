@@ -8,7 +8,7 @@ import SubscriptionCTA from "@/components/home/SubscriptionCTA";
 import OfficialPartners from "@/components/home/OfficialPartners";
 import AxkidProducts from "@/components/home/AxkidProducts";
 import BergProducts from "@/components/home/BergProducts";
-import KidsConceptProducts from "@/components/home/KidsConceptProducts";
+import BabylandProducts from "@/components/home/BabylandProducts";
 import StorLitenProducts from "@/components/home/StorLitenProducts";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,7 +23,7 @@ const Index = () => {
         <AxkidProducts />
         <BergProducts />
         <StorLitenProducts />
-        <KidsConceptProducts />
+        <BabylandProducts />
         <Testimonials />
         <RetailerCategories />
         <BlogHighlights />
