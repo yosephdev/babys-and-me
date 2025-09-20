@@ -16,7 +16,7 @@ const OfficialPartners = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {/* Axkid SE */}
           <a 
-            href="https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1"
+            href="https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"

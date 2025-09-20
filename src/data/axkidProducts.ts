@@ -11,7 +11,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-2-premium-202223/?attribute_pa_color=shell-black",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-2-premium-202223/?attribute_pa_color=shell-black",
     isBestSeller: true,
     rating: 4.9,
     reviews: 42
@@ -26,7 +26,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/forankringsoglor/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/forankringsoglor/",
     rating: 4.7,
     reviews: 18
   },
@@ -40,7 +40,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/spinkid/?attribute_pa_color=tar",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/spinkid/?attribute_pa_color=tar",
     rating: 4.8,
     reviews: 24
   },
@@ -54,7 +54,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=granite",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=granite",
     isEditorsPick: true,
     rating: 4.9,
     reviews: 36
@@ -69,7 +69,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=moss",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=moss",
     rating: 4.8,
     reviews: 29
   },
@@ -83,7 +83,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=tar",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=tar",
     rating: 4.7,
     reviews: 22
   },
@@ -97,7 +97,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=sea",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=sea",
     rating: 4.8,
     reviews: 31
   },
@@ -111,7 +111,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=shellfish",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3/?attribute_pa_color=shellfish",
     isBestSeller: true,
     rating: 4.9,
     reviews: 45
@@ -126,7 +126,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/babydyna-premium/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/babydyna-premium/",
     rating: 4.7,
     reviews: 27
   },
@@ -140,7 +140,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/modukid-infant-solskydd/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/modukid-infant-solskydd/",
     rating: 4.6,
     reviews: 19
   },
@@ -154,7 +154,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/babyfix-insatsdyna/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/babyfix-insatsdyna/",
     rating: 4.8,
     reviews: 23
   },
@@ -168,7 +168,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/forankringsoglor-160-mm/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/forankringsoglor-160-mm/",
     rating: 4.7,
     reviews: 16
   },
@@ -182,7 +182,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/nextkid-mugghallare/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/nextkid-mugghallare/",
     rating: 4.5,
     reviews: 14
   },
@@ -196,7 +196,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3-premium/?attribute_pa_color=granite-melange",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-care-minikid-3-premium/?attribute_pa_color=granite-melange",
     isEditorsPick: true,
     rating: 5.0,
     reviews: 38
@@ -226,7 +226,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/spinkid-bamboo-cover-promo/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/spinkid-bamboo-cover-promo/",
     isEditorsPick: true,
     rating: 4.8,
     reviews: 45
@@ -241,7 +241,7 @@ export const axkidProducts = [
     retailer: "Axkid SE",
     retailerLogo: "/images/logo-axkid.png",
     commission: "5",
-    link: "https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-minikid-4/",
+    link: "https://go.axkid.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://axkid.com/sv/product/axkid-minikid-4/",
     rating: 4.7,
     reviews: 52
   }
