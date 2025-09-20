@@ -74,21 +74,21 @@ const OfficialPartners = () => {
             </div>
           </a>
           
-          {/* Stor&Liten */}
+          {/* Kid's Concept */}
           <a 
-            href="https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1&url=https://www.storochliten.se"
+            href="https://go.adt256.com/t/t?a=1954032316&as=1971524470&t=2&tk=1&url=https://www.kidsconcept.se"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
             onClick={() => {
-              console.log("Partner click: Stor&Liten");
+              console.log("Partner click: Kid's Concept");
             }}
           >
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/logo-storliten.png" 
-                  alt="Stor&Liten logo" 
+                  src="/images/logo-kidsconcept.png" 
+                  alt="Kid's Concept logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -96,9 +96,9 @@ const OfficialPartners = () => {
                 <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
                   Officiell Partner
                 </span>
-                <h3 className="font-heading font-bold text-xl mt-1">Stor&Liten</h3>
+                <h3 className="font-heading font-bold text-xl mt-1">Kid's Concept</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Leksaker & spel för hela familjen - kvalitet som håller
+                  Träleksaker & möbler för kreativ lek
                 </p>
               </div>
             </div>
@@ -185,59 +185,7 @@ const OfficialPartners = () => {
             </div>
           </a>
 
-          {/* Polarn O. Pyret */}
-          <a 
-            href="https://pin.polarnopyret.se/t/t?a=1126522829&as=1971524470&t=2&tk=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
-          >
-            <div className="p-6 flex items-center gap-4">
-              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
-                <img 
-                  src="/images/logo-polarn.png" 
-                  alt="Polarn O. Pyret logo" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
-                  Officiell Partner
-                </span>
-                <h3 className="font-heading font-bold text-xl mt-1">Polarn O. Pyret</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Hållbara barnkläder
-                </p>
-              </div>
-            </div>
-          </a>
 
-          {/* Stor&Liten */}
-          <a 
-            href="https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
-          >
-            <div className="p-6 flex items-center gap-4">
-              <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
-                <img 
-                  src="/images/logo-storliten.png" 
-                  alt="Stor&Liten logo" 
-                  className="w-full h-full object-contain"
-                />
-              </div>
-              <div>
-                <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
-                  Officiell Partner
-                </span>
-                <h3 className="font-heading font-bold text-xl mt-1">Stor&Liten</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Allt för barnfamiljen
-                </p>
-              </div>
-            </div>
-          </a>
 
           {/* Baby V */}
           <a 

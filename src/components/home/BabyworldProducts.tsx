@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-import { storlitenProducts } from "@/data/storlitenProducts";
+import { kidsconceptProducts } from "@/data/kidsconceptProducts";
 
 const BabyworldProducts = () => {
   // Select 5 featured products
-  const featuredProducts = storlitenProducts
+  const featuredProducts = kidsconceptProducts
     .filter(product => product.isBestSeller || product.isEditorsPick)
     .slice(0, 5);
   
@@ -14,9 +14,9 @@ const BabyworldProducts = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold">Stor&Liten Produkter</h2>
+            <h2 className="text-2xl font-bold">Kid's Concept Produkter</h2>
             <p className="text-gray-600 mt-2">
-              Leksaker & spel för hela familjen - kvalitet som håller
+              Träleksaker & möbler för kreativ lek
             </p>
           </div>
           <div className="hidden md:block">
@@ -37,7 +37,7 @@ const BabyworldProducts = () => {
               rel="noopener noreferrer"
               className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100 flex flex-col"
               onClick={() => {
-                console.log(`Product click: ${product.name} from Stor&Liten`);
+                console.log(`Product click: ${product.name} from Kid's Concept`);
               }}
             >
               <div className="aspect-square bg-gray-100 relative">
