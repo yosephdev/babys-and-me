@@ -74,21 +74,21 @@ const OfficialPartners = () => {
             </div>
           </a>
           
-          {/* Safekid SE */}
+          {/* Stor&Liten */}
           <a 
-            href="https://safekid.se/?utm_source=adtraction&utm_medium=affiliate&utm_campaign=adtraction&at_gd=C02774809BCC7147733B0E517B49259A35D8386F&trackID=193606383"
+            href="https://at.storochliten.se/t/t?a=1060728464&as=1971524470&t=2&tk=1&url=https://www.storochliten.se"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-gray-100 flex flex-col"
             onClick={() => {
-              console.log("Partner click: Safekid SE");
+              console.log("Partner click: Stor&Liten");
             }}
           >
             <div className="p-6 flex items-center gap-4">
               <div className="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border border-gray-100">
                 <img 
-                  src="/images/logo-safekid.png" 
-                  alt="Safekid SE logo" 
+                  src="/images/logo-storliten.png" 
+                  alt="Stor&Liten logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
@@ -96,9 +96,9 @@ const OfficialPartners = () => {
                 <span className="bg-baby-pink/10 text-baby-pink px-3 py-1 rounded-full text-xs font-medium">
                   Officiell Partner
                 </span>
-                <h3 className="font-heading font-bold text-xl mt-1">Safekid SE</h3>
+                <h3 className="font-heading font-bold text-xl mt-1">Stor&Liten</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Säkerhetsprodukter för barn - trygghet först
+                  Leksaker & spel för hela familjen - kvalitet som håller
                 </p>
               </div>
             </div>
