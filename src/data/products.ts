@@ -227,7 +227,6 @@ import { kidsconceptProducts } from "./kidsconceptProducts";
 import { leksaksbilarProducts } from "./leksaksbilarProducts";
 import { litenlekerProducts } from "./litenlekerProducts";
 import { polarnProducts } from "./polarnProducts";
-import { safekidProducts } from "./safekidProducts";
 import { storlitenProducts } from "./storlitenProducts";
 
 // Only include products from official partners
@@ -262,7 +261,6 @@ export const products: Product[] = [
   ...leksaksbilarProducts,
   ...litenlekerProducts,
   ...storlitenProducts,
-  ...safekidProducts,
   ...polarnProducts.map(product => ({
     ...product,
     category: ProductCategory.CLOTHING

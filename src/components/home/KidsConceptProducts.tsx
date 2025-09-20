@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { kidsconceptProducts } from "@/data/kidsconceptProducts";
 
-const BabyworldProducts = () => {
+const KidsConceptProducts = () => {
   // Select 5 featured products
   const featuredProducts = kidsconceptProducts
     .filter(product => product.isBestSeller || product.isEditorsPick)
@@ -81,4 +81,4 @@ const BabyworldProducts = () => {
   );
 };
 
-export default BabyworldProducts;
+export default KidsConceptProducts;
