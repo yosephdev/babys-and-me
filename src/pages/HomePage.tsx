@@ -6,7 +6,6 @@ import { Loader2 } from "lucide-react";
 const advertisers = [
   { id: "axkid-se", name: "Axkid SE" },
   { id: "baby-v", name: "Baby V" },
-  { id: "babyland", name: "Babyland" },
   { id: "babyworld-se", name: "BabyWorld SE" },
   { id: "berg-se", name: "BERG SE" },
   { id: "bugaboo-se", name: "Bugaboo SE" },

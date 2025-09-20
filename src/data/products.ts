@@ -217,7 +217,6 @@ export const bergProducts: Product[] = [
 
 // Import partner products
 import { axkidProducts } from "./axkidProducts";
-import { babylandProducts } from "./babylandProducts";
 import { babyworldProducts } from "./babyworldProducts";
 import { babyvProducts } from "./babyvProducts";
 import { babybjornProducts } from "./babybjornProducts";
@@ -251,7 +250,6 @@ export const products: Product[] = [
   // Add all partner products to the main products array
   ...bergProducts,
   ...axkidProducts,
-  ...babylandProducts,
   ...babyworldProducts,
   ...babyvProducts,
   ...babybjornProducts,

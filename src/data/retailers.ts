@@ -46,15 +46,6 @@ export const retailers: Retailer[] = [
         category: "Allmänt",
     },
     {
-        id: 5,
-        name: "Babyland",
-        description: "Barn- och babyprodukter till låga priser för vardagligt bruk",
-        logo: "/images/logo-babyland.png",
-        commission: "4",
-        website: "https://pin.babyland.se/t/t?a=1066444612&as=1971524470&t=2&tk=1",
-        category: "Allmänt",
-    },
-    {
         id: 6,
         name: "Axkid SE",
         description: "Vi vill sätta nya, högre standarder för barns säkerhet i trafiken genom bakåtvänt åkande",

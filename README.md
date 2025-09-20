@@ -40,7 +40,7 @@ Babys & Me is a curated e-commerce platform that connects Swedish families with 
 | **Axkid SE** | Car Seats & Safety | 5% | ✅ Active |
 | **Baby V** | Baby Products | 8% | ✅ Active |
 | **BabyBjörn** | Baby Carriers & Gear | 8% | ✅ Active |
-| **Babyland** | Toys & Baby Products | 4% | ✅ Active |
+| **Babyland** | Toys & Baby Products | 4% | ⏸️ Paused |
 | **BabyWorld SE** | Baby Products | 8% | ⏸️ Paused |
 | **BERG SE** | Outdoor Play Equipment | 10% | ✅ Active |
 | **Bonti** | Premium Baby Products | 6% | ✅ Active |
